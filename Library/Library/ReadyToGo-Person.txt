@@ -1,0 +1,23 @@
+﻿* 3 constructros 
+* if usr/pass not given - generates on its own 
+* Usual user name conventions is like Jordan Guerrero => jguerrero 
+* above method to generate stuff should be internal/private to the class 
+* Method to show credentials after creation 
+* Role of the Person 
+* Enums for role 
+* check role func should return boolean 
+* usual naming conv isLibrarianRole isCustomerRole ( boolean return value answers the question )
+* public boolean isInRole(param TheRoleInQuestion) {}
+* xxx.Email = "whatevr-comocmocc!!!@#!@#!@#!@#";
+* public void SetEmailAddress(string of mail ) {} 
+* public string GetEmailAddress() { returns email address}
+
+
+[ ] Method for role check
+[ ] Method for generating user name 
+[ ] Method for generating a password 
+[ ] Method to show credentialos
+
+[ ] Method to Set/Get Email address 
+[ ] Method to set/get the Address
+[ ] Method to set/Get TelephoneNumber 

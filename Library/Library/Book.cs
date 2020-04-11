@@ -5,6 +5,7 @@ namespace Library
 {
     public class Book
     {
+        // Person 
         public Book(Person author, string country = "unknown", string imageLink = "unknown",
             string language = "unknown", string link = "unknown", uint pages = 0,
             string title = "unknown", DateTime year = DateTime.Now)
