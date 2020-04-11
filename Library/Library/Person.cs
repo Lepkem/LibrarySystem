@@ -2,7 +2,7 @@
 
 namespace Library
 {
-    public class Person
+    public class Person : IPerson
     {
         // property of th above type within the person class 
         // not modifiable - set up once during creation 

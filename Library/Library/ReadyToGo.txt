@@ -12,7 +12,7 @@
 * public void SetEmailAddress(string of mail ) {} 
 * public string GetEmailAddress() { returns email address}
 
-
+-- Person 
 [X] Method for role check
 [X] Method for generating user name 
 [X] Method for generating a password 
@@ -21,3 +21,11 @@
 [X] Method to Set/Get Email address 
 [X] Method to set/get the Address
 [X] Method to set/Get TelephoneNumber 
+
+
+
+-- Book 
+[X] 4 constructors 
+[X] one does not take any params 
+* interface 
+* 

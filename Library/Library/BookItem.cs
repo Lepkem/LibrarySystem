@@ -4,11 +4,11 @@ namespace Library
 {
     public class BookItem
     {
-        public BookItem(Book sourcebook, bool bookItemAvailable = true, DateTime BookItemAvailableWhen=DateTime.Now )
+        public BookItem(Book sourcebook, bool bookItemAvailable = true, DateTime bookItemAvailableWhen = default(DateTime) )
         {
             SourceBook = sourcebook;
             BookItemAvailable = bookItemAvailable;
-            this.BookItemAvailableWhen = bookItemAvailable;
+            BookItemAvailableWhen = bookItemAvailableWhen;
             ID = Guid.NewGuid();
         }
         public Guid ID;
