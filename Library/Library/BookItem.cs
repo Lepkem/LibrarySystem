@@ -6,10 +6,10 @@ namespace Library
     {
         public BookItem(Book sourcebook, bool bookItemAvailable = true, DateTime BookItemAvailableWhen=DateTime.Now )
         {
-            this.SourceBook = sourcebook;
-            this.BookItemAvailable = bookItemAvailable;
+            SourceBook = sourcebook;
+            BookItemAvailable = bookItemAvailable;
             this.BookItemAvailableWhen = bookItemAvailable;
-            this.ID = Guid.NewGuid();
+            ID = Guid.NewGuid();
         }
         public Guid ID;
         public Book SourceBook;

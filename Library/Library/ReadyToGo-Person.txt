@@ -13,11 +13,11 @@
 * public string GetEmailAddress() { returns email address}
 
 
-[ ] Method for role check
-[ ] Method for generating user name 
-[ ] Method for generating a password 
-[ ] Method to show credentialos
+[X] Method for role check
+[X] Method for generating user name 
+[X] Method for generating a password 
+[X] Method to show credentialos
 
-[ ] Method to Set/Get Email address 
-[ ] Method to set/get the Address
-[ ] Method to set/Get TelephoneNumber 
+[X] Method to Set/Get Email address 
+[X] Method to set/get the Address
+[X] Method to set/Get TelephoneNumber 

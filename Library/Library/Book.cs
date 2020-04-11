@@ -10,15 +10,15 @@ namespace Library
             string language = "unknown", string link = "unknown", uint pages = 0,
             string title = "unknown", DateTime year = DateTime.Now)
         {
-            this.Author = author;
-            this.Country = country;
-            this.ImageLink = imageLink;
-            this.Language = language;
-            this.Link = link;
-            this.Pages = pages;
-            this.Title = title;
-            this.Year = year;
-            this.ISBN = "ISBN" + Guid.NewGuid();
+            Author = author;
+            Country = country;
+            ImageLink = imageLink;
+            Language = language;
+            Link = link;
+            Pages = pages;
+            Title = title;
+            Year = year;
+            ISBN = "ISBN" + Guid.NewGuid();
         }
 
         public Person Author { get; }
