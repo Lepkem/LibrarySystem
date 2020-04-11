@@ -21,3 +21,5 @@
 [X] Method to Set/Get Email address 
 [X] Method to set/get the Address
 [X] Method to set/Get TelephoneNumber 
+
+* Possibly add plugin for books 
