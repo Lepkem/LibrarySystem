@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.VisualBasic;
-
-namespace Library
+﻿namespace Library
 {
+    #region
 
-    public class Book
+    using System;
+    using System.Collections.Generic;
+
+    #endregion
+
+    public class Book : IBook
     {
         // 1# elaborate constructor
-        public Book(Person author, string title, string country,
-            string imageLink, string language, string link, uint pages, DateTime year)
+        public Book(Person author, string title, string country, string imageLink, string language, string link, uint pages, DateTime year)
         {
             Author = author;
             Country = country;
@@ -21,7 +22,7 @@ namespace Library
             Year = year;
             ISBN = "ISBN" + Guid.NewGuid();
         }
-        
+
         // 2# elaborate constructor
         public Book(Person author, string title, string country, string language, uint pages, DateTime year)
         {
@@ -67,20 +68,25 @@ namespace Library
         }
 
         public List<Book> BookAttr = new List<Book>(); // is this a good idea? I think this will be redundant in the future
-        public Person Author { get; }
-        public string Country { get;}      //from JSON
-        public string ImageLink { get; protected set; }    //from JSON
-        public string Language { get;}     //from JSON
-        public string Link { get; protected set;}         //from JSON
-        public uint Pages { get;}          //from JSON
-        public string Title { get;}        //from JSON
-        public DateTime Year { get;}       //from JSON
-        public string ISBN { get;}
-        public uint BookQuantity;   //this one should be created by counting the BookItems of this book
 
-        public bool Whatever(uint pages)
-        {
-            return (pages > 0);
-        }
+        public Person Author { get; }
+
+        public string Country { get; } //from JSON
+
+        public string ImageLink { get; protected set; } //from JSON
+
+        public string Language { get; } //from JSON
+
+        public string Link { get; protected set; } //from JSON
+
+        public uint Pages { get; } //from JSON
+
+        public string Title { get; } //from JSON
+
+        public DateTime Year { get; } //from JSON
+
+        public string ISBN { get; }
+
+        public uint BookQuantity; //this one should be created by counting the BookItems of this book
     }
 }
