@@ -49,6 +49,7 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookItem.cs" />
     <Compile Include="Catalog.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Interfaces\IBook.cs" />
     <Compile Include="Interfaces\ICatalog.cs" />
     <Compile Include="Interfaces\IPerson.cs" />
@@ -59,10 +60,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\Books.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadyToGo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

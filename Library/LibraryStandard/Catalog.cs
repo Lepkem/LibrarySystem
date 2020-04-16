@@ -3,7 +3,7 @@
 namespace Library
 {
     using System;
-    using System.Reflection.Metadata.Ecma335;
+    
 
     using Library.Interfaces;
 
@@ -31,7 +31,7 @@ namespace Library
             }
             catch (Exception e)
             { 
-                Console.WriteLine($"{e.Message}, so something is not dobra :("); //
+                Console.WriteLine($"{e.Message}, so something is not dobra :("); 
             }
         }
 

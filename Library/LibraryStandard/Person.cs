@@ -125,7 +125,6 @@ namespace Library
         //ShowTelNumber shows telephone number of person
         public string ShowTelNumber(Person person)
         {
-            object Whateverr = CatalogV2.Test();
             return person.TelephoneNumber;
         }
 
