@@ -2,9 +2,12 @@
 
 namespace Library
 {
+    using System;
     using System.Reflection.Metadata.Ecma335;
 
     using Library.Interfaces;
+
+    using Newtonsoft.Json;
 
     public class Catalog : ICatalog
     {
@@ -13,20 +16,26 @@ namespace Library
             
         }
 
+        /// <summary>
+        /// LoadBookFile loads content of filename as instances of Book
+        /// </summary>
+        /// <param name="fileName"></param>
         public void LoadBookFile(string fileName)
         {
             string FileContentString = "";
             try
             {
                 FileContentString = System.IO.File.ReadAllText(fileName);
-                DeserializedS = JsonConvert.DeserializeObject<List<Book>>(FileContentString); // here I made instances of classes from a JSON string in a list of class movie
+                Books = JsonConvert.DeserializeObject<List<Book>>(FileContentString); // here I made instances of classes from a JSON string in a list of class movie
 
             }
             catch (Exception e)
-            {
-                return e.Message + "something went wrong";
+            { 
+                Console.WriteLine($"{e.Message}, so something is not dobra :("); //
             }
         }
+
+        public List<Book> Books { get; set; }
     }
 
 }
