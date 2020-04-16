@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Library
+﻿namespace Library.Interfaces
 {
+    using System;
+
     public interface IBook
     {
         Person Author { get; }

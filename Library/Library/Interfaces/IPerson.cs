@@ -1,8 +1,4 @@
-﻿namespace Library
-{
-}
-
-namespace Library
+﻿namespace Library.Interfaces
 {
     public interface IPerson
     {
