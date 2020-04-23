@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Library
+﻿namespace Library
 {
+    using System;
+
     public class BookItem
     {
         // Author = author;
@@ -15,7 +15,7 @@ namespace Library
         //
         // ISBN = "ISBN" + Guid.NewGuid();
 
-        public BookItem(Book sourcebook, bool bookItemAvailable = true, DateTime bookItemAvailableWhen = default(DateTime) )
+        public BookItem(Book sourcebook, bool bookItemAvailable = true, DateTime bookItemAvailableWhen = default )
         {
             SourceBook = sourcebook;
             BookItemAvailable = bookItemAvailable;

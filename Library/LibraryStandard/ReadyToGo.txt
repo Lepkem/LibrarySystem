@@ -27,11 +27,14 @@
 
 
 *** Book 
-  - ID                  // 
+  - ID                  // in order to make a new second instance of a book, quickly but with a new GUID, how would you do that?
 
 *** Catalog             
   - Loads all books from JSON
-  - 
+
+*** People
+- Author is only connected to Book
+- Librarian has access to all functionalities including: can view all Customer profiles, make backup, load backup
 
 
 

@@ -3,7 +3,6 @@
     #region
 
     using System;
-    using System.Collections.Generic;
 
     using Library.Interfaces;
 
@@ -11,7 +10,7 @@
 
     public class Book : IBook
     {
-        // 1# elaborate constructor
+        /// 1# elaborate constructor
         public Book(Person author, string title, string country, string imageLink, string language, string link, uint pages, DateTime year)
         {
             Author = author;
@@ -22,10 +21,13 @@
             Pages = pages;
             Title = title;
             Year = year;
+
             ISBN = "ISBN" + Guid.NewGuid();
+            IsAvailable = true;
+            AvailableWhen = DateTime.Now;
         }
 
-        // 2# elaborate constructor
+        /// 2# elaborate constructor
         public Book(Person author, string title, string country, string language, uint pages, DateTime year)
         {
             Author = author;
@@ -36,10 +38,13 @@
             Pages = pages;
             Title = title;
             Year = year;
+
             ISBN = "ISBN" + Guid.NewGuid();
+            IsAvailable = true;
+            AvailableWhen = DateTime.Now;
         }
 
-        // 3# elaborate constructor 
+        /// 3# elaborate constructor 
         public Book(Person author, string title)
         {
             Author = author;
@@ -52,9 +57,11 @@
             Year = DateTime.Now;
 
             ISBN = "ISBN" + Guid.NewGuid();
+            IsAvailable = true;
+            AvailableWhen = DateTime.Now;
         }
 
-        // 3# elaborate constructor 
+        /// 4# elaborate constructor 
         public Book()
         {
             Author = new Person("unknown", "unknown", Person.FunctionalRole.Author);
@@ -67,28 +74,49 @@
             Year = DateTime.Now;
 
             ISBN = "ISBN" + Guid.NewGuid();
+            IsAvailable = true;
+            AvailableWhen = DateTime.Now;
         }
 
-        public List<Book> BookAttr = new List<Book>(); // is this a good idea? I think this will be redundant in the future
 
-        public Person Author { get; }
 
-        public string Country { get; } //from JSON
+        public readonly Person Author;
+
+        public readonly string Country; //from JSON
 
         public string ImageLink { get; protected set; } //from JSON
 
-        public string Language { get; } //from JSON
+        public readonly string Language; //from JSON
 
         public string Link { get; protected set; } //from JSON
 
-        public uint Pages { get; } //from JSON
+        public readonly uint Pages; //from JSON
 
-        public string Title { get; } //from JSON
+        public readonly string Title; //from JSON
 
-        public DateTime Year { get; } //from JSON
+        public readonly DateTime Year; //from JSON
 
-        public string ISBN { get; }
+        public readonly string ISBN;
 
-        public uint BookQuantity; //this one should be created by counting the BookItems of this book
+        public bool IsAvailable { get; protected set; }
+
+        public DateTime AvailableWhen { get; protected set; }
+
+        /// <summary>
+        /// ChangeImage searches through Books and changes image of the books with given ISBN
+        /// </summary>
+        private bool ChangeImage(string ISBN)
+        {
+            
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// ChangeLink searches through Books and changes Link of the books with given ISBN
+        /// </summary>
+        private bool ChangeLink(string ISBN)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

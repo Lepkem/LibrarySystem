@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Library
+﻿namespace Library
 {
+    using System;
+
     using Library.Interfaces;
 
     public class Person : IPerson
