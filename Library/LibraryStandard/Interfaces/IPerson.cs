@@ -7,5 +7,7 @@
         string ShowEmail(Person person);
         string ShowAddress(Person person);
         string ShowTelNumber(Person person);
+
+        string ShowFullName();
     }
 }

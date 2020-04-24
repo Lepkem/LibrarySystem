@@ -10,16 +10,19 @@
 
     public class Catalog : ICatalog
     {
-        ///
+        /// <summary>
+        /// 
+        /// </summary>
         public Catalog()
         {
-            //???? heh???
+            //???? heh??? Do I need a constructor?
         }
 
         public List<Book> Books { get; set; }
 
         /// <summary>
         /// LoadBookFile loads content of filename as instances of Book
+        /// I think that the properties IsAvailable and AvailableWhen: should be added to each book upon init in this function
         /// </summary>
         /// <param name="fileName"></param>
         public void LoadBookFile(string fileName)
@@ -43,50 +46,99 @@
         /// </summary>
         public bool AddNewBook(Book book)
         {
-            throw new NotImplementedException();
+            Books.Add(book);
+            return true;
         }
 
         /// <summary>
         /// AddNewBook adds new Book to List Books
         /// </summary>
-        public bool RemoveBook(Book book)
+        public bool RemoveBook(string id)
         {
-            throw new NotImplementedException();
+            foreach (Book book in Books)
+            {
+                if (book.ID == id)
+                {
+                    Books.Remove(book);
+                    return true;
+                }
+
+            }
+
+            return false;
         }
 
         /// <summary>
         /// SearchBookByName searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        public List<Book> SearchBookByName()
+        public List<Book> SearchBookByName( string title)
         {
-            throw new NotImplementedException();
+            List<Book> foundBooks = new List<Book>();
+            foreach (Book book in Books)
+            {
+                if (book.Title == title)
+                {
+                    foundBooks.Add(book);
+                }
+            }
+
+            return foundBooks;
         }
 
         /// <summary>
         /// SearchBookByName searches through Books by ID returns Book since ID's are unique
         /// </summary>
-        public Book SearchBookByID()
+        public Book SearchBookByID(string id)
         {
-            throw new NotImplementedException();
+            foreach (Book book in Books)
+            {
+                if (book.ID == id)
+                {
+                    return book;
+                }
+
+            }
+
+            return new Book();
         }
 
         /// <summary>
         /// SearchBookByAuthor searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        public List<Book> SearchBookByAuthor(Book book) 
+        public List<Book> SearchBookByAuthor(string name) 
         {
-            throw new NotImplementedException();
+            List<Book> foundBooks = new List<Book>();
+            foreach (Book book in Books)
+            {
+                if (book.AuthorName.Contains(name))
+                {
+                    foundBooks.Add(book);
+                }
+            }
+
+            return foundBooks;
         }
 
         /// <summary>
         /// SearchBookByISBN searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        public List<Book> SearchBookByISBN(int ISBN)
+        public List<Book> SearchBookByISBN(string ISBN)
         {
-            throw new NotImplementedException();
+            List<Book> foundBooks = new List<Book>();
+            foreach (Book book in Books)
+            {
+                if (book.ISBN == ISBN)
+                {
+                    foundBooks.Add(book);
+                }
+            }
+
+            return foundBooks;
         }
 
+        
 
+        
 
     }
 }

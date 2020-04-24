@@ -6,101 +6,51 @@
 
     using Library.Interfaces;
 
+    using Newtonsoft.Json;
+
     #endregion
 
     public class Book : IBook
     {
-        /// 1# elaborate constructor
-        public Book(Person author, string title, string country, string imageLink, string language, string link, uint pages, DateTime year)
-        {
-            Author = author;
-            Country = country;
-            ImageLink = imageLink;
-            Language = language;
-            Link = link;
-            Pages = pages;
-            Title = title;
-            Year = year;
-
-            ISBN = "ISBN" + Guid.NewGuid();
-            IsAvailable = true;
-            AvailableWhen = DateTime.Now;
-        }
-
-        /// 2# elaborate constructor
-        public Book(Person author, string title, string country, string language, uint pages, DateTime year)
-        {
-            Author = author;
-            Country = country;
-            ImageLink = "unknown";
-            Language = language;
-            Link = "unknown";
-            Pages = pages;
-            Title = title;
-            Year = year;
-
-            ISBN = "ISBN" + Guid.NewGuid();
-            IsAvailable = true;
-            AvailableWhen = DateTime.Now;
-        }
-
-        /// 3# elaborate constructor 
-        public Book(Person author, string title)
-        {
-            Author = author;
-            Title = title;
-            Country = "unknown";
-            ImageLink = "unknown";
-            Language = "unknown";
-            Link = "unknown";
-            Pages = 0;
-            Year = DateTime.Now;
-
-            ISBN = "ISBN" + Guid.NewGuid();
-            IsAvailable = true;
-            AvailableWhen = DateTime.Now;
-        }
-
-        /// 4# elaborate constructor 
+        
+        /// <summary>
+        /// The constructor for Book instances
+        /// </summary>
         public Book()
         {
-            Author = new Person("unknown", "unknown", Person.FunctionalRole.Author);
-            Title = "unknown";
-            Country = "unknown";
-            ImageLink = "unknown";
-            Language = "unknown";
-            Link = "unknown";
-            Pages = 0;
-            Year = DateTime.Now;
-
+            ID = Guid.NewGuid().ToString();
             ISBN = "ISBN" + Guid.NewGuid();
             IsAvailable = true;
             AvailableWhen = DateTime.Now;
         }
 
 
+        [JsonProperty("author")]
+        public readonly string AuthorName;                  //from JSON
+        [JsonProperty("country")]
+        public readonly string Country;                     //from JSON
+        [JsonProperty("imageLink")]
+        public string ImageLink { get; protected set; }     //from JSON
+        [JsonProperty("language")]
+        public readonly string Language;                    //from JSON
+        [JsonProperty("link")]
+        public string Link { get; protected set; }          //from JSON
+        [JsonProperty("pages")]
+        public readonly uint Pages;                         //from JSON
+        [JsonProperty("title")]
+        public readonly string Title;                       //from JSON
+        [JsonProperty("year")]
+        public readonly int Year;                           //from JSON
+        
+        public readonly string ISBN;                        //NEEDS TO BE ADDED TO JSON
 
-        public readonly Person Author;
+        public readonly string ID;                          //NEEDS TO BE ADDED TO JSON
 
-        public readonly string Country; //from JSON
+        public bool IsAvailable { get; protected set; }     //NEEDS TO BE ADDED TO JSON
 
-        public string ImageLink { get; protected set; } //from JSON
+        public DateTime AvailableWhen { get; protected set; } //NEEDS TO BE ADDED TO JSON
 
-        public readonly string Language; //from JSON
 
-        public string Link { get; protected set; } //from JSON
-
-        public readonly uint Pages; //from JSON
-
-        public readonly string Title; //from JSON
-
-        public readonly DateTime Year; //from JSON
-
-        public readonly string ISBN;
-
-        public bool IsAvailable { get; protected set; }
-
-        public DateTime AvailableWhen { get; protected set; }
 
         /// <summary>
         /// ChangeImage searches through Books and changes image of the books with given ISBN

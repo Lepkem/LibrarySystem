@@ -20,26 +20,26 @@
         /// <summary>
         /// AddNewBook adds new Book to List Books
         /// </summary>
-        bool RemoveBook(Book book);
+        bool RemoveBook(string id);
 
         /// <summary>
         /// SearchBookByName searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        List<Book> SearchBookByName();
+        List<Book> SearchBookByName(string title);
 
         /// <summary>
         /// SearchBookByName searches through Books by ID returns Book since ID's are unique
         /// </summary>
-        Book SearchBookByID();
+        Book SearchBookByID(string id);
 
         /// <summary>
         /// SearchBookByAuthor searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        List<Book> SearchBookByAuthor(Book book);
+        List<Book> SearchBookByAuthor(string name);
 
         /// <summary>
         /// SearchBookByISBN searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        List<Book> SearchBookByISBN(int ISBN);
+        List<Book> SearchBookByISBN(string ISBN);
     }
 }

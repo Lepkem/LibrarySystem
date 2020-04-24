@@ -74,7 +74,7 @@
         protected string City { get; set; }
         protected string EmailAddress { get; set; }
         protected string TelephoneNumber { get; set; }
-        private readonly FunctionalRole _role;
+        protected readonly FunctionalRole _role;
 
         public enum FunctionalRole
         {
@@ -86,47 +86,79 @@
         public string Username { get; set; }
         public string Password { get; set; }
 
+        /// <summary>
+        /// returns bool if instance role is param role
+        /// </summary>
+        /// <returns>bool</returns>
         public bool IsRole(FunctionalRole role)
         {
             return _role == role;
         }
 
-        //_MakeUsername returns new username based on first+last name
-        private string _MakeUsername(string firstname, string surname)
+        /// <summary>
+        /// _MakeUsername returns new username based on first+last name
+        /// </summary>
+        /// <returns>string</returns>
+        virtual protected string _MakeUsername(string firstname, string surname)
         {
             return $"{firstname[0]}{surname}";
         }
 
-        //_MakePassword returns a new temp password
-        private string _MakePassword()
+        /// <summary>
+        /// _MakePassword returns a new temp password
+        /// </summary>
+        /// <returns>string</returns>
+        protected string _MakePassword()
         {
             return $"Temp{Guid.NewGuid()}";
         }
 
-        // ShowCredentials this is public for the simplicity of the project
+        /// <summary>
+        /// // ShowCredentials this is public for the simplicity of the project
+        /// </summary>
+        /// <returns>string</returns>
         public string ShowCredentials(Person person)
         {
             var a = _role;
             return $"This account is a {a}";
         }
 
-        //ShowEmail shows email of person
+        /// <summary>
+        /// //ShowEmail shows email of person
+        /// </summary>
+        /// <returns>string</returns>
         public string ShowEmail(Person person)
         {
             return person.EmailAddress;
         }
 
-        //ShowAddress shows address of person
+        /// <summary>
+        /// ShowAddress shows address of person
+        /// </summary>
+        /// <returns>string</returns>
+
         public string ShowAddress(Person person)
         {
             return $"{person.StreetName}, {person.ZipCode}, {person.City}";
         }
 
-        //ShowTelNumber shows telephone number of person
+
+        /// <summary>
+        /// ShowTelNumber shows telephone number of person
+        /// </summary>
+        /// <returns>string</returns>
         public string ShowTelNumber(Person person)
         {
             return person.TelephoneNumber;
         }
 
+        /// <summary>
+        /// fullname of the person
+        /// </summary>
+        /// <returns>string</returns>
+        public string ShowFullName()
+        {
+            return $"{this.Firstname} {this.Surname}";
+        }
     }
 }
