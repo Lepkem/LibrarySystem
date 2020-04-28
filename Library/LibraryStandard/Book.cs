@@ -7,10 +7,11 @@
     using Library.Interfaces;
 
     using Newtonsoft.Json;
+    
 
     #endregion
 
-    public class Book : IBook
+    public class Book: IBook
     {
         
         /// <summary>
@@ -19,32 +20,31 @@
         public Book()
         {
             ID = Guid.NewGuid().ToString();
-            ISBN = "ISBN" + Guid.NewGuid();
             IsAvailable = true;
             AvailableWhen = DateTime.Now;
+            ISBN = "";
         }
 
-
         [JsonProperty("author")]
-        public readonly string AuthorName;                  //from JSON
+        public string AuthorName;                  //from JSON
         [JsonProperty("country")]
-        public readonly string Country;                     //from JSON
+        public string Country;                     //from JSON
         [JsonProperty("imageLink")]
         public string ImageLink { get; protected set; }     //from JSON
         [JsonProperty("language")]
-        public readonly string Language;                    //from JSON
+        public string Language;                    //from JSON
         [JsonProperty("link")]
         public string Link { get; protected set; }          //from JSON
         [JsonProperty("pages")]
-        public readonly uint Pages;                         //from JSON
+        public uint Pages;                         //from JSON
         [JsonProperty("title")]
-        public readonly string Title;                       //from JSON
+        public string Title;                       //from JSON
         [JsonProperty("year")]
-        public readonly int Year;                           //from JSON
-        
-        public readonly string ISBN;                        //NEEDS TO BE ADDED TO JSON
+        public int Year;                           //from JSON
 
-        public readonly string ID;                          //NEEDS TO BE ADDED TO JSON
+        public string ISBN;                        //NEEDS TO BE ADDED TO JSON
+
+        public string ID;                          //NEEDS TO BE ADDED TO JSON
 
         public bool IsAvailable { get; protected set; }     //NEEDS TO BE ADDED TO JSON
 
@@ -52,21 +52,32 @@
 
 
 
+
         /// <summary>
-        /// ChangeImage searches through Books and changes image of the books with given ISBN
+        /// ChangeImage searches through Books and changes image of the books with given imageurl
         /// </summary>
-        private bool ChangeImage(string ISBN)
+        private bool ChangeImage(string imageurl)
         {
-            
             throw new NotImplementedException();
         }
 
         /// <summary>
-        /// ChangeLink searches through Books and changes Link of the books with given ISBN
+        /// ShowBookProp shows various properties of the instance of your book
         /// </summary>
-        private bool ChangeLink(string ISBN)
+        public void ShowBookProp()
+        {
+            Console.WriteLine($"{Title}");
+            Console.WriteLine($"{AuthorName}");
+            Console.WriteLine($"{Year}");
+            Console.WriteLine($"{Pages}");
+        }
+
+        /// <summary>
+        /// ChangeLink searches through Books and changes Link of the books with a given link
+        /// </summary>
+        private bool ChangeLink(string link)
         {
             throw new NotImplementedException();
         }
     }
-}
+}   

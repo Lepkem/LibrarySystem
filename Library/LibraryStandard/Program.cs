@@ -16,12 +16,7 @@
             foreach (Book bk in catalog.SearchBookByAuthor("Andersen"))
             {
                 Console.WriteLine("Found a book :)");
-                Console.WriteLine(bk.Title);
-                Console.WriteLine(bk.ID);
-                Console.WriteLine(bk.ISBN);
-                Console.WriteLine(bk.AuthorName);
-                Console.WriteLine(bk.Year);
-                Console.WriteLine(bk.Pages);
+                bk.ShowBookProp();
                 abc = bk;
             }
 
@@ -30,14 +25,62 @@
             foreach (Book bk in catalog.SearchBookByAuthor("Andersen"))
             {
                 Console.WriteLine("Found a book :)");
-                Console.WriteLine(bk.Title);
-                Console.WriteLine(bk.ID);
-                Console.WriteLine(bk.ISBN);
-                Console.WriteLine(bk.AuthorName);
-                Console.WriteLine(bk.Year);
-                Console.WriteLine(bk.Pages);
+                bk.ShowBookProp();
             }
+            Console.Write(">");
             Console.ReadLine();
+
+            BookBuilder Noordhoff = new BookBuilder();
+            Book JRaf_see_stuff = Noordhoff
+                                .WithAuthorName("JRAF")
+                                //.WithAvailability(true)
+                                .WithCountry("Netherlands")
+                                .WithLanguage("English")
+                                .WithPages(250)
+                                .WithYear(2018)
+                                .WithTitle("A whole life")
+                                .WithImageLink("home")
+                                .CreateBook();
+
+            Book new_book_one = new BookBuilder()
+                .WithAuthorName("Vincent Van Andersen")
+                .WithCountry("Netherlands")
+                .WithLanguage("English")
+                .WithPages(250)
+                .WithYear(2018)
+                .WithTitle("A whole life of me")
+                .WithImageLink("home")
+                .CreateBook();
+
+            Book new_book_two = new BookBuilder()
+                .WithAuthorName("Vincent v. Andersen")
+                .WithCountry("Netherlands")
+                .WithLanguage("English")
+                .WithPages(250)
+                .WithYear(2018)
+                .WithTitle("A whole life of me")
+                .WithImageLink("home")
+                .CreateBook();
+
+            JRaf_see_stuff.ShowBookProp();
+
+            Console.Write(">");
+            Console.ReadLine();
+
+            catalog.AddNewBook(JRaf_see_stuff);
+
+            Console.WriteLine("Looking for freshly added book :)");
+            foreach (Book book in catalog.SearchBookByAuthor("JRaf"))
+            {
+                Console.WriteLine("Found a book :)");
+                book.ShowBookProp();
+            }
+            Console.Write(">");
+            Console.ReadLine();
+
+
+
+
         }
     }
 }

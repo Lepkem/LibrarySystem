@@ -37,5 +37,34 @@
 - Librarian has access to all functionalities including: can view all Customer profiles, make backup, load backup
 
 
+To Do 
+[X] *.sln file on the root folder
+[ ] src folder in root folder for individual projects
+[ ] tst folder for unit test projects
+[X?] .vs should be ignored in gitignore
+[X] change default enum
+[ ] move enum definitions outside of Person class (one item per class)
+[ ] flagged enum in person in case person is librarian and author   https://docs.microsoft.com/en-us/dotnet/api/system.flagsattribute?view=netframework-4.8
+[X] protected virtual _MakeUsername
+[ ] SearchBookByAuthor return Books.Where(c => c.AuthorName.Contains(name)).ToList(); ToList creates a new list, so won't damage list from catalog
+[?] Make Books private
+[X] Make BookBuilder class
+[X] fix comment public List<Book> SearchBookByName( string title)
+[ ] CatalogLoader or CatalogBuilder entity.
+[ ] Make Catalog singleton or static
+[ ] Look up how Linq works
+[X] write down differences singleton class static class             http://net-informations.com/faq/netfaq/singlestatic.htm
+    Static class:                                       Singletong Pattern:
+    - Only allows static methods                        - Allows all kinds of methods
+    - Cannot by itself be passed as a param             - Can be passed as a param
+    - Does not allow to inherit from interface          - Allows inheritance
+    - Cannot be handled polymorphically;not acc to OOP  - Can be handled polymorphically; acc to OOP
+    - Stored in stack                                   - Stored in Heap
+    - No constructor                                    - Can have constructor
+    - Does not allow disposal                           - Does allow disposal   
+    - Does not allow cloning                            - Does allow cloning 
+    
+
+
 
 
