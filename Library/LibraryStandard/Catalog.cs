@@ -14,9 +14,7 @@
         /// 
         /// </summary>
         public Catalog()
-        {
-            //???? heh??? Do I need a constructor?
-        }
+        { }
 
         public List<Book> Books { get; set; }
 
@@ -71,12 +69,12 @@
         /// <summary>
         /// SearchBookByName searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        public List<Book> SearchBookByName( string title)
+        public List<Book> SearchBookByTitle( string title)
         {
             List<Book> foundBooks = new List<Book>();
             foreach (Book book in Books)
             {
-                if (book.Title == title)
+                if (book.Title.ToLower().Equals(title.ToLower()))
                 {
                     foundBooks.Add(book);
                 }
@@ -92,7 +90,7 @@
         {
             foreach (Book book in Books)
             {
-                if (book.ID == id)
+                if (book.ID.ToLower().Equals(id.ToLower()))
                 {
                     return book;
                 }
@@ -110,7 +108,7 @@
             List<Book> foundBooks = new List<Book>();
             foreach (Book book in Books)
             {
-                if (book.AuthorName.Contains(name))
+                if (book.AuthorName.ToLower().Contains(name.ToLower()))
                 {
                     foundBooks.Add(book);
                 }
@@ -127,7 +125,7 @@
             List<Book> foundBooks = new List<Book>();
             foreach (Book book in Books)
             {
-                if (book.ISBN == ISBN)
+                if (book.ISBN.ToLower().Equals(ISBN.ToLower()))
                 {
                     foundBooks.Add(book);
                 }

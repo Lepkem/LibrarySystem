@@ -11,6 +11,8 @@
         // string Title { get; } //from JSON
         // DateTime Year { get; } //from JSON
         // string ISBN { get; }
-        
+
+        void ShowBookProp();
+
     }
 }

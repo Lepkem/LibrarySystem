@@ -4,6 +4,8 @@
 
     using Library.Interfaces;
 
+    using LibraryStandard;
+
     public class Person : IPerson
     {
         // property of th above type within the person class 
@@ -18,9 +20,7 @@
             Username = _MakeUsername(firstname, surname);
             Password = _MakePassword();
             Gender = Gend.Unknown;
-            StreetName = "unknown";
-            ZipCode = "unknown";
-            City = "unknown";
+            
             EmailAddress = "unknown";
             TelephoneNumber = "unknown";
         }
@@ -34,9 +34,6 @@
             Username = username;
             Password = password;
             Gender = Gend.Unknown;
-            StreetName = "unknown";
-            ZipCode = "unknown";
-            City = "unknown";
             EmailAddress = "unknown";
             TelephoneNumber = "unknown";
         }
@@ -50,13 +47,11 @@
             Surname = surname;
             _role = role;
             Gender = gender;
-            StreetName = streetName;
-            ZipCode = zipcode;
-            City = city;
             EmailAddress = emailAddress;
             TelephoneNumber = telephoneNumber;
         }
 
+        public Address Address { get; private set; }
         protected string ID { get; }
         protected string Firstname { get; set; }
         protected string Surname { get; set; }
@@ -64,22 +59,20 @@
 
         public enum Gend
         {
+            Unknown,
             Male,
-            Female,
-            Unknown
+            Female
+            
         }
 
-        protected string StreetName { get; set; }
-        protected string ZipCode { get; set; }
-        protected string City { get; set; }
         protected string EmailAddress { get; set; }
         protected string TelephoneNumber { get; set; }
         protected readonly FunctionalRole _role;
 
         public enum FunctionalRole
         {
-            Librarian,
             Customer,
+            Librarian,
             Author
         }
 
@@ -139,7 +132,8 @@
 
         public string ShowAddress(Person person)
         {
-            return $"{person.StreetName}, {person.ZipCode}, {person.City}";
+            //return $"{person.StreetName}, {person.ZipCode}, {person.City}";
+            return "";
         }
 
 

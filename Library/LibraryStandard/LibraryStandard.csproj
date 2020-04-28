@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookBuilder.cs" />
+    <Compile Include="Person\Address.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="BookItem.cs" />
     <Compile Include="Catalog.cs" />

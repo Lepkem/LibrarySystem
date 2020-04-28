@@ -8,7 +8,7 @@ namespace LibraryStandard
 {
     using Library;
 
-    class Librarian : Person
+    class Librarian : Library.Person
     {
         public Librarian(string firstname, string surname, FunctionalRole role)
             : base(firstname, surname, role)
