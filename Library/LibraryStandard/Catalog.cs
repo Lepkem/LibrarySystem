@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
 
     using Library.Interfaces;
 
@@ -16,7 +17,7 @@
         public Catalog()
         { }
 
-        public List<Book> Books { get; set; }
+        private List<Book> books;
 
         /// <summary>
         /// LoadBookFile loads content of filename as instances of Book
@@ -25,11 +26,11 @@
         /// <param name="fileName"></param>
         public void LoadBookFile(string fileName)
         {
-            string FileContentString = "";
+            string fileContentString = "";
             try
             {
-                FileContentString = File.ReadAllText(fileName);
-                Books = JsonConvert.DeserializeObject<List<Book>>(FileContentString); // here I made instances of classes from a JSON string in a list of class movie
+                fileContentString = File.ReadAllText(fileName);
+                books = JsonConvert.DeserializeObject<List<Book>>(fileContentString); // here I made instances of classes from a JSON string in a list of class movie
 
             }
             catch (Exception e)
@@ -44,7 +45,7 @@
         /// </summary>
         public bool AddNewBook(Book book)
         {
-            Books.Add(book);
+            books.Add(book);
             return true;
         }
 
@@ -53,14 +54,23 @@
         /// </summary>
         public bool RemoveBook(string id)
         {
-            foreach (Book book in Books)
-            {
-                if (book.ID == id)
-                {
-                    Books.Remove(book);
-                    return true;
-                }
+            Book forRemoval;
+            //    1 Solution
+            books = books.Where(book => book.ID.ToLower()!=id.ToLower()).ToList();
+            return true;
 
+
+            // 2 solution 
+            try
+            {
+                forRemoval = books.Single(s => String.Equals(s.ID, id, StringComparison.CurrentCultureIgnoreCase));
+                this.books.Remove(forRemoval);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
 
             return false;
@@ -72,14 +82,7 @@
         public List<Book> SearchBookByTitle( string title)
         {
             List<Book> foundBooks = new List<Book>();
-            foreach (Book book in Books)
-            {
-                if (book.Title.ToLower().Equals(title.ToLower()))
-                {
-                    foundBooks.Add(book);
-                }
-            }
-
+            foundBooks = books.Where(book => book.Title.ToLower().Equals(title.ToLower())).ToList();
             return foundBooks;
         }
 
@@ -88,14 +91,17 @@
         /// </summary>
         public Book SearchBookByID(string id)
         {
-            foreach (Book book in Books)
-            {
-                if (book.ID.ToLower().Equals(id.ToLower()))
-                {
-                    return book;
-                }
-
-            }
+            IEnumerable<Book> foundBook;
+            foundBook = books.Where(book => book.ID.ToLower().Equals(id.ToLower()));
+            
+            // foreach (Book book in Books)
+            // {
+            //     if (book.ID.ToLower().Equals(id.ToLower()))
+            //     {
+            //         return book;
+            //     }
+            //
+            // }
 
             return new Book();
         }
@@ -106,31 +112,17 @@
         public List<Book> SearchBookByAuthor(string name) 
         {
             List<Book> foundBooks = new List<Book>();
-            foreach (Book book in Books)
-            {
-                if (book.AuthorName.ToLower().Contains(name.ToLower()))
-                {
-                    foundBooks.Add(book);
-                }
-            }
-
+            foundBooks = books.Where(book => book.AuthorName.ToLower().Equals(name.ToLower())).ToList();
             return foundBooks;
         }
 
         /// <summary>
         /// SearchBookByISBN searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        public List<Book> SearchBookByISBN(string ISBN)
+        public List<Book> SearchBookByIsbn(string isbn)
         {
             List<Book> foundBooks = new List<Book>();
-            foreach (Book book in Books)
-            {
-                if (book.ISBN.ToLower().Equals(ISBN.ToLower()))
-                {
-                    foundBooks.Add(book);
-                }
-            }
-
+            foundBooks = books.Where(book => book.Isbn.ToLower().Equals(isbn.ToLower())).ToList();
             return foundBooks;
         }
 

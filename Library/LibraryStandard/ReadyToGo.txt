@@ -39,20 +39,23 @@
 
 To Do 
 [X] *.sln file on the root folder
-[ ] src folder in root folder for individual projects
-[ ] tst folder for unit test projects
+[?] src folder in root folder for individual projects
+[?] tst folder for unit test projects
 [X?] .vs should be ignored in gitignore
 [X] change default enum
-[ ] move enum definitions outside of Person class (one item per class)
-[ ] flagged enum in person in case person is librarian and author   https://docs.microsoft.com/en-us/dotnet/api/system.flagsattribute?view=netframework-4.8
+[?] move enum definitions outside of Person class (one item per class)
+[?] flagged enum in person in case person is librarian and author   https://docs.microsoft.com/en-us/dotnet/api/system.flagsattribute?view=netframework-4.8
 [X] protected virtual _MakeUsername
-[ ] SearchBookByAuthor return Books.Where(c => c.AuthorName.Contains(name)).ToList(); ToList creates a new list, so won't damage list from catalog
+[X] SearchBookByAuthor return Books.Where(c => c.AuthorName.Contains(name)).ToList(); ToList creates a new list, so won't damage list from catalog
 [?] Make Books private
 [X] Make BookBuilder class
 [X] fix comment public List<Book> SearchBookByName( string title)
-[ ] CatalogLoader or CatalogBuilder entity.
+[?] CatalogLoader or CatalogBuilder entity.
 [ ] Make Catalog singleton or static
-[ ] Look up how Linq works
+[X] Look up how Linq works
+[ ] Return linq results instead of creating new instances i.e. SearchByAuthor etc
+[ ] Backup - Create works and saves file
+[ ] Backup - Restore works
 [X] write down differences singleton class static class             http://net-informations.com/faq/netfaq/singlestatic.htm
     Static class:                                       Singletong Pattern:
     - Only allows static methods                        - Allows all kinds of methods

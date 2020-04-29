@@ -5,11 +5,13 @@
     public class PublicLibrary : IPublicLibrary
     {
 
-        public Catalog Catalog { get; private set; }
+        public readonly Catalog Catalog;
 
         public PublicLibrary()
         {
             Catalog = new Catalog();
         }
+
+
     }
 }

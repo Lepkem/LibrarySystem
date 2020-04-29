@@ -20,8 +20,14 @@
                 abc = bk;
             }
 
+            Console.Write("before...");
+            Console.ReadLine();
             
             catalog.RemoveBook(catalog.SearchBookByID(abc.ID).ID);
+
+            Console.Write("after...");
+            Console.ReadLine();
+            /*
             foreach (Book bk in catalog.SearchBookByAuthor("Andersen"))
             {
                 Console.WriteLine("Found a book :)");
@@ -75,6 +81,8 @@
                 Console.WriteLine("Found a book :)");
                 book.ShowBookProp();
             }
+
+    */
             Console.Write(">");
             Console.ReadLine();
 
