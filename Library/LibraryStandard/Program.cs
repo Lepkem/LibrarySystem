@@ -9,9 +9,15 @@
     {
         public static void Main(string[] args)
         {
+            BackUp bbb = new BackUp();
+            bbb.RestoreFromBackup<Book>(@"C:\myprofile\Ihavegotthis\bookio.json");
+
+
+
             Console.WriteLine("Welcome User");
+            Catalog.Instance.HelloWorld();
             Catalog catalog = new Catalog();
-            catalog.LoadBookFile(@"Data\Books.json");
+            //catalog.LoadBookFile(@"Data\Books.json");
             Book abc = new Book();
             foreach (Book bk in catalog.SearchBookByAuthor("Andersen"))
             {

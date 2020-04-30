@@ -9,18 +9,30 @@
 
     using Newtonsoft.Json;
 
-    public class Catalog : ICatalog
+    public sealed class Catalog : ICatalog
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public Catalog()
-        {
+        private static readonly Catalog instance = new Catalog();
 
+        // Explicit static constructor to tell C# compiler  
+        // not to mark type as beforefieldinit  
+        static Catalog()
+        {
         }
 
-        public List<Book> books;
+        private Catalog()
+        {
+        }
 
+        public static Catalog Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        // necessary singleton code^
+        private List<Book> books;
 
         /// <summary>
         /// AddNewBook adds new Book to List Books (and updates JSON??)
@@ -38,7 +50,7 @@
         {
             Book forRemoval;
             //    1 Solution
-            books = books.Where(book => book.ID.ToLower()!=id.ToLower()).ToList();
+            books = books.Where(book => book.ID.ToLower() != id.ToLower()).ToList();
             return true;
 
 
@@ -61,7 +73,7 @@
         /// <summary>
         /// SearchBookByName searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        public List<Book> SearchBookByTitle( string title)
+        public List<Book> SearchBookByTitle(string title)
         {
             List<Book> foundBooks = new List<Book>();
             foundBooks = books.Where(book => book.Title.ToLower().Equals(title.ToLower())).ToList();
@@ -75,23 +87,13 @@
         {
             IEnumerable<Book> foundBook;
             foundBook = books.Where(book => book.ID.ToLower().Equals(id.ToLower()));
-            
-            // foreach (Book book in Books)
-            // {
-            //     if (book.ID.ToLower().Equals(id.ToLower()))
-            //     {
-            //         return book;
-            //     }
-            //
-            // }
-
             return new Book();
         }
 
         /// <summary>
         /// SearchBookByAuthor searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        public List<Book> SearchBookByAuthor(string name) 
+        public List<Book> SearchBookByAuthor(string name)
         {
             List<Book> foundBooks = new List<Book>();
             foundBooks = books.Where(book => book.AuthorName.ToLower().Equals(name.ToLower())).ToList();

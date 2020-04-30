@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="LibraryStandard.BackUp" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="LibraryStandard.BackUp" BaseTypeListCollapsed="true">
     <Position X="7" Y="0.5" Width="1.5" />
     <NestedTypes>
       <Enum Name="LibraryStandard.BackUp.backupnum" Collapsed="true">
@@ -10,10 +10,9 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAAAAAKAAQAAAAAAEAIAAAAAAAQAAA=</HashCode>
+      <HashCode>AAAACAAAAQAAAAAAAAAKAAQAAAAAAEAIAAAAAAAQAAA=</HashCode>
       <FileName>BackUp.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="LibraryStandard.BookBuilder" Collapsed="true">
     <Position X="5.25" Y="1.5" Width="1.5" />
@@ -52,7 +51,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Library.BookItem" Collapsed="true">
-    <Position X="7" Y="1.5" Width="1.5" />
+    <Position X="8.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAgAAACAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BookItem.cs</FileName>
@@ -61,7 +60,7 @@
   <Class Name="Library.Catalog" BaseTypeListCollapsed="true">
     <Position X="10.5" Y="0.5" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAiAAEAAQIAgAAAAAAEEAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAiAAEAAQIAgAAAAAAEEgAAAAAA=</HashCode>
       <FileName>Catalog.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -75,7 +74,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Library.PublicLibrary" Collapsed="true">
-    <Position X="7" Y="2.5" Width="1.5" />
+    <Position X="8.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PublicLibrary.cs</FileName>
@@ -91,14 +90,14 @@
   <Interface Name="LibraryStandard.IBackUp" Collapsed="true">
     <Position X="5.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAAAAAKAAQAAAAAAEAIAAAAAAAQAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAKAAAAAAAAAEAIAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IBackUp.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Library.ICatalog" Collapsed="true">
     <Position X="8.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAgAAEAAQIAgAAAAAAEEAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAEAAQIAgAAAAAAEEgAAAAAA=</HashCode>
       <FileName>Interfaces\ICatalog.cs</FileName>
     </TypeIdentifier>
   </Interface>

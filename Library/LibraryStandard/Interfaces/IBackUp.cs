@@ -4,15 +4,11 @@
 
     public interface IBackUp
     {
-        string Name { get; }
-        int BackupNumber { get; }
-        List<BackUp> BackUps { get; set;}
-
         void Create(BackUp.backupnum backupnumber = BackUp.backupnum.Backupnumber1);
 
-        public void RestoreProgram(BackUp.backupnum backupnumber = BackUp.backupnum.Backupnumber1);
+        void RestoreProgram(BackUp.backupnum backupnumber = BackUp.backupnum.Backupnumber1);
 
-        void ShowBackups();
+        void ShowBackups(BackUp.backupnum backupnum = BackUp.backupnum.Backupnumber1);
 
         bool DeleteBackup(BackUp.backupnum backupnumber = BackUp.backupnum.Backupnumber3);
     }

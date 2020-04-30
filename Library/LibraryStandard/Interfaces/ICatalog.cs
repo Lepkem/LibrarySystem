@@ -4,13 +4,6 @@
 
     public interface ICatalog
     {
-        //List<Book> Books { get; set; }
-
-        /// <summary>
-        /// LoadBookFile loads content of filename as instances of Book
-        /// </summary>
-        /// <param name="fileName"></param>
-        void LoadBookFile(string fileName);
 
         /// <summary>
         /// AddNewBook adds new Book to List Books (and updates JSON??)

@@ -37,6 +37,22 @@
 - Librarian has access to all functionalities including: can view all Customer profiles, make backup, load backup
 
 
+ Many PublicLibraries
+ Library can have only one catalog
+ Catalog stores information about books -> books.json
+ LoanAdministrattion - which manages loan of books  -> loan-admin.json
+ Users - which are customers/operators of library -> users.json
+
+Backup has methods to backup books/users/loanAdm  - one methods that executes three submethods 
+
+        PublicLibrary 
+            - Catalog
+            - LoadAdministration
+            - Users
+
+
+
+
 To Do 
 [X] *.sln file on the root folder
 [?] src folder in root folder for individual projects
@@ -47,19 +63,33 @@ To Do
 [?] flagged enum in person in case person is librarian and author   https://docs.microsoft.com/en-us/dotnet/api/system.flagsattribute?view=netframework-4.8
 [X] protected virtual _MakeUsername
 [X] SearchBookByAuthor return Books.Where(c => c.AuthorName.Contains(name)).ToList(); ToList creates a new list, so won't damage list from catalog
-[?] Make Books private
+[X] Make Books private
 [X] Make BookBuilder class
 [X] fix comment public List<Book> SearchBookByName( string title)
 [?] CatalogLoader or CatalogBuilder entity.
-[ ] Make Catalog singleton or static
+[X] Make Catalog singleton or static
 [X] Look up how Linq works
 [X] Return linq results instead of creating new instances i.e. SearchByAuthor etc
-[ ] Backup - Create works and saves file
-[ ] Backup - Restore works
-[ ] Backup - Deletebackup
-[ ] Backup - ShowBackups
-[ ] GetBookList in catalog
-[ ] SetBookList in catalog
+
+[X] Move all methods to catalogV2
+[X] Remove catalogv1 
+[X] Clean up ICatalog from properties ( only methods to be there )
+[X] Backup - CreateNew ( try to be clear about naming conve)
+[X] Backup - ShowBackups ( ListBackups) - show name of a file and its time of creation and path ( full ) 
+[X] expand constants with filepaths 
+[X] make timestamp
+[X] serialize Books into json file
+[X] create json file in folder backups
+
+-------------------------- # Milestone # --------------------------
+
+[ ] Make app interactive with current functionality
+
+
+[@] Backup - Restore works
+[@] Backup - Deletebackup
+[X] GetBookList in catalog
+[X] SetBookList in catalog
 [X] write down differences singleton class static class             http://net-informations.com/faq/netfaq/singlestatic.htm
     Static class:                                       Singletong Pattern:
     - Only allows static methods                        - Allows all kinds of methods
