@@ -70,11 +70,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="UML.cd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadyToGo.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Backups\" />
     <Folder Include="Classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

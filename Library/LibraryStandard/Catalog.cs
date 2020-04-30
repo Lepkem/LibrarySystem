@@ -15,29 +15,11 @@
         /// 
         /// </summary>
         public Catalog()
-        { }
-
-        private List<Book> books;
-
-        /// <summary>
-        /// LoadBookFile loads content of filename as instances of Book
-        /// I think that the properties IsAvailable and AvailableWhen: should be added to each book upon init in this function
-        /// </summary>
-        /// <param name="fileName"></param>
-        public void LoadBookFile(string fileName)
         {
-            string fileContentString = "";
-            try
-            {
-                fileContentString = File.ReadAllText(fileName);
-                books = JsonConvert.DeserializeObject<List<Book>>(fileContentString); // here I made instances of classes from a JSON string in a list of class movie
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"{e.Message}, so something is not dobra :(");
-            }
         }
+
+        public List<Book> books;
 
 
         /// <summary>
@@ -122,14 +104,19 @@
         public List<Book> SearchBookByIsbn(string isbn)
         {
             List<Book> foundBooks = new List<Book>();
-            foundBooks = books.Where(book => book.Isbn.ToLower().Equals(isbn.ToLower())).ToList();
+            foundBooks = books.Where(book => book.ISBN.ToLower().Equals(isbn.ToLower())).ToList();
             return foundBooks;
         }
 
-        
+        public List<Book> GetBookList()
+        {
+            return books;
+        }
 
-        
-
+        public void SetBookList(List<Book> newbooks)
+        {
+            books = newbooks;
+        }
     }
 }
 

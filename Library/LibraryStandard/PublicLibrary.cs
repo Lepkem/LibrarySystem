@@ -2,7 +2,7 @@
 {
     using Library.Interfaces;
 
-    public class PublicLibrary : IPublicLibrary
+    public class PublicLibrary //: IPublicLibrary
     {
 
         public readonly Catalog Catalog;

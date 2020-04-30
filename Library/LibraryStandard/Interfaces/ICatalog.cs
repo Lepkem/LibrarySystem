@@ -4,7 +4,7 @@
 
     public interface ICatalog
     {
-        List<Book> Books { get; set; }
+        //List<Book> Books { get; set; }
 
         /// <summary>
         /// LoadBookFile loads content of filename as instances of Book
@@ -40,6 +40,18 @@
         /// <summary>
         /// SearchBookByISBN searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        List<Book> SearchBookByISBN(string ISBN);
+        List<Book> SearchBookByIsbn(string isbn);
+
+        /// <summary>
+        /// GetBookList returns books list for other classes. It doesn't need param, because there is 1 books, 1 catalog (should be singleton)
+        /// </summary>
+        /// <returns></returns>
+        List<Book> GetBookList();
+
+        /// <summary>
+        /// SetBookList replaces the entire list of books by a newly chosen list of books
+        /// </summary>
+        /// <param name="newbooks"></param>
+        void SetBookList(List<Book> newbooks);
     }
 }

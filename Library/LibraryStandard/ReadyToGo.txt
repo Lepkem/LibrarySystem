@@ -53,9 +53,13 @@ To Do
 [?] CatalogLoader or CatalogBuilder entity.
 [ ] Make Catalog singleton or static
 [X] Look up how Linq works
-[ ] Return linq results instead of creating new instances i.e. SearchByAuthor etc
+[X] Return linq results instead of creating new instances i.e. SearchByAuthor etc
 [ ] Backup - Create works and saves file
 [ ] Backup - Restore works
+[ ] Backup - Deletebackup
+[ ] Backup - ShowBackups
+[ ] GetBookList in catalog
+[ ] SetBookList in catalog
 [X] write down differences singleton class static class             http://net-informations.com/faq/netfaq/singlestatic.htm
     Static class:                                       Singletong Pattern:
     - Only allows static methods                        - Allows all kinds of methods
