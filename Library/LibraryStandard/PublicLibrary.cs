@@ -2,16 +2,19 @@
 {
     using Library.Interfaces;
 
-    public class PublicLibrary //: IPublicLibrary
+    public class PublicLibrary : IPublicLibrary
     {
 
-        public readonly Catalog Catalog;
+        //public readonly Catalog Catalog;
 
-        public PublicLibrary()
+        // public PublicLibrary()
+        // {
+        //     Catalog = new Catalog();
+        // }
+
+        public void Init()
         {
-            Catalog = new Catalog();
+            throw new System.NotImplementedException();
         }
-
-
     }
 }

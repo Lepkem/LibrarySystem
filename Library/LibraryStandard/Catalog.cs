@@ -7,6 +7,8 @@
 
     using Library.Interfaces;
 
+    using LibraryStandard;
+
     using Newtonsoft.Json;
 
     public sealed class Catalog : ICatalog
@@ -32,10 +34,12 @@
         }
 
         // necessary singleton code^
+        
+        
         private List<Book> books;
 
         /// <summary>
-        /// AddNewBook adds new Book to List Books (and updates JSON??)
+        /// AddNewBook adds new Book to List Books 
         /// </summary>
         public bool AddNewBook(Book book)
         {

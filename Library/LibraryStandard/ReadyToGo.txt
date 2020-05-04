@@ -70,17 +70,16 @@ To Do
 [X] Make Catalog singleton or static
 [X] Look up how Linq works
 [X] Return linq results instead of creating new instances i.e. SearchByAuthor etc
-
 [X] Move all methods to catalogV2
 [X] Remove catalogv1 
 [X] Clean up ICatalog from properties ( only methods to be there )
-[X] Backup - CreateNew ( try to be clear about naming conve)
-[X] Backup - ShowBackups ( ListBackups) - show name of a file and its time of creation and path ( full ) 
 [X] expand constants with filepaths 
 [X] make timestamp
 [X] serialize Books into json file
 [X] create json file in folder backups
 
+[ ] Backup - CreateNew ( try to be clear about naming conve)
+[ ] Backup - ShowBackups ( ListBackups) - show name of a file and its time of creation and path ( full ) 
 -------------------------- # Milestone # --------------------------
 
 [ ] Make app interactive with current functionality

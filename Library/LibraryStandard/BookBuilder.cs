@@ -29,6 +29,11 @@
             return this;
         }
 
+        public BookBuilder WithLink(string link)
+        {
+            //_book.Link = link;
+            return this;
+        }
         public BookBuilder WithImageLink(string imglink)
         {
             //_book.ImageLink = imglink;
