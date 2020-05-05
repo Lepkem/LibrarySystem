@@ -12,14 +12,130 @@
     {
         public static void Main(string[] args)
         {
-            //  [X] Use the data loader to load the books 
-            //  [ ] Create a library (then the init function of library
-            // should work with most things from this list implemented in it)
-            //  [X] have a catalaog 
-            //  [X] it should assign the serialized books from data loader into catalog 
 
-            //  [X] Result == operational catalog!
+
+
+            var menu = new EasyConsole.Menu()
+                .Add("Catalog", () =>
+                {
+                    StandardMessages.WelcomeImage();
+                    Console.WriteLine("s");
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
+                    
+                })
+                .Add("View all the books", () =>
+                {
+                    Catalog.Instance.GetBookList();
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
+                })
+                .Add("Search a book", () => //supermenu
+                {
+                    StandardMessages.PressKeyToContinue(); 
+                })
+                .Add("Search a book through ID", () => //submenu
+                {
+                    StandardMessages.WriteInputBelow();
+                    Catalog.Instance.SearchBookByID(Console.ReadLine());
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
+                })
+                .Add("Search a book through ISBN", () => //submenu
+                {
+                    StandardMessages.WriteInputBelow();
+                    Catalog.Instance.SearchBookByIsbn(Console.ReadLine());
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
+                })
+                .Add("Search a book by the name of the author", () => //submenu
+                {
+                    StandardMessages.WriteInputBelow();
+                    Catalog.Instance.SearchBookByAuthor(Console.ReadLine());
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
+                })
+                .Add("Search a book by title", () => //submenu
+                {
+                    StandardMessages.WriteInputBelow();
+                    Catalog.Instance.SearchBookByTitle(Console.ReadLine());
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
+                })
+                .Add("Library information", () =>
+                {
+                    Environment.Exit(0);
+                })
+                .Add("Login", () =>
+                {
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
+                })
+                .Add("Help", () =>
+                {
+                    Environment.Exit(0);
+                })
+
+            //these are accessible only when logged in
+                .Add("Delete a book from the catalog", () =>
+                {
+                    Console.WriteLine($"Please input the ID of the book that you want to delete from the catalog.");
+                    string input = Console.ReadLine();
+                    if (StandardMessages.AreYouSure().Equals(true))
+                    {
+                        Catalog.Instance.RemoveBook(input);
+                    }
+
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
+
+                })
+                .Add("Delete all books from the catalog", () =>
+                {
+                    if (StandardMessages.AreYouSure().Equals(true))
+                    {
+                        Catalog.Instance.DeleteAllBooks();
+                    }
+
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
+                })
+                .Add("Add a book to the catalog", () =>
+                {
+                    Environment.Exit(0);
+                })
+                .Add("Create a backup", () =>
+                {
+                    Console.WriteLine(@"Choose a filepath, for an instance ''.\Backups\Bookbackup1.json''");
+                    BackUp.Create();
+                })
+                .Add("Load a backup to the current program.", () =>
+                {
+                    Environment.Exit(0);
+                })
+                .Add("Exit", () =>
+                    {
+                        Environment.Exit(0);
+                    });
+
+
+            //.Add("Exit", () =>
+            // {
+            //     Environment.Exit(0);
+            // })
+
+            while (true)
+            {
+                menu.Display();
+            }
             
+           
+            // StandardMessages.WelcomeImage();
+            // StandardMessages.PressAnyKey();
+            
+
+
+
 
             string StrBooks = DataOperator.ReadFromFile(Constants.BooksDataFile);
             Console.WriteLine(StrBooks);
