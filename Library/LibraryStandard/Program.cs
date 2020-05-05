@@ -64,7 +64,9 @@
                 })
                 .Add("Library information", () =>
                 {
-                    Environment.Exit(0);
+                    Console.WriteLine($"This is the very elaborate information page of the library system.");
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
                 })
                 .Add("Login", () =>
                 {
@@ -73,11 +75,13 @@
                 })
                 .Add("Help", () =>
                 {
-                    Environment.Exit(0);
+                    Console.WriteLine($"This is the very elaborate help page of the library system.");
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
                 })
 
             //these are accessible only when logged in
-                .Add("Delete a book from the catalog", () =>
+                .Add("Delete a single book from the catalog", () =>
                 {
                     Console.WriteLine($"Please input the ID of the book that you want to delete from the catalog.");
                     string input = Console.ReadLine();
@@ -100,18 +104,31 @@
                     StandardMessages.PressAnyKey();
                     StandardMessages.PressKeyToContinue();
                 })
-                .Add("Add a book to the catalog", () =>
+                .Add("Add a new book to the catalog", () => //needs attention!!
                 {
-                    Environment.Exit(0);
+                    //Catalog.Instance.AddNewBook();
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
                 })
-                .Add("Create a backup", () =>
+                .Add("Add an existing book to the catalog", () => //needs attention!!
                 {
-                    Console.WriteLine(@"Choose a filepath, for an instance ''.\Backups\Bookbackup1.json''");
-                    BackUp.Create();
+                    //Catalog.Instance.AddExistingBook();
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
                 })
-                .Add("Load a backup to the current program.", () =>
+                .Add("Create a backup of the books", () =>
                 {
-                    Environment.Exit(0);
+                    Console.WriteLine(@"Choose a filepath, for an instance ''.\Backups\Bookbackup2.json''");
+                    BackUp.Create(Console.ReadLine());
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
+                })
+                .Add("Load a backup of the books to the current program.", () =>
+                {
+                    Console.WriteLine(@"Choose a filepath, for an instance ''.\Backups\Bookbackup2.json''");
+                    BackUp.RestoreFromBackup<List<Book>>(Console.ReadLine());
+                    StandardMessages.PressAnyKey();
+                    StandardMessages.PressKeyToContinue();
                 })
                 .Add("Exit", () =>
                     {

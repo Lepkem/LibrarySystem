@@ -51,5 +51,11 @@
         /// DeleteAllBooks deletes all books from the booklist
         /// </summary>
         void DeleteAllBooks();
+
+        /// <summary>
+        /// AddExistingBook adds a new instance of a book with a new ID to the booklist by passing the isbn
+        /// </summary>
+        /// <param name="isbn"></param>
+        void AddExistingBook(string isbn);
     }
 }

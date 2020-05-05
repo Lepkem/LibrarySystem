@@ -8,6 +8,7 @@
     using Library.Interfaces;
 
     using LibraryStandard;
+    using LibraryStandard.Helpers;
 
     using Newtonsoft.Json;
 
@@ -47,6 +48,11 @@
             return true;
         }
 
+        public  void AddExistingBook(string isbn)
+        {
+            SearchBookByIsbn(isbn).First();
+        }
+
         /// <summary>
         /// AddNewBook adds new Book to List Books
         /// </summary>
@@ -79,9 +85,17 @@
         /// </summary>
         public List<Book> SearchBookByTitle(string title)
         {
-            List<Book> foundBooks = new List<Book>();
-            foundBooks = books.Where(book => book.Title.ToLower().Equals(title.ToLower())).ToList();
-            return foundBooks;
+            try
+            {
+                List<Book> foundBooks = new List<Book>();
+                foundBooks = books.Where(book => book.Title.ToLower().Equals(title.ToLower())).ToList();
+                return foundBooks;
+            }
+            catch (Exception e)
+            {
+                StandardMessages.NoSearchResults();
+                return new List<Book>();
+            }
         }
 
         /// <summary>
@@ -89,9 +103,17 @@
         /// </summary>
         public Book SearchBookByID(string id)
         {
-            IEnumerable<Book> foundBook;
-            foundBook = books.Where(book => book.ID.ToLower().Equals(id.ToLower()));
-            return new Book();
+            try
+            {
+                IEnumerable<Book> foundBook;
+                foundBook = books.Where(book => book.ID.ToLower().Equals(id.ToLower()));
+                return new Book();
+            }
+            catch (Exception e)
+            {
+                StandardMessages.NoSearchResults();
+                return new Book();
+            }
         }
 
         /// <summary>
@@ -99,9 +121,17 @@
         /// </summary>
         public List<Book> SearchBookByAuthor(string name)
         {
-            List<Book> foundBooks = new List<Book>();
-            foundBooks = books.Where(book => book.AuthorName.ToLower().Equals(name.ToLower())).ToList();
-            return foundBooks;
+            try
+            {
+                List<Book> foundBooks = new List<Book>();
+                foundBooks = books.Where(book => book.AuthorName.ToLower().Equals(name.ToLower())).ToList();
+                return foundBooks;
+            }
+            catch (Exception e)
+            {
+                StandardMessages.NoSearchResults();
+                return new List<Book>();
+            }
         }
 
         /// <summary>
@@ -109,9 +139,18 @@
         /// </summary>
         public List<Book> SearchBookByIsbn(string isbn)
         {
-            List<Book> foundBooks = new List<Book>();
-            foundBooks = books.Where(book => book.ISBN.ToLower().Equals(isbn.ToLower())).ToList();
-            return foundBooks;
+            try
+            {
+                List<Book> foundBooks = new List<Book>();
+                foundBooks = books.Where(book => book.ISBN.ToLower().Equals(isbn.ToLower())).ToList();
+                return foundBooks;
+            }
+            catch (Exception e)
+            {
+                StandardMessages.NoSearchResults();
+                return new List<Book>();
+            }
+            
         }
 
         public List<Book> GetBookList()

@@ -4,6 +4,24 @@
 
     public class StandardMessages
     {
+
+        public static void TryAgain()
+        {
+            Console.WriteLine($"Please Try again.");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void NoSearchResults()
+        {
+            Console.WriteLine($"Sorry, no search results were found with this input.");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static bool AreYouSure()
         {
             Console.WriteLine("Are you sure?\n Please enter yes or no.");
