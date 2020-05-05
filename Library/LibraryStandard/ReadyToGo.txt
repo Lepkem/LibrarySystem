@@ -78,11 +78,13 @@ To Do
 [X] serialize Books into json file
 [X] create json file in folder backups
 
-[ ] Backup - CreateNew ( try to be clear about naming conve)
+[X] Backup - CreateNew ( try to be clear about naming conve)
 [ ] Backup - ShowBackups ( ListBackups) - show name of a file and its time of creation and path ( full ) 
 -------------------------- # Milestone # --------------------------
 
-[ ] Make app interactive with current functionality
+[ ] Create basic menu 
+[ ] App should load data
+[ ] User should be able to execute methods from the catalog
 
 
 [@] Backup - Restore works

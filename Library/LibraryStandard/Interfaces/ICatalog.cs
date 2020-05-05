@@ -46,5 +46,10 @@
         /// </summary>
         /// <param name="newbooks"></param>
         void SetBookList(List<Book> newbooks);
+
+        /// <summary>
+        /// DeleteAllBooks deletes all books from the booklist
+        /// </summary>
+        void DeleteAllBooks();
     }
 }

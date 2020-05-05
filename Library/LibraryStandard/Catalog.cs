@@ -123,6 +123,11 @@
         {
             books = newbooks;
         }
+
+        public void DeleteAllBooks()
+        {
+            books.Clear();
+        }
     }
 }
 

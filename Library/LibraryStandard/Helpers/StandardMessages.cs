@@ -4,8 +4,27 @@
 
     public class StandardMessages
     {
+        public static bool AreYouSure()
+        {
+            Console.WriteLine("Are you sure?\n Please enter yes or no.");
+            string yesorno = Console.ReadLine();
+            if (yesorno.ToLower().Equals("yes"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-
+        /// <summary>
+        /// WriteInputBelow prints a request of input
+        /// </summary>
+        public static void WriteInputBelow()
+        {
+            Console.WriteLine($"Please write your input below.");
+        }
         /// <summary>
         /// EnterNumber prints a request of input of number
         /// </summary>
