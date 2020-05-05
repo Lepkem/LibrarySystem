@@ -13,16 +13,14 @@
         public static void Main(string[] args)
         {
 
-
+            PublicLibrary.Init();
+            StandardMessages.WelcomeImage();
 
             var menu = new EasyConsole.Menu()
                 .Add("Catalog", () =>
                 {
-                    StandardMessages.WelcomeImage();
-                    Console.WriteLine("s");
                     StandardMessages.PressAnyKey();
                     StandardMessages.PressKeyToContinue();
-                    
                 })
                 .Add("View all the books", () =>
                 {
@@ -51,7 +49,9 @@
                 .Add("Search a book by the name of the author", () => //submenu
                 {
                     StandardMessages.WriteInputBelow();
-                    Catalog.Instance.SearchBookByAuthor(Console.ReadLine());
+                    var searchRes = Catalog.Instance.SearchBookByAuthor(Console.ReadLine());
+                    Console.WriteLine(searchRes.First().ISBN);
+                    StandardMessages.ResultsCount(searchRes.Count());
                     StandardMessages.PressAnyKey();
                     StandardMessages.PressKeyToContinue();
                 })
@@ -110,9 +110,10 @@
                     StandardMessages.PressAnyKey();
                     StandardMessages.PressKeyToContinue();
                 })
-                .Add("Add an existing book to the catalog", () => //needs attention!!
+                .Add("Add an existing book to the catalog", () => 
                 {
-                    //Catalog.Instance.AddExistingBook();
+                    
+                    Catalog.Instance.AddExistingBook(Console.ReadLine());
                     StandardMessages.PressAnyKey();
                     StandardMessages.PressKeyToContinue();
                 })

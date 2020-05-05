@@ -36,6 +36,19 @@
             }
         }
 
+
+        public static void ResultsCount(int input)
+        {
+            if (input > 1)
+            {
+                Console.WriteLine($"There were {input} results.");
+            }
+            else
+            {
+                Console.WriteLine($"There was {input} result.");
+            }
+        }
+
         /// <summary>
         /// WriteInputBelow prints a request of input
         /// </summary>

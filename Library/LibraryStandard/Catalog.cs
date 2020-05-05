@@ -50,7 +50,19 @@
 
         public  void AddExistingBook(string isbn)
         {
-            SearchBookByIsbn(isbn).First();
+            Book book = SearchBookByIsbn(isbn).First();
+            BookBuilder bb = new BookBuilder();
+
+            books.Add(bb.WithAuthorName(book.AuthorName)
+                .WithTitle(book.Title)
+                .WithYear(book.Year)
+                .WithPages(book.Pages)
+                .WithLanguage(book.Language)
+                .WithImageLink(book.ImageLink)
+                .WithLink(book.Link)
+                .WithISBN(book.ISBN)
+                .WithCountry(book.Country)
+                .CreateBook());
         }
 
         /// <summary>
@@ -123,9 +135,7 @@
         {
             try
             {
-                List<Book> foundBooks = new List<Book>();
-                foundBooks = books.Where(book => book.AuthorName.ToLower().Equals(name.ToLower())).ToList();
-                return foundBooks;
+                return books.Where(book => book.AuthorName.ToLower().Contains(name.ToLower())).ToList();
             }
             catch (Exception e)
             {
