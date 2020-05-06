@@ -14,6 +14,7 @@
         public BookBuilder()
         {
             _book = new Book();
+            _book.ISBN = _book.GenerateISBN();
         }
 
 
@@ -64,19 +65,9 @@
             return this;
         }
 
-        public BookBuilder WithISBN(string isbn)
-        {
-            _book.ISBN = isbn;
-            return this;
-        }
-
         public Book CreateBook()
         {
-            if (string.IsNullOrEmpty(_book.ISBN))
-            {
-                throw new NoNullAllowedException($"An ISBN is required");
-            }
-        return _book;
+            return _book;
         }
 
 

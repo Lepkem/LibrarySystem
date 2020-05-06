@@ -22,15 +22,10 @@
             ID = Guid.NewGuid().ToString();
             IsAvailable = true;
             AvailableWhen = DateTime.Now;
-
-            // data integrity 
-            // rafal-is-coding => 34fdtdg123871yrty
-            //  rafa-is-coding => 7812783hg312jhdud9
-
-            // take some properties - andmake a....?
-
-            ISBN.GetHashCode();
+           //ISBN = GenerateISBN();
+            
         }
+
 
         [JsonProperty("author")]
         public string AuthorName;                  //from JSON
@@ -57,8 +52,10 @@
 
         public DateTime AvailableWhen { get; protected set; } //NEEDS TO BE ADDED TO JSON
 
-
-
+        public string GenerateISBN()
+        {
+            return $"{(AuthorName.ToLower().Replace(' ', '_') + Title.ToLower().Replace(' ', '_') + Year.ToString()).GetHashCode()}";
+        }
 
         /// <summary>
         /// ChangeImage searches through Books and changes image of the books with given imageurl
@@ -73,10 +70,23 @@
         /// </summary>
         public void ShowBookProp()
         {
+
+            Console.WriteLine($"The title:");
             Console.WriteLine($"{Title}");
+            Console.WriteLine($"The name of the author:");
             Console.WriteLine($"{AuthorName}");
+            Console.WriteLine($"The release year:");
             Console.WriteLine($"{Year}");
+            Console.WriteLine($"The amount of pages:");
             Console.WriteLine($"{Pages}");
+            Console.WriteLine($"The image link:");
+            Console.WriteLine($"{ImageLink}");
+            Console.WriteLine($"The link:");
+            Console.WriteLine($"{Link}");
+            Console.WriteLine($"The ISBN number:");
+            Console.WriteLine($"{ISBN}");
+            Console.WriteLine($"The ID of the book:");
+            Console.WriteLine($"{ID}");
         }
 
         /// <summary>

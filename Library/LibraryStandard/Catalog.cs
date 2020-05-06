@@ -60,7 +60,6 @@
                 .WithLanguage(book.Language)
                 .WithImageLink(book.ImageLink)
                 .WithLink(book.Link)
-                .WithISBN(book.ISBN)
                 .WithCountry(book.Country)
                 .CreateBook());
         }
