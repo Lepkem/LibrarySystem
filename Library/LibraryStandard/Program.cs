@@ -16,9 +16,14 @@
             PublicLibrary.Init();
             StandardMessages.WelcomeImage();
 
+            Catalog.Instance.GetBookList().ForEach(
+                b =>
+                {
+                    b.GenerateISBN();
+                    b.ShowBookProp();
+                });
             
-            
-            Console.WriteLine($"making a book by rocky");
+            /*Console.WriteLine($"making a book by rocky");
             Book testbook = new BookBuilder()
                 .WithAuthorName("Rocky Dexter")
                 .WithTitle("Love for Jordan")
@@ -31,7 +36,7 @@
                 .CreateBook();
 
             testbook.ShowBookProp();
-            Console.WriteLine($"{testbook.ISBN}");
+            Console.WriteLine($"{testbook.ISBN}");*/
 
             StandardMessages.PressKeyToContinue();
 
@@ -176,6 +181,7 @@
 
 
 
+            /*
             string StrBooks = DataOperator.ReadFromFile(Constants.BooksDataFile);
             Console.WriteLine(StrBooks);
 
@@ -198,6 +204,7 @@
             BackUp.Create(Constants.bookbackup2);
             Console.WriteLine($"Showing props from restored backup list");
             BackUp.RestoreFromBackup<List<Book>>(Constants.bookbackup2).First().ShowBookProp();
+            */
 
 
 
@@ -296,8 +303,7 @@
             }
 
     */
-            Console.Write(">");
-            Console.ReadLine();
+
 
 
 

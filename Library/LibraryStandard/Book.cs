@@ -52,9 +52,36 @@
 
         public DateTime AvailableWhen { get; protected set; } //NEEDS TO BE ADDED TO JSON
 
-        public string GenerateISBN()
+        /// <summary>
+        /// 
+        /// </summary>
+        public void GenerateISBN()
         {
-            return $"{(AuthorName.ToLower().Replace(' ', '_') + Title.ToLower().Replace(' ', '_') + Year.ToString()).GetHashCode()}";
+            ISBN = $"ISBN{customHashEnc()}";
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private string base64HashEnc()
+        {
+            byte[] plainTextBytes = System.Text.Encoding.UTF8.GetBytes((AuthorName.ToLower().Replace(' ', '_') + Title.ToLower().Replace(' ', '_') + Year));
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private string customHashEnc()
+        {
+
+            var x =  (AuthorName.ToLower().Replace(' ', '_') + Title.ToLower().Replace(' ', '_') + Year).GetHashCode();
+            if (x < 0)
+            {
+                return (x *= -1).ToString();
+            }
+            return x.ToString();
         }
 
         /// <summary>

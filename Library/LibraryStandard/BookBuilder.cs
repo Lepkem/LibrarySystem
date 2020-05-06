@@ -14,7 +14,7 @@
         public BookBuilder()
         {
             _book = new Book();
-            _book.ISBN = _book.GenerateISBN();
+           // _book.ISBN = _book.GenerateISBN();
         }
 
 
