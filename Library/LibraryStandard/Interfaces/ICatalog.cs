@@ -4,13 +4,6 @@
 
     public interface ICatalog
     {
-        List<Book> Books { get; set; }
-
-        /// <summary>
-        /// LoadBookFile loads content of filename as instances of Book
-        /// </summary>
-        /// <param name="fileName"></param>
-        void LoadBookFile(string fileName);
 
         /// <summary>
         /// AddNewBook adds new Book to List Books (and updates JSON??)
@@ -40,6 +33,29 @@
         /// <summary>
         /// SearchBookByISBN searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        List<Book> SearchBookByISBN(string ISBN);
+        List<Book> SearchBookByIsbn(string isbn);
+
+        /// <summary>
+        /// GetBookList returns books list for other classes. It doesn't need param, because there is 1 books, 1 catalog (should be singleton)
+        /// </summary>
+        /// <returns></returns>
+        List<Book> GetBookList();
+
+        /// <summary>
+        /// SetBookList replaces the entire list of books by a newly chosen list of books
+        /// </summary>
+        /// <param name="newbooks"></param>
+        void SetBookList(List<Book> newbooks);
+
+        /// <summary>
+        /// DeleteAllBooks deletes all books from the booklist
+        /// </summary>
+        void DeleteAllBooks();
+
+        /// <summary>
+        /// AddExistingBook adds a new instance of a book with a new ID to the booklist by passing the isbn
+        /// </summary>
+        /// <param name="isbn"></param>
+        void AddExistingBook(string isbn);
     }
 }

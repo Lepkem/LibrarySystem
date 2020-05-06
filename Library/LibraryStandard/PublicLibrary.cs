@@ -1,15 +1,16 @@
 ﻿namespace Library
 {
+    using System.Collections.Generic;
+
     using Library.Interfaces;
 
-    public class PublicLibrary : IPublicLibrary
+    using LibraryStandard.Helpers;
+
+    public class PublicLibrary 
     {
-
-        public Catalog Catalog { get; private set; }
-
-        public PublicLibrary()
+        public static void Init()
         {
-            Catalog = new Catalog();
+            Catalog.Instance.SetBookList(DataOperator.DeserializeJson<List<Book>>(DataOperator.ReadFromFile(@"Data\Books.json")));
         }
     }
 }

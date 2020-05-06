@@ -22,7 +22,14 @@
             ID = Guid.NewGuid().ToString();
             IsAvailable = true;
             AvailableWhen = DateTime.Now;
-            ISBN = "";
+
+            // data integrity 
+            // rafal-is-coding => 34fdtdg123871yrty
+            //  rafa-is-coding => 7812783hg312jhdud9
+
+            // take some properties - andmake a....?
+
+            ISBN.GetHashCode();
         }
 
         [JsonProperty("author")]

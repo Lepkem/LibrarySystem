@@ -3,49 +3,66 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
 
     using Library.Interfaces;
 
+    using LibraryStandard;
+    using LibraryStandard.Helpers;
+
     using Newtonsoft.Json;
 
-    public class Catalog : ICatalog
+    public sealed class Catalog : ICatalog
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public Catalog()
-        { }
+        private static readonly Catalog instance = new Catalog();
 
-        public List<Book> Books { get; set; }
-
-        /// <summary>
-        /// LoadBookFile loads content of filename as instances of Book
-        /// I think that the properties IsAvailable and AvailableWhen: should be added to each book upon init in this function
-        /// </summary>
-        /// <param name="fileName"></param>
-        public void LoadBookFile(string fileName)
+        // Explicit static constructor to tell C# compiler  
+        // not to mark type as beforefieldinit  
+        static Catalog()
         {
-            string FileContentString = "";
-            try
-            {
-                FileContentString = File.ReadAllText(fileName);
-                Books = JsonConvert.DeserializeObject<List<Book>>(FileContentString); // here I made instances of classes from a JSON string in a list of class movie
+        }
 
-            }
-            catch (Exception e)
+        private Catalog()
+        {
+        }
+
+        public static Catalog Instance
+        {
+            get
             {
-                Console.WriteLine($"{e.Message}, so something is not dobra :(");
+                return instance;
             }
         }
 
+        // necessary singleton code^
+        
+        
+        private List<Book> books;
 
         /// <summary>
-        /// AddNewBook adds new Book to List Books (and updates JSON??)
+        /// AddNewBook adds new Book to List Books 
         /// </summary>
         public bool AddNewBook(Book book)
         {
-            Books.Add(book);
+            books.Add(book);
             return true;
+        }
+
+        public  void AddExistingBook(string isbn)
+        {
+            Book book = SearchBookByIsbn(isbn).First();
+            BookBuilder bb = new BookBuilder();
+
+            books.Add(bb.WithAuthorName(book.AuthorName)
+                .WithTitle(book.Title)
+                .WithYear(book.Year)
+                .WithPages(book.Pages)
+                .WithLanguage(book.Language)
+                .WithImageLink(book.ImageLink)
+                .WithLink(book.Link)
+                .WithISBN(book.ISBN)
+                .WithCountry(book.Country)
+                .CreateBook());
         }
 
         /// <summary>
@@ -53,14 +70,23 @@
         /// </summary>
         public bool RemoveBook(string id)
         {
-            foreach (Book book in Books)
-            {
-                if (book.ID == id)
-                {
-                    Books.Remove(book);
-                    return true;
-                }
+            Book forRemoval;
+            //    1 Solution
+            books = books.Where(book => book.ID.ToLower() != id.ToLower()).ToList();
+            return true;
 
+
+            // 2 solution 
+            try
+            {
+                forRemoval = books.Single(s => String.Equals(s.ID, id, StringComparison.CurrentCultureIgnoreCase));
+                this.books.Remove(forRemoval);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
 
             return false;
@@ -69,18 +95,19 @@
         /// <summary>
         /// SearchBookByName searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        public List<Book> SearchBookByTitle( string title)
+        public List<Book> SearchBookByTitle(string title)
         {
-            List<Book> foundBooks = new List<Book>();
-            foreach (Book book in Books)
+            try
             {
-                if (book.Title.ToLower().Equals(title.ToLower()))
-                {
-                    foundBooks.Add(book);
-                }
+                List<Book> foundBooks = new List<Book>();
+                foundBooks = books.Where(book => book.Title.ToLower().Equals(title.ToLower())).ToList();
+                return foundBooks;
             }
-
-            return foundBooks;
+            catch (Exception e)
+            {
+                StandardMessages.NoSearchResults();
+                return new List<Book>();
+            }
         }
 
         /// <summary>
@@ -88,56 +115,68 @@
         /// </summary>
         public Book SearchBookByID(string id)
         {
-            foreach (Book book in Books)
+            try
             {
-                if (book.ID.ToLower().Equals(id.ToLower()))
-                {
-                    return book;
-                }
-
+                IEnumerable<Book> foundBook;
+                foundBook = books.Where(book => book.ID.ToLower().Equals(id.ToLower()));
+                return new Book();
             }
-
-            return new Book();
+            catch (Exception e)
+            {
+                StandardMessages.NoSearchResults();
+                return new Book();
+            }
         }
 
         /// <summary>
         /// SearchBookByAuthor searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        public List<Book> SearchBookByAuthor(string name) 
+        public List<Book> SearchBookByAuthor(string name)
         {
-            List<Book> foundBooks = new List<Book>();
-            foreach (Book book in Books)
+            try
             {
-                if (book.AuthorName.ToLower().Contains(name.ToLower()))
-                {
-                    foundBooks.Add(book);
-                }
+                return books.Where(book => book.AuthorName.ToLower().Contains(name.ToLower())).ToList();
             }
-
-            return foundBooks;
+            catch (Exception e)
+            {
+                StandardMessages.NoSearchResults();
+                return new List<Book>();
+            }
         }
 
         /// <summary>
         /// SearchBookByISBN searches through Books by ISBN returns List<Book> of books that comply
         /// </summary>
-        public List<Book> SearchBookByISBN(string ISBN)
+        public List<Book> SearchBookByIsbn(string isbn)
         {
-            List<Book> foundBooks = new List<Book>();
-            foreach (Book book in Books)
+            try
             {
-                if (book.ISBN.ToLower().Equals(ISBN.ToLower()))
-                {
-                    foundBooks.Add(book);
-                }
+                List<Book> foundBooks = new List<Book>();
+                foundBooks = books.Where(book => book.ISBN.ToLower().Equals(isbn.ToLower())).ToList();
+                return foundBooks;
             }
-
-            return foundBooks;
+            catch (Exception e)
+            {
+                StandardMessages.NoSearchResults();
+                return new List<Book>();
+            }
+            
         }
 
-        
+        public List<Book> GetBookList()
+        {
+            return books;
+        }
 
-        
+        public void SetBookList(List<Book> newbooks)
+        {
+            books = newbooks;
+        }
 
+        public void DeleteAllBooks()
+        {
+            books.Clear();
+        }
     }
 }
 

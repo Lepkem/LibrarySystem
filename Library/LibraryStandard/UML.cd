@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LibraryStandard.BackUp" BaseTypeListCollapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="LibraryStandard.BackUp.backupnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>BackUp.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAQAAAAAAAAAKAAQAAAAAAEAIAAAAAAAQAAA=</HashCode>
+      <FileName>BackUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryStandard.BookBuilder" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAACAAAQAQAAAAAACQAAAAAAAACAAAAAIAAAGAAA=</HashCode>
+      <FileName>BookBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryStandard.Address" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACIAAAAAAAACAAAAAABBAAAAAAAAAA=</HashCode>
+      <FileName>Person\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryStandard.Librarian" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Person\Librarian.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryStandard.Program" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Library.Book" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAADQAAgEAgCAABAAAAAAIAAAAABAACQIAgAAA=</HashCode>
+      <FileName>Book.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Library.BookItem" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgAAACAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BookItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Library.Catalog" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAiAAEAAQIAgAAAAAAEEgAAAAAA=</HashCode>
+      <FileName>Catalog.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Library.Person" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAACEAAAAAAgQDgAQAAAAAABAAgAAACAACBCgAAQAA=</HashCode>
+      <FileName>Person\Person.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Library.PublicLibrary" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PublicLibrary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibraryStandard.Person.Customer" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="LibraryStandard.IBackUp" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAKAAAAAAAAAEAIAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IBackUp.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Library.ICatalog" Collapsed="true">
+    <Position X="8.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAEAAQIAgAAAAAAEEgAAAAAA=</HashCode>
+      <FileName>Interfaces\ICatalog.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Library.Interfaces.IBook" Collapsed="true">
+    <Position X="7" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Interfaces\IBook.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Library.Interfaces.IPerson">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAACAAAAAAAAABAAAAAAAAAAAAgAAAAAACACAAAAAA=</HashCode>
+      <FileName>Interfaces\IPerson.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Library.Interfaces.IPublicLibrary" Collapsed="true">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPublicLibrary.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
