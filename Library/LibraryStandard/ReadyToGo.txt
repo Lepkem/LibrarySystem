@@ -86,6 +86,8 @@ To Do
 [ ] App should load data
 [ ] User should be able to execute methods from the catalog
 
+[ ] GetHashCode();=>ISBN 
+
 
 [@] Backup - Restore works
 [@] Backup - Deletebackup
