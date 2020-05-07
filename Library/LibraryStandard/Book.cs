@@ -3,6 +3,7 @@
     #region
 
     using System;
+    using System.Reflection;
 
     using Library.Interfaces;
 
@@ -28,25 +29,26 @@
 
 
         [JsonProperty("author")]
-        public string AuthorName;                  //from JSON
+        public string AuthorName ;                   //from JSON
         [JsonProperty("country")]
-        public string Country;                     //from JSON
+        public string Country ;                      //from JSON
         [JsonProperty("imageLink")]
         public string ImageLink { get; protected set; }     //from JSON
         [JsonProperty("language")]
-        public string Language;                    //from JSON
+        public string Language ;                     //from JSON
         [JsonProperty("link")]
         public string Link { get; protected set; }          //from JSON
         [JsonProperty("pages")]
-        public uint Pages;                         //from JSON
+        public uint Pages ;                          //from JSON
         [JsonProperty("title")]
-        public string Title;                       //from JSON
+        public string Title ;                        //from JSON
+
         [JsonProperty("year")]
         public int Year;                           //from JSON
 
-        public string ISBN;                        //NEEDS TO BE ADDED TO JSON
+        public string ISBN;                   //NEEDS TO BE ADDED TO JSON
 
-        public string ID;                          //NEEDS TO BE ADDED TO JSON
+        public string ID; //NEEDS TO BE ADDED TO JSON
 
         public bool IsAvailable { get; protected set; }     //NEEDS TO BE ADDED TO JSON
 
@@ -92,12 +94,12 @@
             throw new NotImplementedException();
         }
 
+
         /// <summary>
         /// ShowBookProp shows various properties of the instance of your book
         /// </summary>
         public void ShowBookProp()
         {
-
             Console.WriteLine($"The title:");
             Console.WriteLine($"{Title}");
             Console.WriteLine($"The name of the author:");

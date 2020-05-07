@@ -49,12 +49,17 @@
             }
         }
 
+        public static void NewLine()
+        {
+            Console.WriteLine($"\n");
+        }
+
         /// <summary>
         /// WriteInputBelow prints a request of input
         /// </summary>
         public static void WriteInputBelow()
         {
-            Console.WriteLine($"Please write your input below.");
+            Console.WriteLine($"Please write your input below.\n \n");
         }
         /// <summary>
         /// EnterNumber prints a request of input of number

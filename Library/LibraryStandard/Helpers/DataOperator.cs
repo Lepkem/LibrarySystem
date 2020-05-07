@@ -26,7 +26,7 @@
                 string content = System.IO.File.ReadAllText(filepath);
                 return content;
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 StandardMessages.FilePathError(filepath);
             }
@@ -45,7 +45,7 @@
 
                 System.IO.File.WriteAllText(filepath, content);
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 StandardMessages.FilePathError(filepath);
             }

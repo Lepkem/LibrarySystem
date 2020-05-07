@@ -20,7 +20,6 @@
                 b =>
                 {
                     b.GenerateISBN();
-                    b.ShowBookProp();
                 });
             
             /*Console.WriteLine($"making a book by rocky");
@@ -70,7 +69,9 @@
     .Add("Search a book through ISBN", () => //submenu
                 {
         StandardMessages.WriteInputBelow();
-        Catalog.Instance.SearchBookByIsbn(Console.ReadLine());
+        List<Book> searchRes = Catalog.Instance.SearchBookByIsbn(Console.ReadLine());
+        StandardMessages.ResultsCount(searchRes.Count());
+        searchRes.ForEach(book => book.ShowBookProp());
         StandardMessages.PressAnyKey();
         StandardMessages.PressKeyToContinue();
     })
@@ -78,8 +79,8 @@
                 {
         StandardMessages.WriteInputBelow();
         var searchRes = Catalog.Instance.SearchBookByAuthor(Console.ReadLine());
-        Console.WriteLine(searchRes.First().ISBN);
         StandardMessages.ResultsCount(searchRes.Count());
+        searchRes.ForEach(book => book.ShowBookProp());
         StandardMessages.PressAnyKey();
         StandardMessages.PressKeyToContinue();
     })
@@ -133,7 +134,7 @@
         StandardMessages.PressKeyToContinue();
     })
     .Add("Add a new book to the catalog", () => //needs attention!!
-                {
+                { 
                     //Catalog.Instance.AddNewBook();
                     StandardMessages.PressAnyKey();
         StandardMessages.PressKeyToContinue();
@@ -224,9 +225,7 @@
             testlist.Add(testbook);
             firstbackup.TempCreateWritebackup(testlist);*/
 
-            Console.WriteLine("I guess it worked");
-            StandardMessages.PressAnyKey();
-            Console.ReadLine();
+            
 
 
             /*Console.WriteLine("Welcome User");

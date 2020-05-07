@@ -102,7 +102,7 @@
                 foundBooks = books.Where(book => book.Title.ToLower().Equals(title.ToLower())).ToList();
                 return foundBooks;
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 StandardMessages.NoSearchResults();
                 return new List<Book>();
@@ -118,9 +118,10 @@
             {
                 IEnumerable<Book> foundBook;
                 foundBook = books.Where(book => book.ID.ToLower().Equals(id.ToLower()));
-                return new Book();
+                foundBook.First().ShowBookProp();
+                return foundBook.First();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 StandardMessages.NoSearchResults();
                 return new Book();
@@ -136,7 +137,7 @@
             {
                 return books.Where(book => book.AuthorName.ToLower().Contains(name.ToLower())).ToList();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 StandardMessages.NoSearchResults();
                 return new List<Book>();
@@ -154,7 +155,7 @@
                 foundBooks = books.Where(book => book.ISBN.ToLower().Equals(isbn.ToLower())).ToList();
                 return foundBooks;
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 StandardMessages.NoSearchResults();
                 return new List<Book>();
