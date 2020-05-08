@@ -21,7 +21,7 @@
 
         }
 
-        public DataOperator Instance
+        public static DataOperator Instance
         {
             get
             {

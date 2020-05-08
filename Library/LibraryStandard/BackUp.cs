@@ -17,13 +17,13 @@
         public static void Create(string backupName = Constants.bookbackup1)
         {
             int timestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            DataOperator.WriteToFile(DataOperator.SerializeJson(Catalog.Instance.GetBookList()), backupName);
+            DataOperator.Instance.WriteToFile(DataOperator.Instance.SerializeJson(Catalog.Instance.GetBookList()), backupName);
         }
 
 
         public static T RestoreFromBackup<T>(string backupName = Constants.bookbackup1)
         {
-            return DataOperator.DeserializeJson<T>(DataOperator.ReadFromFile(backupName));
+            return DataOperator.Instance.DeserializeJson<T>(DataOperator.Instance.ReadFromFile(backupName));
         }
     }
 }

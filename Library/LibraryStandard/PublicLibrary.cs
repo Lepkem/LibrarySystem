@@ -10,7 +10,7 @@
     {
         public static void Init()
         {
-            Catalog.Instance.SetBookList(DataOperator.DeserializeJson<List<Book>>(DataOperator.ReadFromFile(@"Data\Books.json")));
+            Catalog.Instance.SetBookList(DataOperator.Instance.DeserializeJson<List<Book>>(DataOperator.Instance.ReadFromFile(@"Data\Books.json")));
         }
     }
 }
