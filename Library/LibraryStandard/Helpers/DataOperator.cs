@@ -3,23 +3,45 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-
     using Newtonsoft.Json;
+    using LibraryStandard.Interfaces;
 
-    public class DataOperator
+
+    public sealed class DataOperator : IDataOperator
     {
-        public static T DeserializeJson<T>(string strValue)
+        private static readonly DataOperator instance = new DataOperator();
+
+        static DataOperator()
+        {
+
+        }
+
+        private DataOperator()
+        {
+
+        }
+
+        public DataOperator Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+
+        public T DeserializeJson<T>(string strValue)
         {
             return JsonConvert.DeserializeObject<T>(strValue);
          }
 
-        public static string SerializeJson(object objToSave)
+        public string SerializeJson(object objToSave)
         {
             return JsonConvert.SerializeObject(objToSave);
             //System.IO.File.WriteAllText(Constants.bookbackup1, content);
         }
 
-        public static string ReadFromFile(string filepath)
+        public string ReadFromFile(string filepath)
         {
             try
             {
@@ -28,7 +50,7 @@
             }
             catch (Exception )
             {
-                StandardMessages.FilePathError(filepath);
+                StandardMessages.Instance.FilePathError(filepath);
             }
 
 
@@ -37,7 +59,7 @@
 
         }
 
-        public static void WriteToFile(string content, string filepath)
+        public void WriteToFile(string content, string filepath)
         {
             try
             {
@@ -47,7 +69,7 @@
             }
             catch (Exception )
             {
-                StandardMessages.FilePathError(filepath);
+                StandardMessages.Instance.FilePathError(filepath);
             }
             
         }

@@ -1,11 +1,34 @@
 ﻿namespace LibraryStandard.Helpers
 {
     using System;
+    using System.ComponentModel;
+    using System.Dynamic;
 
-    public class StandardMessages
+    using LibraryStandard.Interfaces;
+
+    public sealed class StandardMessages : IStandardMessages
     {
+        private static readonly StandardMessages instance = new StandardMessages();
 
-        public static void TryAgain()
+        static StandardMessages()
+        {
+
+        }
+
+        private StandardMessages()
+        {
+
+        }
+
+        public static StandardMessages Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        public void TryAgain()
         {
             Console.WriteLine($"Please Try again.");
         }
@@ -13,7 +36,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public static void NoSearchResults()
+        public void NoSearchResults()
         {
             Console.WriteLine($"Sorry, no search results were found with this input.");
         }
@@ -22,7 +45,7 @@
         /// 
         /// </summary>
         /// <returns></returns>
-        public static bool AreYouSure()
+        public bool AreYouSure()
         {
             Console.WriteLine("Are you sure?\n Please enter yes or no.");
             string yesorno = Console.ReadLine();
@@ -37,7 +60,7 @@
         }
 
 
-        public static void ResultsCount(int input)
+        public void ResultsCount(int input)
         {
             if (input > 1)
             {
@@ -49,7 +72,7 @@
             }
         }
 
-        public static void NewLine()
+        public void NewLine()
         {
             Console.WriteLine($"\n");
         }
@@ -57,14 +80,14 @@
         /// <summary>
         /// WriteInputBelow prints a request of input
         /// </summary>
-        public static void WriteInputBelow()
+        public void WriteInputBelow()
         {
             Console.WriteLine($"Please write your input below.\n \n");
         }
         /// <summary>
         /// EnterNumber prints a request of input of number
         /// </summary>
-        public static void EnterNumber()
+        public void EnterNumber()
         {
             Console.WriteLine($"Please only enter a number!");
         }
@@ -72,7 +95,7 @@
         /// <summary>
         /// GivenOptions prints a request of input of given options
         /// </summary>
-        public static void GivenOptions()
+        public void GivenOptions()
         {
             Console.WriteLine($"Only choose from the given options.");
         }
@@ -81,7 +104,7 @@
         /// FilePathError shows path error message and with input of filepath can be specified
         /// </summary>
         /// <param name="filePath"></param>
-        public static void FilePathError(string filePath = "")
+        public void FilePathError(string filePath = "")
         {
             Console.WriteLine($"Oops! Something went wrong. {filePath} was not found.");
         }
@@ -89,7 +112,7 @@
         /// <summary>
         /// PressAnyKey prints to press any key
         /// </summary>
-        public static void PressAnyKey()
+        public void PressAnyKey()
         {
             Console.WriteLine($"Press any key to continue.");
         }
@@ -97,7 +120,7 @@
         /// <summary>
         /// PressKeyToContinue requires you to press any key and after that clears the screen.
         /// </summary>
-        public static void PressKeyToContinue()
+        public void PressKeyToContinue()
         {
             Console.Write($">");
             Console.ReadLine();
@@ -107,7 +130,7 @@
         /// <summary>
         /// WelcomeImage prints a welcome image from source https://www.asciiart.eu/books/books
         /// </summary>
-        public static void WelcomeImage()
+        public void WelcomeImage()
         {
             Console.WriteLine(@"  ____________________________________________________");
             Console.WriteLine(@"  |____________________________________________________|");

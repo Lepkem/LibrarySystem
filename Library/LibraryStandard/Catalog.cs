@@ -104,7 +104,7 @@
             }
             catch (Exception )
             {
-                StandardMessages.NoSearchResults();
+                StandardMessages.Instance.NoSearchResults();
                 return new List<Book>();
             }
         }
@@ -123,7 +123,7 @@
             }
             catch (Exception)
             {
-                StandardMessages.NoSearchResults();
+                StandardMessages.Instance.NoSearchResults();
                 return new Book();
             }
         }
@@ -139,7 +139,7 @@
             }
             catch (Exception)
             {
-                StandardMessages.NoSearchResults();
+                StandardMessages.Instance.NoSearchResults();
                 return new List<Book>();
             }
         }
@@ -157,7 +157,7 @@
             }
             catch (Exception )
             {
-                StandardMessages.NoSearchResults();
+                StandardMessages.Instance.NoSearchResults();
                 return new List<Book>();
             }
             

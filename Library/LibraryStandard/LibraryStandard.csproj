@@ -66,6 +66,8 @@
     <Compile Include="Helpers\DataOperator.cs" />
     <Compile Include="Helpers\StandardMessages.cs" />
     <Compile Include="Interfaces\IBackUp.cs" />
+    <Compile Include="Interfaces\IDataOperator.cs" />
+    <Compile Include="Interfaces\IStandardMessages.cs" />
     <Compile Include="Person\Address.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="BookItem.cs" />

@@ -14,7 +14,7 @@
         {
             #region Init
             PublicLibrary.Init();
-            StandardMessages.WelcomeImage();
+            StandardMessages.Instance.WelcomeImage();
 
             Catalog.Instance.GetBookList().ForEach(
                 b =>
@@ -37,7 +37,7 @@
             testbook.ShowBookProp();
             Console.WriteLine($"{testbook.ISBN}");*/
 
-            StandardMessages.PressKeyToContinue();
+            StandardMessages.Instance.PressKeyToContinue();
 
             #endregion
 
@@ -46,67 +46,63 @@
             var menu = new EasyConsole.Menu()
     .Add("Catalog", () =>
     {
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("View all the books", () =>
     {
         Catalog.Instance.GetBookList();
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
-    })
-    .Add("Search a book", () => //supermenu
-                {
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Search a book through ID", () => //submenu
                 {
-        StandardMessages.WriteInputBelow();
+        StandardMessages.Instance.WriteInputBelow();
         Catalog.Instance.SearchBookByID(Console.ReadLine());
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Search a book through ISBN", () => //submenu
                 {
-        StandardMessages.WriteInputBelow();
+        StandardMessages.Instance.WriteInputBelow();
         List<Book> searchRes = Catalog.Instance.SearchBookByIsbn(Console.ReadLine());
-        StandardMessages.ResultsCount(searchRes.Count());
+        StandardMessages.Instance.ResultsCount(searchRes.Count());
         searchRes.ForEach(book => book.ShowBookProp());
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Search a book by the name of the author", () => //submenu
                 {
-        StandardMessages.WriteInputBelow();
+        StandardMessages.Instance.WriteInputBelow();
         var searchRes = Catalog.Instance.SearchBookByAuthor(Console.ReadLine());
-        StandardMessages.ResultsCount(searchRes.Count());
+        StandardMessages.Instance.ResultsCount(searchRes.Count());
         searchRes.ForEach(book => book.ShowBookProp());
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Search a book by title", () => //submenu
                 {
-        StandardMessages.WriteInputBelow();
+        StandardMessages.Instance.WriteInputBelow();
         Catalog.Instance.SearchBookByTitle(Console.ReadLine());
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Library information", () =>
     {
         Console.WriteLine($"This is the very elaborate information page of the library system.");
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Login", () =>
     {
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Help", () =>
     {
         Console.WriteLine($"This is the very elaborate help page of the library system.");
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
 
     //these are accessible only when logged in
@@ -114,51 +110,51 @@
     {
         Console.WriteLine($"Please input the ID of the book that you want to delete from the catalog.");
         string input = Console.ReadLine();
-        if (StandardMessages.AreYouSure().Equals(true))
+        if (StandardMessages.Instance.AreYouSure().Equals(true))
         {
             Catalog.Instance.RemoveBook(input);
         }
 
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
 
     })
     .Add("Delete all books from the catalog", () =>
     {
-        if (StandardMessages.AreYouSure().Equals(true))
+        if (StandardMessages.Instance.AreYouSure().Equals(true))
         {
             Catalog.Instance.DeleteAllBooks();
         }
 
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Add a new book to the catalog", () => //needs attention!!
                 { 
                     //Catalog.Instance.AddNewBook();
-                    StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+                    StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Add an existing book to the catalog", () =>
     {
 
         Catalog.Instance.AddExistingBook(Console.ReadLine());
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Create a backup of the books", () =>
     {
         Console.WriteLine(@"Choose a filepath, for an instance ''.\Backups\Bookbackup2.json''");
         BackUp.Create(Console.ReadLine());
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Load a backup of the books to the current program.", () =>
     {
         Console.WriteLine(@"Choose a filepath, for an instance ''.\Backups\Bookbackup2.json''");
         BackUp.RestoreFromBackup<List<Book>>(Console.ReadLine());
-        StandardMessages.PressAnyKey();
-        StandardMessages.PressKeyToContinue();
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Exit", () =>
     {
