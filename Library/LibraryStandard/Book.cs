@@ -20,8 +20,7 @@
         {
             ID = Guid.NewGuid().ToString();
             IsAvailable = true;
-            ReturnDate = DateTime.Now;
-           //ISBN = GenerateISBN();
+            //ISBN = GenerateISBN();
             
         }
 
@@ -48,9 +47,9 @@
 
         public string ID; //NEEDS TO BE ADDED TO JSON
 
-        public bool IsAvailable { get; protected set; }     //NEEDS TO BE ADDED TO JSON
+        public bool IsAvailable { get; set; }     //NEEDS TO BE ADDED TO JSON
 
-        public DateTime ReturnDate { get; protected set; } //NEEDS TO BE ADDED TO JSON
+        
 
         /// <summary>
         /// 
@@ -123,5 +122,6 @@
         {
             throw new NotImplementedException();
         }
+
     }
 }   

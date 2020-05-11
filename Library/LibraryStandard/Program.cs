@@ -14,6 +14,15 @@
             PublicLibrary.Init();
             StandardMessages.Instance.WelcomeImage();
 
+
+            /*
+             *  return many ?
+             *  program ask how many books ? => 3
+             *  for each of the book ( until I have 3 ) ask for book ID ?
+             *  with the list of all bookIds call catalog to do its work
+             * :D 
+             */
+
             Catalog.Instance.GetBookList().ForEach(
                 b =>
                 {

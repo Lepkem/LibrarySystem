@@ -1,8 +1,36 @@
 ﻿namespace LibraryStandard.People
 {
-    public class Person
-    {
+    using LibraryStandard.Interfaces;
 
+    public class Person : IPerson
+    {
+        public string ID; 
+
+
+        public string GetCredentials(Person person)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetEmail(Person person)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetAddress(Person person)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetTelNumber(Person person)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetFullName()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     /*

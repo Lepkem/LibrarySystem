@@ -62,14 +62,18 @@
   <ItemGroup>
     <Compile Include="BackUp.cs" />
     <Compile Include="BookBuilder.cs" />
+    <Compile Include="CatalogPerson.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\DataOperator.cs" />
     <Compile Include="Helpers\IStandardMessages.cs" />
     <Compile Include="Helpers\StandardMessages.cs" />
-    <Compile Include="ICatalog.cs" />
+    <Compile Include="Interfaces\ILoanAdministration.cs" />
+    <Compile Include="Interfaces\ICatalog.cs" />
     <Compile Include="Interfaces\IBackUp.cs" />
+    <Compile Include="Interfaces\ICatalogPerson.cs" />
     <Compile Include="Interfaces\IDataOperator.cs" />
     <Compile Include="LoanAdministration.cs" />
+    <Compile Include="Loan.cs" />
     <Compile Include="People\Person.cs" />
     <Compile Include="People\Address.cs" />
     <Compile Include="Book.cs" />

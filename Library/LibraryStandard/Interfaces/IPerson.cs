@@ -4,12 +4,11 @@
 
     public interface IPerson
     {
-//bool IsRole(Person.FunctionalRole role);
-        string ShowCredentials(Person person);
-        string ShowEmail(Person person);
-        string ShowAddress(Person person);
-        string ShowTelNumber(Person person);
+        string GetCredentials(Person person);
+        string GetEmail(Person person);
+        string GetAddress(Person person);
+        string GetTelNumber(Person person);
 
-        string ShowFullName();
+        string GetFullName();
     }
 }
