@@ -13,5 +13,6 @@
         public string BookID { get; set; }
         public string PersonID { get; set; }
         public DateTime ReturnDate { get; set; }
+        public bool IsActive { get; set; }
     }
 }

@@ -28,7 +28,10 @@
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<string> MakeBookIDList()
         {
             List<string> BookIDList = new List<string>();
@@ -52,17 +55,22 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="BookID"></param>
+        /// <param name="PersonID"></param>
         public void BorrowOne(string BookID, string PersonID)
         {
             Loan loan = new Loan();
             Book book = Catalog.Instance.SearchBookByID(BookID);
             if(!(String.IsNullOrEmpty(book.AuthorName)) && !(String.IsNullOrEmpty(book.Title)))
             {
-                book.IsAvailable = false;
-                loan.ReturnDate = DateTime.Now.AddDays(14);
+                book.MakeUnavailable(book);
+                SetReturnDate(loan);
+                MakeLoanActive(loan);
                 loan.PersonID = PersonID;
                 loan.BookID = BookID;
-                loan.IsActive = true;
                 Loans.Add(loan);
             }
             else
@@ -72,74 +80,118 @@
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="BookIDs"></param>
+        /// <param name="PersonID"></param>
         public void BorrowMany(List<string> BookIDs, string PersonID)
         {
-            
+            foreach (string BookID in BookIDs)
+            {
+                BorrowOne(BookID, PersonID);
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="BookID"></param>
+        /// <param name="PersonID"></param>
         public void ReturnOne(string BookID, string PersonID)
         {
             var loanToRemove = Loans.Where(loan => loan.BookID.ToLower().Equals(BookID.ToLower()));
             // Are you sure ? For history purposes you should maybve think of somethjing else ?
-            Loans.Remove(loanToRemove);
-            book.IsAvailable = true;
-            book.ReturnDate = DateTime.Now;
+            //Loans.Remove(loanToRemove);
+            //book.IsAvailable = true;
+            //book.ReturnDate = DateTime.Now;
+            throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="BookAmount"></param>
+        /// <param name="BookID"></param>
+        /// <param name="PersonID"></param>
         public void ReturnMany(int BookAmount, string BookID, string PersonID)
         {
-            ReturnOne();
-        }
-
-
-        public List<LoanAdministration> GetLoanAdminList()
-        {
-            //naming ;
-        }
-
-        public void SetBookList(List<LoanAdministration> newLoanAdmin)
-        {
-            books = newLoanAdmin;
+            throw new NotImplementedException();
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public void DeleteLoanAdminList()
-        {
-            books.Clear();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="loan"></param>
         /// <returns></returns>
-        public bool AddNewLoan(Loan loan)
+        public List<Loan> GetLoanAdminList()
         {
-            Loans.Add(loan);
-            return true;
+            return Loans;
         }
 
         /// <summary>
         /// 
+        /// </summary>
+        /// <param name="newLoanAdmin"></param>
+        public void SetLoanAdministrationList(List<Loan> newLoanAdmin)
+        {
+            Loans = newLoanAdmin;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void DeleteLoanAdministrationList()
+        {
+            //books.Clear();
+            throw new NotImplementedException();
+        }
+
+
+        /// <summary>
+        /// MakeLoanActive returns a list of loans that were endured by this book
         /// </summary>
         /// <param name="bookID"></param>
-        public void SearchLoansByBook(string bookID)
+        public List<Loan> SearchLoansByBook(string bookID)
         {
-            throw new NotImplementedException();
+            return Loans.Where(loan => loan.PersonID.Equals(bookID)).ToList();
         }
 
         /// <summary>
-        /// 
+        /// SearchLoansByPerson returns a list of loans that were made by this person
         /// </summary>
         /// <param name="PersonID"></param>
-        public void SearchLoansByPerson(string PersonID)
+        public List<Loan> SearchLoansByPerson(string personID)
         {
-            throw new NotImplementedException();
+            return Loans.Where(loan => loan.PersonID.Equals(personID)).ToList();
         }
+
+        /// <summary>
+        /// MakeLoanActive is a private method to make the Loan active 
+        /// </summary>
+        /// <param name="loan"></param>
+        private void MakeLoanActive(Loan loan)
+        {
+            loan.IsActive = true;
+        }
+
+        /// <summary>
+        /// MakeLoanActive is a private method to make the Loan inactive after return
+        /// </summary>
+        /// <param name="loan"></param>
+        private void MakeLoanInactive(Loan loan)
+        {
+            loan.IsActive = false;
+        }
+
+        /// <summary>
+        /// SetReturnDate sets the return date of the book 
+        /// </summary>
+        /// <param name="loan"></param>
+        private void SetReturnDate(Loan loan)
+        {
+            loan.ReturnDate = DateTime.Now.AddDays(14);
+        }
+
     }
 }
 

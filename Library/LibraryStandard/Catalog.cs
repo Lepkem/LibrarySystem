@@ -42,6 +42,10 @@
             return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="isbn"></param>
         public  void AddExistingBook(string isbn)
         {
             Book book = SearchBookByIsbn(isbn).First();
@@ -157,20 +161,32 @@
             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Book> GetBookList()
         {
             return books;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newbooks"></param>
         public void SetBookList(List<Book> newbooks)
         {
             books = newbooks;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void DeleteAllBooks()
         {
             books.Clear();
         }
+
     }
 }
 

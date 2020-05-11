@@ -123,5 +123,23 @@
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="book"></param>
+        public void MakeUnavailable(Book book)
+        {
+            book.IsAvailable = false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="book"></param>
+        public void MakeAvailable(Book book)
+        {
+            book.IsAvailable = true;
+        }
+
     }
 }   
