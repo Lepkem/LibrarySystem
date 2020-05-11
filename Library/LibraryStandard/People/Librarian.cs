@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LibraryStandard
+﻿namespace LibraryStandard.People
 {
-    using Library;
-
-    class Librarian : Library.Person
+    /*
+    class Librarian : Person
     {
         public Librarian(string firstname, string surname, FunctionalRole role)
             : base(firstname, surname, role)
@@ -30,4 +23,5 @@ namespace LibraryStandard
             return $"LIB{firstname[0]}{surname}";
         }
     }
+*/
 }

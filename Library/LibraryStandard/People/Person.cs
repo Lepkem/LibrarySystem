@@ -1,11 +1,11 @@
-﻿namespace Library
+﻿namespace LibraryStandard.People
 {
-    using System;
+    public class Person
+    {
 
-    using Library.Interfaces;
+    }
 
-    using LibraryStandard;
-
+    /*
     public class Person : IPerson
     {
         // property of th above type within the person class 
@@ -155,4 +155,5 @@
             return $"{this.Firstname} {this.Surname}";
         }
     }
+*/
 }

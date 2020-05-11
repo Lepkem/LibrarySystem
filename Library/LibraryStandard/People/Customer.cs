@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibraryStandard.Person
+namespace LibraryStandard.People
 {
-    using Library;
-
+    /* People.People
     class Customer : Person
     {
         public Customer(string firstname, string surname, FunctionalRole role)
@@ -25,4 +24,5 @@ namespace LibraryStandard.Person
         {
         }
     }
+*/
 }

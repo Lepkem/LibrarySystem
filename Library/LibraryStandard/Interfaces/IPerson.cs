@@ -1,8 +1,10 @@
-﻿namespace Library.Interfaces
+﻿namespace LibraryStandard.Interfaces
 {
+    using LibraryStandard.People;
+
     public interface IPerson
     {
-        bool IsRole(Person.FunctionalRole role);
+//bool IsRole(Person.FunctionalRole role);
         string ShowCredentials(Person person);
         string ShowEmail(Person person);
         string ShowAddress(Person person);

@@ -1,4 +1,4 @@
-﻿namespace LibraryStandard.Interfaces
+﻿namespace LibraryStandard.Helpers
 {
     public interface IStandardMessages
     {

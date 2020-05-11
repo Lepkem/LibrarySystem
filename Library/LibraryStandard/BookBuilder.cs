@@ -3,8 +3,6 @@
     using System;
     using System.Data;
 
-    using Library;
-
     using Newtonsoft.Json;
 
     public class BookBuilder

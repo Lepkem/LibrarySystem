@@ -4,8 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using Library;
-
     using LibraryStandard.Helpers;
 
     public class Program
@@ -145,14 +143,14 @@
     .Add("Create a backup of the books", () =>
     {
         Console.WriteLine(@"Choose a filepath, for an instance ''.\Backups\Bookbackup2.json''");
-        BackUp.Create(Console.ReadLine());
+        BackUp.Instance.Create(Console.ReadLine());
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Load a backup of the books to the current program.", () =>
     {
         Console.WriteLine(@"Choose a filepath, for an instance ''.\Backups\Bookbackup2.json''");
-        BackUp.RestoreFromBackup<List<Book>>(Console.ReadLine());
+        BackUp.Instance.RestoreFromBackup<List<Book>>(Console.ReadLine());
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
     })

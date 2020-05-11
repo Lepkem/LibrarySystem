@@ -1,4 +1,4 @@
-﻿namespace Library.Interfaces
+﻿namespace LibraryStandard.Interfaces
 {
     public interface IPublicLibrary
     {

@@ -1,16 +1,10 @@
-﻿namespace Library
+﻿namespace LibraryStandard
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
 
-    using Library.Interfaces;
-
-    using LibraryStandard;
     using LibraryStandard.Helpers;
-
-    using Newtonsoft.Json;
 
     public sealed class Catalog : ICatalog
     {

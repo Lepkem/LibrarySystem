@@ -4,7 +4,6 @@
 
     public interface IDataOperator
     {
-        DataOperator Instance { get; }
 
         T DeserializeJson<T>(string strValue);
 

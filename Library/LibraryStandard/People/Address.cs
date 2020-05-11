@@ -1,4 +1,4 @@
-﻿namespace LibraryStandard
+﻿namespace LibraryStandard.People
 {
     public class Address
     {

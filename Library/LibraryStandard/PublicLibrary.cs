@@ -1,8 +1,6 @@
-﻿namespace Library
+﻿namespace LibraryStandard
 {
     using System.Collections.Generic;
-
-    using Library.Interfaces;
 
     using LibraryStandard.Helpers;
 
@@ -12,5 +10,6 @@
         {
             Catalog.Instance.SetBookList(DataOperator.Instance.DeserializeJson<List<Book>>(DataOperator.Instance.ReadFromFile(@"Data\Books.json")));
         }
+
     }
 }

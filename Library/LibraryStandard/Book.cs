@@ -1,14 +1,12 @@
-﻿namespace Library
+﻿namespace LibraryStandard
 {
     #region
 
     using System;
-    using System.Reflection;
 
-    using Library.Interfaces;
+    using LibraryStandard.Interfaces;
 
     using Newtonsoft.Json;
-    
 
     #endregion
 
@@ -22,7 +20,7 @@
         {
             ID = Guid.NewGuid().ToString();
             IsAvailable = true;
-            AvailableWhen = DateTime.Now;
+            ReturnDate = DateTime.Now;
            //ISBN = GenerateISBN();
             
         }
@@ -52,7 +50,7 @@
 
         public bool IsAvailable { get; protected set; }     //NEEDS TO BE ADDED TO JSON
 
-        public DateTime AvailableWhen { get; protected set; } //NEEDS TO BE ADDED TO JSON
+        public DateTime ReturnDate { get; protected set; } //NEEDS TO BE ADDED TO JSON
 
         /// <summary>
         /// 
@@ -89,7 +87,7 @@
         /// <summary>
         /// ChangeImage searches through Books and changes image of the books with given imageurl
         /// </summary>
-        private bool ChangeImage(string imageurl)
+        public bool ChangeImage(string imageurl)
         {
             throw new NotImplementedException();
         }
@@ -121,7 +119,7 @@
         /// <summary>
         /// ChangeLink searches through Books and changes Link of the books with a given link
         /// </summary>
-        private bool ChangeLink(string link)
+        public bool ChangeLink(string link)
         {
             throw new NotImplementedException();
         }

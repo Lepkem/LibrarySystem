@@ -1,4 +1,4 @@
-﻿namespace LibraryStandard
+﻿namespace LibraryStandard.Helpers
 {
     public static class Constants
     {
