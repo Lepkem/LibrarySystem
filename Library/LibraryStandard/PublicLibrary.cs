@@ -4,7 +4,7 @@
 
     using LibraryStandard.Helpers;
 
-    public class PublicLibrary 
+    public class PublicLibrary
     {
         public static void Init()
         {

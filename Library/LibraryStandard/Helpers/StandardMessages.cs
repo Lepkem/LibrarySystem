@@ -74,7 +74,13 @@
 
         public void NewLine()
         {
-            Console.WriteLine($"\n");
+            Console.WriteLine("");
+        }
+
+        public string GetInputForParam(string forParameter)
+        {
+            Console.WriteLine($"Please enter a {forParameter}.");
+            return Console.ReadLine();
         }
 
         /// <summary>

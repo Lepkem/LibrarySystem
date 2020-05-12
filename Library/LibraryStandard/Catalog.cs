@@ -8,7 +8,7 @@
 
     public sealed class Catalog : ICatalog
     {
-        private static readonly Catalog instance = new Catalog();
+        private static readonly Catalog _instance = new Catalog();
 
         // Explicit static constructor to tell C# compiler  
         // not to mark type as beforefieldinit  
@@ -24,7 +24,7 @@
         {
             get
             {
-                return instance;
+                return _instance;
             }
         }
 

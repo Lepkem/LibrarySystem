@@ -18,7 +18,7 @@
         /// </summary>
         public Book()
         {
-            ID = Guid.NewGuid().ToString();
+            ID = $"BID{Guid.NewGuid()}";
             IsAvailable = true;
             //ISBN = GenerateISBN();
             
@@ -97,22 +97,16 @@
         /// </summary>
         public void ShowBookProp()
         {
-            Console.WriteLine($"The title:");
-            Console.WriteLine($"{Title}");
-            Console.WriteLine($"The name of the author:");
-            Console.WriteLine($"{AuthorName}");
-            Console.WriteLine($"The release year:");
-            Console.WriteLine($"{Year}");
-            Console.WriteLine($"The amount of pages:");
-            Console.WriteLine($"{Pages}");
-            Console.WriteLine($"The image link:");
-            Console.WriteLine($"{ImageLink}");
-            Console.WriteLine($"The link:");
-            Console.WriteLine($"{Link}");
-            Console.WriteLine($"The ISBN number:");
-            Console.WriteLine($"{ISBN}");
-            Console.WriteLine($"The ID of the book:");
-            Console.WriteLine($"{ID}");
+            Console.WriteLine($"\n*********** {this.GetType().ToString()} details **********");
+            Console.WriteLine($"The title:              {Title}");
+            Console.WriteLine($"The Name of the Author: {AuthorName}");
+            Console.WriteLine($"The release year:       {Year}");
+            Console.WriteLine($"The amount of pages:    {Pages}");
+            Console.WriteLine($"The image link:         {ImageLink}");
+            Console.WriteLine($"The link:               {Link.Trim()}");
+            Console.WriteLine($"The ISBN number:        {ISBN}");
+            Console.WriteLine($"The ID of the book:     {ID}\n");
+
         }
 
         /// <summary>
@@ -127,19 +121,11 @@
         /// 
         /// </summary>
         /// <param name="book"></param>
-        public void MakeUnavailable(Book book)
+        public void SetAvailability(bool available)
         {
-            book.IsAvailable = false;
+            IsAvailable = available;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="book"></param>
-        public void MakeAvailable(Book book)
-        {
-            book.IsAvailable = true;
-        }
 
     }
 }   

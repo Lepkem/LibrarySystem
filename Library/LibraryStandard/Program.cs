@@ -15,34 +15,13 @@
             StandardMessages.Instance.WelcomeImage();
 
 
-            /*
-             *  return many ?
-             *  program ask how many books ? => 3
-             *  for each of the book ( until I have 3 ) ask for book ID ?
-             *  with the list of all bookIds call catalog to do its work
-             * :D 
-             */
-
             Catalog.Instance.GetBookList().ForEach(
                 b =>
                 {
                     b.GenerateISBN();
                 });
             
-            /*Console.WriteLine($"making a book by rocky");
-            Book testbook = new BookBuilder()
-                .WithAuthorName("Rocky Dexter")
-                .WithTitle("Love for Jordan")
-                .WithYear(2009)
-                .WithPages(5)
-                .WithLanguage("bird")
-                .WithImageLink("linklink")
-                .WithLink("link")
-                .WithCountry("Netherlands")
-                .CreateBook();
-
-            testbook.ShowBookProp();
-            Console.WriteLine($"{testbook.ISBN}");*/
+            
 
             StandardMessages.Instance.PressKeyToContinue();
 
@@ -163,12 +142,24 @@
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
     })
+    .Add("Borrow a book", () =>
+    {
+
+        string bid = StandardMessages.Instance.GetInputForParam("Book ID");
+        string persid = StandardMessages.Instance.GetInputForParam("Person ID");
+        LoanAdministration.Instance.BorrowOne(bid, persid); 
+
+        LoanAdministration.Instance.GetLoansList().ForEach(loan => loan.ShowLoanProp());
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
+
+    })
     .Add("Exit", () =>
     {
         Environment.Exit(0);
     });
 
-
+            
             #endregion
 
 

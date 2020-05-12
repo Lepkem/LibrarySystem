@@ -22,7 +22,13 @@
 
         }
 
-        public static LoanAdministration Instance;
+        public static LoanAdministration Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
 
         protected List<Loan> Loans = new List<Loan>();
 
@@ -32,6 +38,7 @@
         /// 
         /// </summary>
         /// <returns></returns>
+        /// todo this is program responsibility :O
         public List<string> MakeBookIDList()
         {
             List<string> BookIDList = new List<string>();
@@ -42,6 +49,7 @@
             {
                 for (int i = 1; i < borrowBooksAmount+1; i++)
                 {
+                    //todo consider ui from end user - maybe less info ?
                     Console.WriteLine($"Please enter a Book ID. \nYou are at book {i}/{borrowBooksAmount}");
                     BookIDList.Add(Console.ReadLine());
                 }
@@ -54,6 +62,9 @@
                 return new List<string>();
             }
         }
+        //not loanadministration's responsibility
+
+
 
         /// <summary>
         /// 
@@ -66,11 +77,15 @@
             Book book = Catalog.Instance.SearchBookByID(BookID);
             if(!(String.IsNullOrEmpty(book.AuthorName)) && !(String.IsNullOrEmpty(book.Title)))
             {
-                book.MakeUnavailable(book);
-                SetReturnDate(loan);
-                MakeLoanActive(loan);
+                book.SetAvailability(false);
+
+                loan.SetReturnDate();
+                loan.SetLoanStatus(true);
+
+                //todo create a method
                 loan.PersonID = PersonID;
                 loan.BookID = BookID;
+
                 Loans.Add(loan);
             }
             else
@@ -97,8 +112,7 @@
         /// 
         /// </summary>
         /// <param name="BookID"></param>
-        /// <param name="PersonID"></param>
-        public void ReturnOne(string BookID, string PersonID)
+        public void ReturnOne(string BookID)
         {
             var loanToRemove = Loans.Where(loan => loan.BookID.ToLower().Equals(BookID.ToLower()));
             // Are you sure ? For history purposes you should maybve think of somethjing else ?
@@ -114,6 +128,7 @@
         /// <param name="BookAmount"></param>
         /// <param name="BookID"></param>
         /// <param name="PersonID"></param>
+        /// todo remove book amount and move to list
         public void ReturnMany(int BookAmount, string BookID, string PersonID)
         {
             throw new NotImplementedException();
@@ -123,7 +138,7 @@
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Loan> GetLoanAdminList()
+        public List<Loan> GetLoansList()
         {
             return Loans;
         }
@@ -131,16 +146,16 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="newLoanAdmin"></param>
-        public void SetLoanAdministrationList(List<Loan> newLoanAdmin)
+        /// <param name="loans"></param>
+        public void SetLoansList(List<Loan> loans)
         {
-            Loans = newLoanAdmin;
+            Loans = loans;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public void DeleteLoanAdministrationList()
+        public void DeleteAllRecords()
         {
             //books.Clear();
             throw new NotImplementedException();
@@ -165,37 +180,5 @@
             return Loans.Where(loan => loan.PersonID.Equals(personID)).ToList();
         }
 
-        /// <summary>
-        /// MakeLoanActive is a private method to make the Loan active 
-        /// </summary>
-        /// <param name="loan"></param>
-        private void MakeLoanActive(Loan loan)
-        {
-            loan.IsActive = true;
-        }
-
-        /// <summary>
-        /// MakeLoanActive is a private method to make the Loan inactive after return
-        /// </summary>
-        /// <param name="loan"></param>
-        private void MakeLoanInactive(Loan loan)
-        {
-            loan.IsActive = false;
-        }
-
-        /// <summary>
-        /// SetReturnDate sets the return date of the book 
-        /// </summary>
-        /// <param name="loan"></param>
-        private void SetReturnDate(Loan loan)
-        {
-            loan.ReturnDate = DateTime.Now.AddDays(14);
-        }
-
     }
 }
-
-/*
- * LoanAdministration.Instance.Borrow(BookID,PersonID)
- *
- */
