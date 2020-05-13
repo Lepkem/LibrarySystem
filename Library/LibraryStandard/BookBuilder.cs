@@ -3,6 +3,8 @@
     using System;
     using System.Data;
 
+    using LibraryStandard.Helpers;
+
     using Newtonsoft.Json;
 
     public class BookBuilder
@@ -64,7 +66,16 @@
 
         public Book CreateBook()
         {
-            return _book;
+            if (!String.IsNullOrEmpty(_book.Title) && String.IsNullOrEmpty(_book.AuthorName))
+            {
+                return _book;
+            }
+            else
+            {
+                Console.WriteLine($"The book has no title or name of the author.");
+                StandardMessages.Instance.TryAgain();
+                return new Book();
+            }
         }
 
 

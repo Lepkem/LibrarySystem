@@ -28,6 +28,19 @@
             }
         }
 
+        public void PleaseAdd(string property, string target = "book")
+        {
+            Console.WriteLine($"Do you want to add a {property} to the {target}?");
+        }
+
+        public void WantToAdd(string property, string target = "book")
+        {
+            Console.WriteLine($"Do you want to add a {property} to the {target}?");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void TryAgain()
         {
             Console.WriteLine($"Please Try again.");
@@ -59,7 +72,10 @@
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
         public void ResultsCount(int input)
         {
             if (input > 1)
@@ -72,11 +88,19 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void NewLine()
         {
             Console.WriteLine("");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="forParameter"></param>
+        /// <returns></returns>
         public string GetInputForParam(string forParameter)
         {
             Console.WriteLine($"Please enter a {forParameter}.");

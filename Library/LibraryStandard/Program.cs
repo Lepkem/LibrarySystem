@@ -116,9 +116,39 @@
         StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Add a new book to the catalog", () => //needs attention!!
-                { 
-                    //Catalog.Instance.AddNewBook();
-                    StandardMessages.Instance.PressAnyKey();
+    { 
+        Book book = new Book();
+        StandardMessages.Instance.PleaseAdd("title");
+        string booktitle = Console.ReadLine();
+
+        StandardMessages.Instance.PleaseAdd("name of the author");
+        string bookauthor = Console.ReadLine();
+
+        StandardMessages.Instance.WantToAdd("year");
+        string bookyear = Console.ReadLine();
+
+        StandardMessages.Instance.WantToAdd("page number");
+        string pages = Console.ReadLine();
+
+        StandardMessages.Instance.WantToAdd("country");
+        string bookcountry = Console.ReadLine();
+
+        StandardMessages.Instance.WantToAdd("link");
+        string booklink = Console.ReadLine();
+
+        StandardMessages.Instance.WantToAdd("link of the image");
+        string imagelink = Console.ReadLine();
+
+        StandardMessages.Instance.WantToAdd("language");
+        string booklanguage = Console.ReadLine();
+
+
+
+        
+        Catalog.Instance.AddNewBook();
+
+
+        StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Add an existing book to the catalog", () =>
