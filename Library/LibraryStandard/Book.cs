@@ -30,11 +30,11 @@
         [JsonProperty("country")]
         public string Country ;                      //from JSON
         [JsonProperty("imageLink")]
-        public string ImageLink { get; protected set; }     //from JSON
+        public string ImageLink { get; set; }     //from JSON
         [JsonProperty("language")]
         public string Language ;                     //from JSON
         [JsonProperty("link")]
-        public string Link { get; protected set; }          //from JSON
+        public string Link { get; set; }          //from JSON
         [JsonProperty("pages")]
         public uint Pages ;                          //from JSON
         [JsonProperty("title")]

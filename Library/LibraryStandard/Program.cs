@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Authentication.ExtendedProtection;
 
     using LibraryStandard.Helpers;
 
@@ -37,7 +38,7 @@
     })
     .Add("View all the books", () =>
     {
-        Catalog.Instance.GetBookList();
+        Catalog.Instance.GetBookList().OrderByDescending(o=>o.Year).ToList().ForEach(b => b.ShowBookProp());
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
     })
@@ -67,9 +68,11 @@
         StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Search a book by title", () => //submenu
-                {
+    {
         StandardMessages.Instance.WriteInputBelow();
-        Catalog.Instance.SearchBookByTitle(Console.ReadLine());
+        var searchRes = Catalog.Instance.SearchBookByTitle(Console.ReadLine());
+        StandardMessages.Instance.ResultsCount(searchRes.Count());
+        searchRes.ForEach(book => book.ShowBookProp());
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
     })
@@ -117,35 +120,23 @@
     })
     .Add("Add a new book to the catalog", () => //needs attention!!
     { 
-        Book book = new Book();
-        StandardMessages.Instance.PleaseAdd("title");
-        string booktitle = Console.ReadLine();
+       // Book book = new Book();
+        BookBuilder bb = new BookBuilder();
+        bb.WithTitle(StandardMessages.Instance.GetInputForParam("title"))
+            .WithAuthorName(StandardMessages.Instance.GetInputForParam("name of the author"))
+            .WithYear(StandardMessages.Instance.GetInputForParam("year"))
+            .WithPages(StandardMessages.Instance.GetInputForParam("pages"))
+            .WithCountry(StandardMessages.Instance.GetInputForParam("country"))
+            .WithLink(StandardMessages.Instance.GetInputForParam("link"))
+            .WithImageLink(StandardMessages.Instance.GetInputForParam("link of the image"))
+            .WithLanguage(StandardMessages.Instance.GetInputForParam("language"));
 
-        StandardMessages.Instance.PleaseAdd("name of the author");
-        string bookauthor = Console.ReadLine();
-
-        StandardMessages.Instance.WantToAdd("year");
-        string bookyear = Console.ReadLine();
-
-        StandardMessages.Instance.WantToAdd("page number");
-        string pages = Console.ReadLine();
-
-        StandardMessages.Instance.WantToAdd("country");
-        string bookcountry = Console.ReadLine();
-
-        StandardMessages.Instance.WantToAdd("link");
-        string booklink = Console.ReadLine();
-
-        StandardMessages.Instance.WantToAdd("link of the image");
-        string imagelink = Console.ReadLine();
-
-        StandardMessages.Instance.WantToAdd("language");
-        string booklanguage = Console.ReadLine();
-
-
-
-        
-        Catalog.Instance.AddNewBook();
+        Book bk;
+        if ((bk = bb.CreateBook()) != null)
+        {
+            bk.ShowBookProp();
+            Catalog.Instance.AddNewBook(bk);
+        }
 
 
         StandardMessages.Instance.PressAnyKey();
