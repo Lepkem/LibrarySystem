@@ -59,7 +59,7 @@
                 .WithImageLink(book.ImageLink)
                 .WithLink(book.Link)
                 .WithCountry(book.Country)
-                .CreateBook());
+                .Create());
         }
 
         /// <summary>
@@ -102,7 +102,7 @@
             }
             catch (Exception )
             {
-                StandardMessages.Instance.NoSearchResults();
+                StandardMessages.NoSearchResults();
                 return new List<Book>();
             }
         }
@@ -121,7 +121,7 @@
             }
             catch (Exception)
             {
-                StandardMessages.Instance.NoSearchResults();
+                StandardMessages.NoSearchResults();
                 return new Book();
             }
         }
@@ -137,7 +137,7 @@
             }
             catch (Exception)
             {
-                StandardMessages.Instance.NoSearchResults();
+                StandardMessages.NoSearchResults();
                 return new List<Book>();
             }
         }
@@ -155,7 +155,7 @@
             }
             catch (Exception )
             {
-                StandardMessages.Instance.NoSearchResults();
+                StandardMessages.NoSearchResults();
                 return new List<Book>();
             }
             

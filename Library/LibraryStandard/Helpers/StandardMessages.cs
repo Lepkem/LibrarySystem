@@ -5,34 +5,15 @@ using LibraryStandard.Interfaces;
 
 namespace LibraryStandard.Helpers
 {
-    public sealed class StandardMessages : IStandardMessages
+    public static class StandardMessages
     {
-        private static readonly StandardMessages instance = new StandardMessages();
-
-        static StandardMessages()
-        {
-
-        }
-
-        private StandardMessages()
-        {
-
-        }
-
-        public static StandardMessages Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="property"></param>
         /// <param name="target"></param>
-        public void PleaseAdd(string property, string target = "book")
+        public static void PleaseAdd(string property, string target = "book")
         {
             Console.WriteLine($"Do you want to add a {property} to the {target}?");
         }
@@ -42,7 +23,7 @@ namespace LibraryStandard.Helpers
         /// </summary>
         /// <param name="property"></param>
         /// <param name="target"></param>
-        public void WantToAdd(string property, string target = "book")
+        public static void WantToAdd(string property, string target = "book")
         {
             Console.WriteLine($"Do you want to add a {property} to the {target}?");
         }
@@ -50,7 +31,7 @@ namespace LibraryStandard.Helpers
         /// <summary>
         /// TryAgain displays a try again message 
         /// </summary>
-        public void TryAgain()
+        public static void TryAgain()
         {
             Console.WriteLine($"Please Try again.");
         }
@@ -58,7 +39,7 @@ namespace LibraryStandard.Helpers
         /// <summary>
         /// NoSearchResults displays that there were no results
         /// </summary>
-        public void NoSearchResults()
+        public static void NoSearchResults()
         {
             Console.WriteLine($"Sorry, no search results were found with this input.");
         }
@@ -67,7 +48,7 @@ namespace LibraryStandard.Helpers
         /// AreYouSure asks for yes or no and returns bool
         /// </summary>
         /// <returns></returns>
-        public bool AreYouSure()
+        public static bool AreYouSure()
         {
             Console.WriteLine("Are you sure?\n Please enter yes or no.");
             string yesorno = Console.ReadLine();
@@ -85,7 +66,7 @@ namespace LibraryStandard.Helpers
         /// ResultsCount displays the amount of search results
         /// </summary>
         /// <param name="input"></param>
-        public void ResultsCount(int input)
+        public static void ResultsCount(int input)
         {
             if (input > 1)
             {
@@ -97,20 +78,13 @@ namespace LibraryStandard.Helpers
             }
         }
 
-        /// <summary>
-        /// NewLine
-        /// </summary>
-        public void NewLine()
-        {
-            Console.WriteLine("");
-        }
 
         /// <summary>
         /// GetInputForParam displanys a "please enter a "{}"
         /// </summary>
         /// <param name="forParameter"></param>
         /// <returns></returns>
-        public string GetInputForParam(string forParameter)
+        public static string GetInputForParam(string forParameter)
         {
             Console.WriteLine($"Please enter a {forParameter}.");
             return Console.ReadLine();
@@ -119,14 +93,14 @@ namespace LibraryStandard.Helpers
         /// <summary>
         /// WriteInputBelow prints a request of input
         /// </summary>
-        public void WriteInputBelow()
+        public static void WriteInputBelow()
         {
             Console.WriteLine($"Please write your input below.\n \n");
         }
         /// <summary>
         /// EnterNumber prints a request of input of number
         /// </summary>
-        public void EnterNumber()
+        public static void EnterNumber()
         {
             Console.WriteLine($"Please only enter a number!");
         }
@@ -134,7 +108,7 @@ namespace LibraryStandard.Helpers
         /// <summary>
         /// GivenOptions prints a request of input of given options
         /// </summary>
-        public void GivenOptions()
+        public static void GivenOptions()
         {
             Console.WriteLine($"Only choose from the given options.");
         }
@@ -143,7 +117,7 @@ namespace LibraryStandard.Helpers
         /// FilePathError shows path error message and with input of filepath can be specified
         /// </summary>
         /// <param name="filePath"></param>
-        public void FilePathError(string filePath = "")
+        public static void FilePathError(string filePath = "")
         {
             Console.WriteLine($"Oops! Something went wrong. {filePath} was not found.");
         }
@@ -151,7 +125,7 @@ namespace LibraryStandard.Helpers
         /// <summary>
         /// PressAnyKey prints to press any key
         /// </summary>
-        public void PressAnyKey()
+        public static void PressAnyKey()
         {
             Console.WriteLine($"Press any key to continue.");
         }
@@ -159,7 +133,7 @@ namespace LibraryStandard.Helpers
         /// <summary>
         /// PressKeyToContinue requires you to press any key and after that clears the screen.
         /// </summary>
-        public void PressKeyToContinue()
+        public static void PressKeyToContinue()
         {
             Console.Write($">");
             Console.ReadLine();
@@ -169,7 +143,7 @@ namespace LibraryStandard.Helpers
         /// <summary>
         /// WelcomeImage prints a welcome image from source https://www.asciiart.eu/books/books
         /// </summary>
-        public void WelcomeImage()
+        public static void WelcomeImage()
         {
             Console.WriteLine(@"  ____________________________________________________");
             Console.WriteLine(@"  |____________________________________________________|");

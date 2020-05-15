@@ -50,7 +50,7 @@
             }
             catch (Exception )
             {
-                StandardMessages.Instance.FilePathError(filepath);
+                StandardMessages.FilePathError(filepath);
             }
 
 
@@ -69,7 +69,7 @@
             }
             catch (Exception )
             {
-                StandardMessages.Instance.FilePathError(filepath);
+                StandardMessages.FilePathError(filepath);
             }
             
         }

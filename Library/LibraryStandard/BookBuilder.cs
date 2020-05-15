@@ -95,7 +95,7 @@
             else
             {
                 Console.WriteLine($"The book has no title or name of the author.");
-                StandardMessages.Instance.TryAgain();
+                StandardMessages.TryAgain();
                 return null;
             }
         }

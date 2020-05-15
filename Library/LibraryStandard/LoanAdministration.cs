@@ -56,8 +56,8 @@
             }
             else
             {
-                StandardMessages.Instance.NoSearchResults();
-                StandardMessages.Instance.TryAgain();
+                StandardMessages.NoSearchResults();
+                StandardMessages.TryAgain();
             }
         }
 
@@ -85,7 +85,7 @@
                 var loanToInactivate = Loans.First(loan => loan.BookID.ToLower().Equals(BookID.ToLower()));
                 if (loanToInactivate.ReturnDate > DateTime.Now)
                 {
-                    Console.WriteLine($"Please pay a fine of €{3*(loanToInactivate.DaysTooLate())}");
+                    Console.WriteLine($"Please pay a fine of €{CreateFine(loanToInactivate.DaysTooLate())}");
                 }
                 Book bookToActivate = Catalog.Instance.SearchBookByID(BookID);
                 bookToActivate.SetAvailability(true);
@@ -93,7 +93,7 @@
             }
             catch (Exception e)
             {
-                StandardMessages.Instance.TryAgain();
+                StandardMessages.TryAgain();
                 Console.WriteLine(e);
                 throw;
             }
@@ -105,7 +105,6 @@
         /// <param name="BookAmount"></param>
         /// <param name="BookID"></param>
         /// <param name="PersonID"></param>
-        /// todo remove book amount and move to list
         public void ReturnMany(List<string> BookID)
         {
             foreach (string bookID in BookID)
@@ -161,7 +160,11 @@
             return Loans.Where(loan => loan.PersonID.Equals(personID)).ToList();
         }
 
-        //todo daystoolate createfine function
+        private int CreateFine(int daysTooLate)
+        {
+            return daysTooLate * 3;
+        }
+        
 
         
     }
