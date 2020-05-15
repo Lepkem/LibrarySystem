@@ -126,6 +126,17 @@
             IsAvailable = available;
         }
 
+        public bool ValidateBook()
+        {
+            if (String.IsNullOrWhiteSpace(Title) | String.IsNullOrWhiteSpace(AuthorName) | String.IsNullOrWhiteSpace(ID))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
     }
 }   

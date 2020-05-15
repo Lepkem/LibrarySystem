@@ -1,11 +1,10 @@
-﻿namespace LibraryStandard.Helpers
+﻿using System;
+using System.ComponentModel;
+using System.Dynamic;
+using LibraryStandard.Interfaces;
+
+namespace LibraryStandard.Helpers
 {
-    using System;
-    using System.ComponentModel;
-    using System.Dynamic;
-
-    using LibraryStandard.Interfaces;
-
     public sealed class StandardMessages : IStandardMessages
     {
         private static readonly StandardMessages instance = new StandardMessages();
@@ -28,18 +27,28 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="target"></param>
         public void PleaseAdd(string property, string target = "book")
-        {
-            Console.WriteLine($"Do you want to add a {property} to the {target}?");
-        }
-
-        public void WantToAdd(string property, string target = "book")
         {
             Console.WriteLine($"Do you want to add a {property} to the {target}?");
         }
 
         /// <summary>
         /// 
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="target"></param>
+        public void WantToAdd(string property, string target = "book")
+        {
+            Console.WriteLine($"Do you want to add a {property} to the {target}?");
+        }
+
+        /// <summary>
+        /// TryAgain displays a try again message 
         /// </summary>
         public void TryAgain()
         {
@@ -47,7 +56,7 @@
         }
 
         /// <summary>
-        /// 
+        /// NoSearchResults displays that there were no results
         /// </summary>
         public void NoSearchResults()
         {
@@ -55,7 +64,7 @@
         }
 
         /// <summary>
-        /// 
+        /// AreYouSure asks for yes or no and returns bool
         /// </summary>
         /// <returns></returns>
         public bool AreYouSure()
@@ -73,7 +82,7 @@
         }
 
         /// <summary>
-        /// 
+        /// ResultsCount displays the amount of search results
         /// </summary>
         /// <param name="input"></param>
         public void ResultsCount(int input)
@@ -89,7 +98,7 @@
         }
 
         /// <summary>
-        /// 
+        /// NewLine
         /// </summary>
         public void NewLine()
         {
@@ -97,7 +106,7 @@
         }
 
         /// <summary>
-        /// 
+        /// GetInputForParam displanys a "please enter a "{}"
         /// </summary>
         /// <param name="forParameter"></param>
         /// <returns></returns>

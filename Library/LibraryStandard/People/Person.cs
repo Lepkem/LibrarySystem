@@ -1,36 +1,68 @@
 ﻿namespace LibraryStandard.People
 {
+    using System;
+    
     using LibraryStandard.Interfaces;
 
-    public class Person : IPerson
+    public class Person 
     {
-        public string ID; 
-
-
-        public string GetCredentials(Person person)
+        public Person()
         {
-            throw new System.NotImplementedException();
+            ID = "PID" + Guid.NewGuid();
+        }
+        public string ID { get; }
+        //public Address Address { get; set; }
+        public string Firstname { get; set; }
+        public string Surname { get; set; }
+        public Gend Gender { get; set; }
+        public string EmailAddress { get; set; }
+        public string TelephoneNumber { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string StreetnumberAdd { get; set; }
+        public string Streetnumber { get; set; }
+        public string StreetName { get; set; }
+        public string ZipCode { get; set; }
+        public string City { get; set; }
+        public enum Gend
+        {
+            Unknown,
+            Male,
+            Female
         }
 
-        public string GetEmail(Person person)
+        public bool ValidatePerson()
         {
-            throw new System.NotImplementedException();
+            if (String.IsNullOrWhiteSpace(Username) | String.IsNullOrWhiteSpace(Password) | String.IsNullOrWhiteSpace(ID) | String.IsNullOrWhiteSpace(Firstname)
+                | String.IsNullOrWhiteSpace(Surname))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
-        public string GetAddress(Person person)
+        public void ShowPersonProps()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine($"\n*********** {this.GetType().ToString()} details **********");
+            Console.WriteLine($"First name:             {Firstname}");
+            Console.WriteLine($"Last name:              {Surname}");
+            Console.WriteLine($"Person ID:              {ID}");
+            Console.WriteLine($":Username               {Username}");
+            Console.WriteLine($"\nGender:               {Gender}");
+            Console.WriteLine($"Email Address           {EmailAddress}");
+            Console.WriteLine($"Telephone number:       {TelephoneNumber}");
+            Console.WriteLine($"Street number:          {Streetnumber}");
+            Console.WriteLine($"Street number addition: {StreetnumberAdd}");
+            Console.WriteLine($"Street name:            {StreetName}");
+            Console.WriteLine($"Zip code:               {ZipCode}");
+            Console.WriteLine($"City:                   {City}");
         }
 
-        public string GetTelNumber(Person person)
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public string GetFullName()
-        {
-            throw new System.NotImplementedException();
-        }
+
     }
 
     /*
@@ -78,23 +110,7 @@
             EmailAddress = emailAddress;
             TelephoneNumber = telephoneNumber;
         }
-
-        public Address Address { get; private set; }
-        protected string ID { get; }
-        protected string Firstname { get; set; }
-        protected string Surname { get; set; }
-        protected Gend Gender { get; set; }
-
-        public enum Gend
-        {
-            Unknown,
-            Male,
-            Female
-            
-        }
-
-        protected string EmailAddress { get; set; }
-        protected string TelephoneNumber { get; set; }
+        
         protected readonly FunctionalRole _role;
 
         public enum FunctionalRole
@@ -104,8 +120,7 @@
             Author
         }
 
-        public string Username { get; set; }
-        public string Password { get; set; }
+    
 
         /// <summary>
         /// returns bool if instance role is param role
@@ -182,6 +197,31 @@
         {
             return $"{this.Firstname} {this.Surname}";
         }
+        public string GetCredentials(Person person)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetEmail(Person person)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetAddress(Person person)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetTelNumber(Person person)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string GetFullName()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 */
+
 }

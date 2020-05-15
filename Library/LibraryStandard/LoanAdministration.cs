@@ -32,40 +32,6 @@
 
         protected List<Loan> Loans = new List<Loan>();
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        /// todo this is program responsibility :O
-        public List<string> MakeBookIDList()
-        {
-            List<string> BookIDList = new List<string>();
-            int borrowBooksAmount;
-            Console.WriteLine($"How many books do you want to borrow?");
-            bool works = int.TryParse(Console.ReadLine(), out borrowBooksAmount);
-            if (works)
-            {
-                for (int i = 1; i < borrowBooksAmount+1; i++)
-                {
-                    //todo consider ui from end user - maybe less info ?
-                    Console.WriteLine($"Please enter a Book ID. \nYou are at book {i}/{borrowBooksAmount}");
-                    BookIDList.Add(Console.ReadLine());
-                }
-                return BookIDList;
-            }
-            else
-            {
-                StandardMessages.Instance.EnterNumber();
-                StandardMessages.Instance.TryAgain();
-                return new List<string>();
-            }
-        }
-        //not loanadministration's responsibility
-
-
-
         /// <summary>
         /// 
         /// </summary>
@@ -75,7 +41,7 @@
         {
             Loan loan = new Loan();
             Book book = Catalog.Instance.SearchBookByID(BookID);
-            if(!(String.IsNullOrEmpty(book.AuthorName)) && !(String.IsNullOrEmpty(book.Title)))
+            if(!(String.IsNullOrEmpty(book.AuthorName)) && !(String.IsNullOrEmpty(book.Title)) && book.IsAvailable == true)
             {
                 book.SetAvailability(false);
 
@@ -114,12 +80,23 @@
         /// <param name="BookID"></param>
         public void ReturnOne(string BookID)
         {
-            var loanToRemove = Loans.Where(loan => loan.BookID.ToLower().Equals(BookID.ToLower()));
-            // Are you sure ? For history purposes you should maybve think of somethjing else ?
-            //Loans.Remove(loanToRemove);
-            //book.IsAvailable = true;
-            //book.ReturnDate = DateTime.Now;
-            throw new NotImplementedException();
+            try
+            {
+                var loanToInactivate = Loans.First(loan => loan.BookID.ToLower().Equals(BookID.ToLower()));
+                if (loanToInactivate.ReturnDate > DateTime.Now)
+                {
+                    Console.WriteLine($"Please pay a fine of €{3*(loanToInactivate.DaysTooLate())}");
+                }
+                Book bookToActivate = Catalog.Instance.SearchBookByID(BookID);
+                bookToActivate.SetAvailability(true);
+                loanToInactivate.SetLoanStatus(false);
+            }
+            catch (Exception e)
+            {
+                StandardMessages.Instance.TryAgain();
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         /// <summary>
@@ -129,9 +106,13 @@
         /// <param name="BookID"></param>
         /// <param name="PersonID"></param>
         /// todo remove book amount and move to list
-        public void ReturnMany(int BookAmount, string BookID, string PersonID)
+        public void ReturnMany(List<string> BookID)
         {
-            throw new NotImplementedException();
+            foreach (string bookID in BookID)
+            {
+                ReturnOne(bookID);
+            }
+            
         }
 
         /// <summary>
@@ -180,5 +161,8 @@
             return Loans.Where(loan => loan.PersonID.Equals(personID)).ToList();
         }
 
+        //todo daystoolate createfine function
+
+        
     }
 }

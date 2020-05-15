@@ -4,11 +4,37 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Authentication.ExtendedProtection;
-
     using LibraryStandard.Helpers;
 
     public class Program
     {
+        /// <summary>
+        /// MakeBookIDList is a helper function and makes a list of bookIDs 
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> MakeBookIDList()
+        {
+            List<string> BookIDList = new List<string>();
+            int borrowBooksAmount;
+            Console.WriteLine($"How many books do you want to borrow?");
+            bool works = int.TryParse(Console.ReadLine(), out borrowBooksAmount);
+            if (works)
+            {
+                for (int i = 1; i < borrowBooksAmount + 1; i++)
+                {
+                    BookIDList.Add(StandardMessages.Instance.GetInputForParam("book ID"));
+                    Console.WriteLine($"{i}/{borrowBooksAmount}");
+                }
+                return BookIDList;
+            }
+            else
+            {
+                StandardMessages.Instance.EnterNumber();
+                StandardMessages.Instance.TryAgain();
+                return new List<string>();
+            }
+        }
+
         public static void Main(string[] args)
         {
             #region Init
@@ -31,11 +57,6 @@
             #region menu
 
             var menu = new EasyConsole.Menu()
-    .Add("Catalog", () =>
-    {
-        StandardMessages.Instance.PressAnyKey();
-        StandardMessages.Instance.PressKeyToContinue();
-    })
     .Add("View all the books", () =>
     {
         Catalog.Instance.GetBookList().OrderByDescending(o=>o.Year).ToList().ForEach(b => b.ShowBookProp());
@@ -82,19 +103,12 @@
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
     })
-    .Add("Login", () =>
-    {
-        StandardMessages.Instance.PressAnyKey();
-        StandardMessages.Instance.PressKeyToContinue();
-    })
     .Add("Help", () =>
     {
         Console.WriteLine($"This is the very elaborate help page of the library system.");
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
     })
-
-    //these are accessible only when logged in
     .Add("Delete a single book from the catalog", () =>
     {
         Console.WriteLine($"Please input the ID of the book that you want to delete from the catalog.");
@@ -106,7 +120,6 @@
 
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
-
     })
     .Add("Delete all books from the catalog", () =>
     {
@@ -119,8 +132,7 @@
         StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Add a new book to the catalog", () => //needs attention!!
-    { 
-       // Book book = new Book();
+    {
         BookBuilder bb = new BookBuilder();
         bb.WithTitle(StandardMessages.Instance.GetInputForParam("title"))
             .WithAuthorName(StandardMessages.Instance.GetInputForParam("name of the author"))
@@ -138,13 +150,11 @@
             Catalog.Instance.AddNewBook(bk);
         }
 
-
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
     })
     .Add("Add an existing book to the catalog", () =>
     {
-
         Catalog.Instance.AddExistingBook(Console.ReadLine());
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
@@ -165,7 +175,6 @@
     })
     .Add("Borrow a book", () =>
     {
-
         string bid = StandardMessages.Instance.GetInputForParam("Book ID");
         string persid = StandardMessages.Instance.GetInputForParam("Person ID");
         LoanAdministration.Instance.BorrowOne(bid, persid); 
@@ -174,6 +183,25 @@
         StandardMessages.Instance.PressAnyKey();
         StandardMessages.Instance.PressKeyToContinue();
 
+    })
+    .Add("Borrow multiple books.", () =>
+    {
+        string persid = StandardMessages.Instance.GetInputForParam("Person ID");
+        var bookIdlist = MakeBookIDList();
+        LoanAdministration.Instance.BorrowMany(bookIdlist, persid);
+        StandardMessages.Instance.PressAnyKey();
+        StandardMessages.Instance.PressKeyToContinue();
+    })
+
+    .Add("Return a book", () =>
+    {
+        string bookid = StandardMessages.Instance.GetInputForParam(" book ID.");
+        LoanAdministration.Instance.ReturnOne(bookid);
+    })
+    .Add("Return multiple books", () =>
+    {
+        var bookIdList = MakeBookIDList();
+        LoanAdministration.Instance.ReturnMany(bookIdList);
     })
     .Add("Exit", () =>
     {

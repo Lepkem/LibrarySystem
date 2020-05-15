@@ -65,8 +65,9 @@
     <Compile Include="CatalogPerson.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\DataOperator.cs" />
-    <Compile Include="Helpers\IStandardMessages.cs" />
+    <Compile Include="Interfaces\IStandardMessages.cs" />
     <Compile Include="Helpers\StandardMessages.cs" />
+    <Compile Include="Interfaces\ILoan.cs" />
     <Compile Include="Interfaces\ILoanAdministration.cs" />
     <Compile Include="Interfaces\ICatalog.cs" />
     <Compile Include="Interfaces\IBackUp.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Catalog.cs" />
     <Compile Include="People\Customer.cs" />
     <Compile Include="People\Librarian.cs" />
+    <Compile Include="People\PersonBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Interfaces\IBook.cs" />
     <Compile Include="Interfaces\IPerson.cs" />

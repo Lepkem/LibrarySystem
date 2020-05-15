@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class Loan 
+    public class Loan : ILoan
     {
         public Loan()
         {
@@ -44,5 +44,9 @@
             Console.WriteLine($"Loan ID:       {ID}\n");
         }
 
+        public int DaysTooLate()
+        {
+            return ReturnDate.Day - DateTime.Now.Day;
+        }
     }
 }

@@ -80,9 +80,14 @@
             return this;
         }
 
-        public Book CreateBook()
+
+        /// <summary>
+        /// Create validates book, then generates isbn and returns the book
+        /// </summary>
+        /// <returns></returns>
+        public Book Create()
         {
-            if (!String.IsNullOrEmpty(_book.Title) && !String.IsNullOrEmpty(_book.AuthorName))
+            if (_book.ValidateBook())
             {
                 _book.GenerateISBN();
                 return _book;
@@ -95,21 +100,6 @@
             }
         }
 
-        public bool CreateValidateBook(out Book book)
-        {
-            if (!String.IsNullOrEmpty(_book.Title) && !String.IsNullOrEmpty(_book.AuthorName))
-            {
-                book = _book;
-                return true;
-            }
-            else
-            {
-                Console.WriteLine($"The book has no title or name of the author.");
-                StandardMessages.Instance.TryAgain();
-                book = null;
-                return false;
-            }
-        }
         
     }
 
