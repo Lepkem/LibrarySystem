@@ -33,7 +33,7 @@
         protected List<Loan> Loans = new List<Loan>();
 
         /// <summary>
-        /// 
+        /// BorrowOne takes in BookID and PersonID and handles necessary means to borrow a book.
         /// </summary>
         /// <param name="BookID"></param>
         /// <param name="PersonID"></param>
@@ -62,7 +62,7 @@
         }
 
         /// <summary>
-        /// 
+        /// BorrowMany takes in a list of bookIDs and one personID. Best used with helper function MakeBookIDList
         /// </summary>
         /// <param name="BookIDs"></param>
         /// <param name="PersonID"></param>
@@ -75,7 +75,7 @@
         }
 
         /// <summary>
-        /// 
+        /// ReturnOne takes the BookID and handles all necessary means to return a book 
         /// </summary>
         /// <param name="BookID"></param>
         public void ReturnOne(string BookID)
@@ -100,9 +100,8 @@
         }
 
         /// <summary>
-        /// 
+        /// ReturnMany takes in a list of bookIDs and one personID. Best used with helper function MakeBookIDList
         /// </summary>
-        /// <param name="BookAmount"></param>
         /// <param name="BookID"></param>
         /// <param name="PersonID"></param>
         public void ReturnMany(List<string> BookID)
@@ -115,7 +114,7 @@
         }
 
         /// <summary>
-        /// 
+        /// GetLoansList returns the list of loans in LoanAdminstration
         /// </summary>
         /// <returns></returns>
         public List<Loan> GetLoansList()
@@ -124,7 +123,7 @@
         }
 
         /// <summary>
-        /// 
+        /// SetLoansList takes a the list of loans to be the new version in LoanAdminstration
         /// </summary>
         /// <param name="loans"></param>
         public void SetLoansList(List<Loan> loans)
@@ -133,7 +132,7 @@
         }
 
         /// <summary>
-        /// 
+        /// DeleteAllRecords deletes all loans in the running program
         /// </summary>
         public void DeleteAllRecords()
         {
@@ -160,9 +159,14 @@
             return Loans.Where(loan => loan.PersonID.Equals(personID)).ToList();
         }
 
-        private int CreateFine(int daysTooLate)
+        /// <summary>
+        /// CreateFine calculates the hight of the fine, based on daysTooLate and multiplier
+        /// </summary>
+        /// <param name="daysTooLate"></param>
+        /// <returns></returns>
+        private int CreateFine(int daysTooLate, int multiplier =3)
         {
-            return daysTooLate * 3;
+            return daysTooLate * multiplier;
         }
         
 
