@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Security.Authentication.ExtendedProtection;
     using LibraryStandard.Helpers;
+    using LibraryStandard.People;
 
     public class Program
     {
@@ -143,13 +144,18 @@
             .WithImageLink(StandardMessages.GetInputForParam("link of the image"))
             .WithLanguage(StandardMessages.GetInputForParam("language"));
 
+        
+
         Book bk;
         if ((bk = bb.Create()) != null)
         {
             bk.ShowBookProp();
             Catalog.Instance.AddNewBook(bk);
         }
-
+        else
+        {
+            StandardMessages.TryAgain();
+        }
         StandardMessages.PressAnyKey();
         StandardMessages.PressKeyToContinue();
     })
@@ -202,6 +208,62 @@
     {
         var bookIdList = MakeBookIDList();
         LoanAdministration.Instance.ReturnMany(bookIdList);
+        
+    })
+    .Add("Add a Person", () =>
+    {
+        PersonBuilder pb = new PersonBuilder();
+        pb.WithFirstName(StandardMessages.GetInputForParam("first name"))
+            .WithLastName(StandardMessages.GetInputForParam("last name"))
+            .WithEmailAddress(StandardMessages.GetInputForParam("email address"))
+            .WithCity(StandardMessages.GetInputForParam("city of residence"))
+            .WithStreetName(StandardMessages.GetInputForParam("streetname"))
+            .WithStreetnumber(StandardMessages.GetInputForParam("house number"))
+            .WithStreetnumberAdd(StandardMessages.GetInputForParam("house number addition (optional)"))
+            .WithZipCode(StandardMessages.GetInputForParam("zipcode"))
+            .WithPassword(StandardMessages.GetInputForParam("password"));
+
+        Person newPerson;
+        if ((newPerson = pb.Create()) != null)
+        {
+            CatalogPerson.Instance.AddNewPerson(newPerson);
+            newPerson.ShowPersonProps();
+        }
+        else
+        {
+            StandardMessages.TryAgain();
+        }
+        StandardMessages.PressAnyKey();
+        StandardMessages.PressKeyToContinue();
+
+    })
+    .Add("Delete a person", () =>
+    {
+        string personId = StandardMessages.GetInputForParam("person ID");
+        StandardMessages.AreYouSure();
+        CatalogPerson.Instance.DeletePerson(personId);
+        StandardMessages.PressAnyKey();
+        StandardMessages.PressKeyToContinue();
+    })
+    .Add("Delete a book", () =>
+    {
+        string bookId = StandardMessages.GetInputForParam("book ID");
+        StandardMessages.AreYouSure();
+        Catalog.Instance.DeleteBook(bookId);
+        StandardMessages.PressAnyKey();
+        StandardMessages.PressKeyToContinue();
+    })
+    .Add("Search Person by name", () =>
+    {
+        Environment.Exit(0);
+    })
+    .Add("Search person by streetname", () =>
+    {
+        Environment.Exit(0);
+    })
+    .Add("Search person by ID", () =>
+    {
+        Environment.Exit(0);
     })
     .Add("Exit", () =>
     {
@@ -216,140 +278,249 @@
             {
                 menu.Display();
             }
-            
-           
-            // StandardMessages.WelcomeImage();
-            // StandardMessages.PressAnyKey();
-            
 
 
 
+        //    public abstract class Program
+        //{
+        //    protected string Title { get; set; }
 
-            /*
-            string StrBooks = DataOperator.ReadFromFile(Constants.BooksDataFile);
-            Console.WriteLine(StrBooks);
+        //    //public bool BreadcrumbHeader { get; private set; }
 
+            //protected Page CurrentPage
+            //{
+            //    get
+            //    {
+            //        return (History.Any()) ? History.Peek() : null;
+            //    }
+            //}
 
-            List<Book> BookList = new List<Book>();
-            BookList = DataOperator.DeserializeJson<List<Book>>(StrBooks);
-            BookList.First().ShowBookProp();
-            Catalog.Instance.SetBookList(BookList);
+            //private Dictionary<Type, Page> Pages { get; set; }
 
-            //DataOperator.WriteToFile(StrBooks, Constants.bookbackup2);
-            
+            //public Stack<Page> History { get; private set; }
 
-            Console.WriteLine($"adding the rocky book to the list of books");
-            Catalog.Instance.AddNewBook(testbook);
-            Console.WriteLine($"showing some props of the book as first book from the list");
-            Catalog.Instance.GetBookList().Last().ShowBookProp();
-            Console.WriteLine($"Now making a backup instance");
-            BackUp firstbackup = new BackUp();
-            Console.WriteLine($"now writing the serialised booklist to a file (making a backup)");
-            BackUp.Create(Constants.bookbackup2);
-            Console.WriteLine($"Showing props from restored backup list");
-            BackUp.RestoreFromBackup<List<Book>>(Constants.bookbackup2).First().ShowBookProp();
-            */
+            //public bool NavigationEnabled { get { return History.Count > 1; } }
 
+            //protected Program(string title, bool breadcrumbHeader)
+            //{
+            //    Title = title;
+            //    Pages = new Dictionary<Type, Page>();
+            //    History = new Stack<Page>();
+            //    BreadcrumbHeader = breadcrumbHeader;
+            //}
 
+            //public virtual void Run()
+            //{
+            //    try
+            //    {
+            //        Console.Title = Title;
 
+            //        CurrentPage.Display();
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Output.WriteLine(ConsoleColor.Red, e.ToString());
+            //    }
+            //    finally
+            //    {
+            //        if (Debugger.IsAttached)
+            //        {
+            //            Input.ReadString("Press [Enter] to exit");
+            //        }
+            //    }
+            //}
 
-
-
-
-
-
-            //List<Book> newbooklist = new List<Book>();
-            //newbooklist = DataOperator.Load<Book>("Data\\Books.json");
-
-            //BackUp firstbackup = new BackUp();
-            //firstbackup.Create(BackUp.backupnum.Backupnumber2);
-            /*List<Book> testlist= new List<Book>();
-            
-            testlist.Add(testbook);
-            firstbackup.TempCreateWritebackup(testlist);*/
-
-            
-
-
-            /*Console.WriteLine("Welcome User");
-            //catalog.LoadBookFile(@"Data\Books.json");
-            Book abc = new Book();
-            foreach (Book bk in Catalog.Instance.SearchBookByAuthor("Andersen"))
+            //public void AddPage(Page page)
             {
-                Console.WriteLine("Found a book :)");
-                bk.ShowBookProp();
-                abc = bk;
-            }
+                Type pageType = page.GetType();
 
-            Console.Write("before...");
-            Console.ReadLine();
-            
-            catalog.RemoveBook(catalog.SearchBookByID(abc.ID).ID);
+            //    if (Pages.ContainsKey(pageType))
+            //        Pages[pageType] = page;
+            //    else
+            //        Pages.Add(pageType, page);
+            //}
 
-            Console.Write("after...");
-            Console.ReadLine();*/
-            
-            /*
-            foreach (Book bk in catalog.SearchBookByAuthor("Andersen"))
-            {
-                Console.WriteLine("Found a book :)");
-                bk.ShowBookProp();
-            }
-            Console.Write(">");
-            Console.ReadLine();
+            //public void NavigateHome()
+            //{
+            //    while (History.Count > 1)
+            //        History.Pop();
 
-            BookBuilder Noordhoff = new BookBuilder();
-            Book JRaf_see_stuff = Noordhoff
-                                .WithAuthorName("JRAF")
-                                //.WithAvailability(true)
-                                .WithCountry("Netherlands")
-                                .WithLanguage("English")
-                                .WithPages(250)
-                                .WithYear(2018)
-                                .WithTitle("A whole life")
-                                .WithImageLink("home")
-                                .CreateBook();
+            //    Console.Clear();
+            //    CurrentPage.Display();
+            //}
 
-            Book new_book_one = new BookBuilder()
-                .WithAuthorName("Vincent Van Andersen")
-                .WithCountry("Netherlands")
-                .WithLanguage("English")
-                .WithPages(250)
-                .WithYear(2018)
-                .WithTitle("A whole life of me")
-                .WithImageLink("home")
-                .CreateBook();
+            //public T SetPage<T>() where T : Page
+            //{
+            //    Type pageType = typeof(T);
 
-            Book new_book_two = new BookBuilder()
-                .WithAuthorName("Vincent v. Andersen")
-                .WithCountry("Netherlands")
-                .WithLanguage("English")
-                .WithPages(250)
-                .WithYear(2018)
-                .WithTitle("A whole life of me")
-                .WithImageLink("home")
-                .CreateBook();
+            //    if (CurrentPage != null && CurrentPage.GetType() == pageType)
+    //                return CurrentPage as T;
 
-            JRaf_see_stuff.ShowBookProp();
+    //            // leave the current page
 
-            Console.Write(">");
-            Console.ReadLine();
+    //            // select the new page
+    //            Page nextPage;
+    //            if (!Pages.TryGetValue(pageType, out nextPage))
+    //                throw new KeyNotFoundException("The given page \"{0}\" was not present in the program".Format(pageType));
 
-            catalog.AddNewBook(JRaf_see_stuff);
+    //            // enter the new page
+    //            History.Push(nextPage);
 
-            Console.WriteLine("Looking for freshly added book :)");
-            foreach (Book book in catalog.SearchBookByAuthor("JRaf"))
-            {
-                Console.WriteLine("Found a book :)");
-                book.ShowBookProp();
-            }
+    //            return CurrentPage as T;
+    //        }
 
+    //        public T NavigateTo<T>() where T : Page
+    //        {
+    //            SetPage<T>();
+
+    //            Console.Clear();
+    //            CurrentPage.Display();
+    //            return CurrentPage as T;
+    //        }
+
+    //        public Page NavigateBack()
+    //        {
+    //            History.Pop();
+
+    //            Console.Clear();
+    //            CurrentPage.Display();
+    //            return CurrentPage;
+    //        }
+    //    }
+    //}
+
+    // StandardMessages.WelcomeImage();
+    // StandardMessages.PressAnyKey();
+
+
+
+
+
+    /*
+    string StrBooks = DataOperator.ReadFromFile(Constants.BooksDataFile);
+    Console.WriteLine(StrBooks);
+
+
+    List<Book> BookList = new List<Book>();
+    BookList = DataOperator.DeserializeJson<List<Book>>(StrBooks);
+    BookList.First().ShowBookProp();
+    Catalog.Instance.SetBookList(BookList);
+
+    //DataOperator.WriteToFile(StrBooks, Constants.bookbackup2);
+
+
+    Console.WriteLine($"adding the rocky book to the list of books");
+    Catalog.Instance.AddNewBook(testbook);
+    Console.WriteLine($"showing some props of the book as first book from the list");
+    Catalog.Instance.GetBookList().Last().ShowBookProp();
+    Console.WriteLine($"Now making a backup instance");
+    BackUp firstbackup = new BackUp();
+    Console.WriteLine($"now writing the serialised booklist to a file (making a backup)");
+    BackUp.Create(Constants.bookbackup2);
+    Console.WriteLine($"Showing props from restored backup list");
+    BackUp.RestoreFromBackup<List<Book>>(Constants.bookbackup2).First().ShowBookProp();
     */
 
 
 
 
 
-        }
+
+
+
+
+    //List<Book> newbooklist = new List<Book>();
+    //newbooklist = DataOperator.Load<Book>("Data\\Books.json");
+
+    //BackUp firstbackup = new BackUp();
+    //firstbackup.Create(BackUp.backupnum.Backupnumber2);
+    /*List<Book> testlist= new List<Book>();
+
+    testlist.Add(testbook);
+    firstbackup.TempCreateWritebackup(testlist);*/
+
+
+
+
+    /*Console.WriteLine("Welcome User");
+    //catalog.LoadBookFile(@"Data\Books.json");
+    Book abc = new Book();
+    foreach (Book bk in Catalog.Instance.SearchBookByAuthor("Andersen"))
+    {
+        Console.WriteLine("Found a book :)");
+        bk.ShowBookProp();
+        abc = bk;
+    }
+
+    Console.Write("before...");
+    Console.ReadLine();
+
+    catalog.RemoveBook(catalog.SearchBookByID(abc.ID).ID);
+
+    Console.Write("after...");
+    Console.ReadLine();*/
+
+    /*
+    foreach (Book bk in catalog.SearchBookByAuthor("Andersen"))
+    {
+        Console.WriteLine("Found a book :)");
+        bk.ShowBookProp();
+    }
+    Console.Write(">");
+    Console.ReadLine();
+
+    BookBuilder Noordhoff = new BookBuilder();
+    Book JRaf_see_stuff = Noordhoff
+                        .WithAuthorName("JRAF")
+                        //.WithAvailability(true)
+                        .WithCountry("Netherlands")
+                        .WithLanguage("English")
+                        .WithPages(250)
+                        .WithYear(2018)
+                        .WithTitle("A whole life")
+                        .WithImageLink("home")
+                        .CreateBook();
+
+    Book new_book_one = new BookBuilder()
+        .WithAuthorName("Vincent Van Andersen")
+        .WithCountry("Netherlands")
+        .WithLanguage("English")
+        .WithPages(250)
+        .WithYear(2018)
+        .WithTitle("A whole life of me")
+        .WithImageLink("home")
+        .CreateBook();
+
+    Book new_book_two = new BookBuilder()
+        .WithAuthorName("Vincent v. Andersen")
+        .WithCountry("Netherlands")
+        .WithLanguage("English")
+        .WithPages(250)
+        .WithYear(2018)
+        .WithTitle("A whole life of me")
+        .WithImageLink("home")
+        .CreateBook();
+
+    JRaf_see_stuff.ShowBookProp();
+
+    Console.Write(">");
+    Console.ReadLine();
+
+    catalog.AddNewBook(JRaf_see_stuff);
+
+    Console.WriteLine("Looking for freshly added book :)");
+    foreach (Book book in catalog.SearchBookByAuthor("JRaf"))
+    {
+        Console.WriteLine("Found a book :)");
+        book.ShowBookProp();
+    }
+
+*/
+
+
+
+
+
+}
     }
 }

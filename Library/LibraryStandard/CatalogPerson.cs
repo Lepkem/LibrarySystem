@@ -82,5 +82,29 @@
         {
             persons.Clear();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
+        public bool AddNewPerson(Person person)
+        {
+            persons.Add(person);
+            return true;
+        }
+
+        public bool DeletePerson(string personId)
+        {
+            persons.Remove(persons.Where(person => person.ID.Equals(personId)).First());
+            return true;
+        }
+
+        public List<Person> SearchPersonByName(string firstname, string lastname)
+        {
+            //only if !isnullorempty
+            return persons.Where(person => person.Firstname.Equals(firstname) || person.Surname.Equals(lastname)).ToList();
+        }
+
     }
 }

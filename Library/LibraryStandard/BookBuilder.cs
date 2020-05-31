@@ -82,7 +82,7 @@
 
 
         /// <summary>
-        /// Create validates book, then generates isbn and returns the book
+        /// Create returns a book with newly created isbn if validation was succesful, else null
         /// </summary>
         /// <returns></returns>
         public Book Create()

@@ -187,6 +187,12 @@
             books.Clear();
         }
 
+        public bool DeleteBook(string bookId)
+        {
+            books.Remove(books.Where(book => book.ID.Equals(bookId)).First());
+            return true;
+        }
+
     }
 }
 

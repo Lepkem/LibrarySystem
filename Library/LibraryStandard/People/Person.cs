@@ -44,24 +44,37 @@
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void ShowPersonProps()
         {
             Console.WriteLine($"\n*********** {this.GetType().ToString()} details **********");
             Console.WriteLine($"First name:             {Firstname}");
             Console.WriteLine($"Last name:              {Surname}");
             Console.WriteLine($"Person ID:              {ID}");
-            Console.WriteLine($":Username               {Username}");
+            Console.WriteLine($"Username:               {Username}");
+            Console.WriteLine($"Password:               {PasswordCensor()}");
             Console.WriteLine($"\nGender:               {Gender}");
             Console.WriteLine($"Email Address           {EmailAddress}");
             Console.WriteLine($"Telephone number:       {TelephoneNumber}");
-            Console.WriteLine($"Street number:          {Streetnumber}");
-            Console.WriteLine($"Street number addition: {StreetnumberAdd}");
+            Console.WriteLine($"House number:          {Streetnumber}");
+            Console.WriteLine($"House number addition: {StreetnumberAdd}");
             Console.WriteLine($"Street name:            {StreetName}");
             Console.WriteLine($"Zip code:               {ZipCode}");
             Console.WriteLine($"City:                   {City}");
         }
 
+        private string PasswordCensor()
+        {
+            string sensoredPassword = "";
+            foreach (char letter in Password)
+            {
+                sensoredPassword += "*";
+            }
 
+            return sensoredPassword;
+        }
 
     }
 

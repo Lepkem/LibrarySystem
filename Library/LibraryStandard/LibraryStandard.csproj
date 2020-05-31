@@ -75,6 +75,11 @@
     <Compile Include="Interfaces\IDataOperator.cs" />
     <Compile Include="LoanAdministration.cs" />
     <Compile Include="Loan.cs" />
+    <Compile Include="Menu\MainMenu.cs" />
+    <Compile Include="Menu\MenuPage.cs" />
+    <Compile Include="Menu\Page.cs" />
+    <Compile Include="Menu\SearchABook.cs" />
+    <Compile Include="Menu\SearchABookByAuthor.cs" />
     <Compile Include="People\Person.cs" />
     <Compile Include="People\Address.cs" />
     <Compile Include="Book.cs" />

@@ -13,8 +13,11 @@
            _person = new Person();
         }
 
-
-        public bool ValidatePerson()
+        /// <summary>
+        /// ValidatePerson private returns a bool
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidatePerson()
         {
             if (String.IsNullOrWhiteSpace(_person.Username) | String.IsNullOrWhiteSpace(_person.Password) | String.IsNullOrWhiteSpace(_person.ID) | String.IsNullOrWhiteSpace(_person.Firstname)
                 | String.IsNullOrWhiteSpace(_person.Surname))
@@ -88,7 +91,7 @@
         }
 
         /// <summary>
-        /// 
+        /// Create returns a person if validation was succesful, else null
         /// </summary>
         /// <returns></returns>
         public Person Create()
