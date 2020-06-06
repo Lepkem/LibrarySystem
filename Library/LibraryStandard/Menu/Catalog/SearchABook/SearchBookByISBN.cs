@@ -22,9 +22,10 @@
             List<Book> searchRes = LibraryStandard.Catalog.Instance.SearchBookByIsbn(Console.ReadLine());
             StandardMessages.ResultsCount(searchRes.Count());
             searchRes.ForEach(book => book.ShowBookProp());
+            StandardMessages.ResultsCount(searchRes.Count());
             StandardMessages.PressAnyKey();
             StandardMessages.PressKeyToContinue();
-            Program.NavigateHome();
+            Program.NavigateBack();
         }
     }
 }

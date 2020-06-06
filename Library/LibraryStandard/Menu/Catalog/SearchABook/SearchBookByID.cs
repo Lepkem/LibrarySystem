@@ -9,7 +9,7 @@
     public class SearchBookByID : Page
     {
         public SearchBookByID(Program program)
-            : base("Search a book by the ISBN", program)
+            : base("Search a book by the ID", program)
         {
         }
 
@@ -20,7 +20,7 @@
             LibraryStandard.Catalog.Instance.SearchBookByID(Console.ReadLine());
             StandardMessages.PressAnyKey();
             StandardMessages.PressKeyToContinue();
-            Program.NavigateHome();
+            Program.NavigateBack();
         }
     }
 }

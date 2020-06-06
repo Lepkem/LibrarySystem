@@ -8,7 +8,7 @@
     using LibraryStandard.Interfaces;
     using LibraryStandard.People;
 
-    public class LoanAdministration 
+    public class LoanAdministration : ILoanAdministration
     {
         private static readonly LoanAdministration _instance = new LoanAdministration();
 
@@ -136,8 +136,7 @@
         /// </summary>
         public void DeleteAllRecords()
         {
-            //books.Clear();
-            throw new NotImplementedException();
+            Loans.Clear();
         }
 
 
@@ -168,8 +167,32 @@
         {
             return daysTooLate * multiplier;
         }
-        
 
-        
+        /// <summary>
+        /// MakeBookIDList is a helper function and makes a list of bookIDs 
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> MakeBookIDList()
+        {
+            List<string> BookIDList = new List<string>();
+            int borrowBooksAmount;
+            Console.WriteLine($"How many books do you want to borrow?");
+            bool works = Int32.TryParse(Console.ReadLine(), out borrowBooksAmount);
+            if (works)
+            {
+                for (int i = 1; i < borrowBooksAmount + 1; i++)
+                {
+                    BookIDList.Add(StandardMessages.GetInputForParam("book ID"));
+                    Console.WriteLine($"{i}/{borrowBooksAmount}");
+                }
+                return BookIDList;
+            }
+            else
+            {
+                StandardMessages.EnterNumber();
+                StandardMessages.TryAgain();
+                return new List<string>();
+            }
+        }
     }
 }

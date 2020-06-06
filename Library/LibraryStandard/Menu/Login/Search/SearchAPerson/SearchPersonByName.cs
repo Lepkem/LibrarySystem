@@ -18,8 +18,7 @@
         public override void Display()
         {
             base.Display();
-            StandardMessages.WriteInputBelow();
-            List<Person> searchRes = CatalogPerson.Instance.SearchPersonByName(Console.ReadLine());
+            List<Person> searchRes = CatalogPerson.Instance.SearchPersonByName(StandardMessages.GetInputForParam("name"));
             StandardMessages.ResultsCount(searchRes.Count);
             searchRes.ForEach(person => person.ShowPersonProps());
             StandardMessages.PressAnyKey();

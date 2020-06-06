@@ -1,4 +1,9 @@
-﻿namespace LibraryStandard
+﻿using System;
+using System.Collections.Generic;
+
+using LibraryStandard.Helpers;
+
+namespace LibraryStandard
 {
     using System;
     using System.Collections.Generic;
@@ -9,6 +14,7 @@
 
     using LibraryStandard.Helpers;
     using LibraryStandard.Menu;
+    using LibraryStandard.Menu.Login;
     using LibraryStandard.People;
 
 
@@ -22,21 +28,35 @@
         {
             AddPage(new MainMenu(this));
 
-
-            AddPage(new Search(this));
+            AddPage(new Help(this));
+            AddPage(new LibraryInfo(this));
+            AddPage(new Menu.CatalogMenu(this));
+                AddPage(new ShowAllBooks(this));
+                AddPage(new SearchBook(this));
+                AddPage(new SearchBookByAuthor(this));
+                    AddPage(new SearchBookByISBN(this));
+                    AddPage(new SearchBookByID(this));
+                    AddPage(new SearchBookByTitle(this));
+            AddPage(new LoginMenu(this));
+                AddPage(new CatalogMenu(this));
+                AddPage(new LendOutBook(this));
+                AddPage(new LendOutManyBooks(this));
+                AddPage(new ReturnBook(this));
+                AddPage(new ReturnManyBooks(this));
                 AddPage(new SearchBook(this));
                     AddPage(new SearchBookByAuthor(this));
                     AddPage(new SearchBookByISBN(this));
                     AddPage(new SearchBookByID(this));
-                    AddPage(new Search());
-                AddPage(new SearchPerson(this));
-                    AddPage(new SearchPersonByID(this));
-                    AddPage(new SearchPersonByName(this));
+                    AddPage(new SearchBookByTitle(this));
                 AddPage(new SearchLoan(this));
                     AddPage(new SearchLoanByPerson(this));
                     AddPage(new SearchLoanByBook(this));
-            
-            
+                AddPage(new SearchPerson(this));
+                    AddPage(new SearchPersonByID(this));
+                    AddPage(new SearchPersonByName(this));
+                    AddPage(new SearchPersonByStreetname(this));
+
+
             //AddPage(new MenuSearchPerson(this));
             //AddPage((new LoginScreen(this)));
             SetPage<MainMenu>();
@@ -45,321 +65,24 @@
 
     class Runner
     {
+        
+
         static void Main(string[] args)
         {
+            PublicLibrary.Init();
+            StandardMessages.WelcomeImage();
+            StandardMessages.PressAnyKey();
+            StandardMessages.PressKeyToContinue();
+
+            Catalog.Instance.GetBookList().ForEach(
+                        b =>
+                        {
+                            b.GenerateISBN();
+                        });
             new DemoProgram().Run();
         }
     }
 }
-
-
-///// <summary>
-///// MakeBookIDList is a helper function and makes a list of bookIDs 
-///// </summary>
-///// <returns></returns>
-//public static List<string> MakeBookIDList()
-//{
-//    List<string> BookIDList = new List<string>();
-//    int borrowBooksAmount;
-//    Console.WriteLine($"How many books do you want to borrow?");
-//    bool works = int.TryParse(Console.ReadLine(), out borrowBooksAmount);
-//    if (works)
-//    {
-//        for (int i = 1; i < borrowBooksAmount + 1; i++)
-//        {
-//            BookIDList.Add(StandardMessages.GetInputForParam("book ID"));
-//            Console.WriteLine($"{i}/{borrowBooksAmount}");
-//        }
-//        return BookIDList;
-//    }
-//    else
-//    {
-//        StandardMessages.EnterNumber();
-//        StandardMessages.TryAgain();
-//        return new List<string>();
-//    }
-//}
-
-//public static void Main(string[] args)
-//{
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//#region Init
-//PublicLibrary.Init();
-//StandardMessages.WelcomeImage();
-
-
-//Catalog.Instance.GetBookList().ForEach(
-//            b =>
-//            {
-//    b.GenerateISBN();
-//});
-
-
-
-//        StandardMessages.PressKeyToContinue();
-
-//        #endregion
-
-//        #region menu
-
-//        var menu = new EasyConsole.Menu()
-//.Add("View all the books", () =>
-//{
-//    Catalog.Instance.GetBookList().OrderByDescending(o => o.Year).ToList().ForEach(b => b.ShowBookProp());
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Search a book through ID", () => //submenu
-//            {
-//                StandardMessages.WriteInputBelow();
-//                Catalog.Instance.SearchBookByID(Console.ReadLine());
-//                StandardMessages.PressAnyKey();
-//                StandardMessages.PressKeyToContinue();
-//            })
-//.Add("Search a book through ISBN", () => //submenu
-//            {
-//                StandardMessages.WriteInputBelow();
-//                List<Book> searchRes = Catalog.Instance.SearchBookByIsbn(Console.ReadLine());
-//                StandardMessages.ResultsCount(searchRes.Count());
-//                searchRes.ForEach(book => book.ShowBookProp());
-//                StandardMessages.PressAnyKey();
-//                StandardMessages.PressKeyToContinue();
-//            })
-//.Add("Search a book by the name of the author", () => //submenu
-//            {
-//                StandardMessages.WriteInputBelow();
-//                var searchRes = Catalog.Instance.SearchBookByAuthor(Console.ReadLine());
-//                StandardMessages.ResultsCount(searchRes.Count());
-//                searchRes.ForEach(book => book.ShowBookProp());
-//                StandardMessages.PressAnyKey();
-//                StandardMessages.PressKeyToContinue();
-//            })
-//.Add("Search a book by title", () => //submenu
-//{
-//    StandardMessages.WriteInputBelow();
-//    var searchRes = Catalog.Instance.SearchBookByTitle(Console.ReadLine());
-//    StandardMessages.ResultsCount(searchRes.Count());
-//    searchRes.ForEach(book => book.ShowBookProp());
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Library information", () =>
-//{
-//    Console.WriteLine($"This is the very elaborate information page of the library system.");
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Help", () =>
-//{
-//    Console.WriteLine($"This is the very elaborate help page of the library system.");
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Delete a single book from the catalog", () =>
-//{
-//    Console.WriteLine($"Please input the ID of the book that you want to delete from the catalog.");
-//    string input = Console.ReadLine();
-//    if (StandardMessages.AreYouSure().Equals(true))
-//    {
-//        Catalog.Instance.RemoveBook(input);
-//    }
-
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Delete all books from the catalog", () =>
-//{
-//    if (StandardMessages.AreYouSure().Equals(true))
-//    {
-//        Catalog.Instance.DeleteAllBooks();
-//    }
-
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Add a new book to the catalog", () => //needs attention!!
-//{
-//    BookBuilder bb = new BookBuilder();
-//    bb.WithTitle(StandardMessages.GetInputForParam("title"))
-//        .WithAuthorName(StandardMessages.GetInputForParam("name of the author"))
-//        .WithYear(StandardMessages.GetInputForParam("year"))
-//        .WithPages(StandardMessages.GetInputForParam("pages"))
-//        .WithCountry(StandardMessages.GetInputForParam("country"))
-//        .WithLink(StandardMessages.GetInputForParam("link"))
-//        .WithImageLink(StandardMessages.GetInputForParam("link of the image"))
-//        .WithLanguage(StandardMessages.GetInputForParam("language"));
-
-
-
-//    Book bk;
-//    if ((bk = bb.Create()) != null)
-//    {
-//        bk.ShowBookProp();
-//        Catalog.Instance.AddNewBook(bk);
-//    }
-//    else
-//    {
-//        StandardMessages.TryAgain();
-//    }
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Add an existing book to the catalog", () =>
-//{
-//    Catalog.Instance.AddExistingBook(Console.ReadLine());
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Create a backup of the books", () =>
-//{
-//    Console.WriteLine(@"Choose a filepath, for an instance ''.\Backups\Bookbackup2.json''");
-//    BackUp.Instance.Create(Console.ReadLine());
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Load a backup of the books to the current program.", () =>
-//{
-//    Console.WriteLine(@"Choose a filepath, for an instance ''.\Backups\Bookbackup2.json''");
-//    BackUp.Instance.RestoreFromBackup<List<Book>>(Console.ReadLine());
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Borrow a book", () =>
-//{
-//    string bid = StandardMessages.GetInputForParam("Book ID");
-//    string persid = StandardMessages.GetInputForParam("Person ID");
-//    LoanAdministration.Instance.BorrowOne(bid, persid);
-
-//    LoanAdministration.Instance.GetLoansList().ForEach(loan => loan.ShowLoanProp());
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-
-//})
-//.Add("Borrow multiple books.", () =>
-//{
-//    string persid = StandardMessages.GetInputForParam("Person ID");
-//    var bookIdlist = MakeBookIDList();
-//    LoanAdministration.Instance.BorrowMany(bookIdlist, persid);
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-
-//.Add("Return a book", () =>
-//{
-//    string bookid = StandardMessages.GetInputForParam(" book ID.");
-//    LoanAdministration.Instance.ReturnOne(bookid);
-//})
-//.Add("Return multiple books", () =>
-//{
-//    var bookIdList = MakeBookIDList();
-//    LoanAdministration.Instance.ReturnMany(bookIdList);
-
-//})
-//.Add("Add a Person", () =>
-//{
-//    PersonBuilder pb = new PersonBuilder();
-//    pb.WithFirstName(StandardMessages.GetInputForParam("first name"))
-//        .WithLastName(StandardMessages.GetInputForParam("last name"))
-//        .WithEmailAddress(StandardMessages.GetInputForParam("email address"))
-//        .WithCity(StandardMessages.GetInputForParam("city of residence"))
-//        .WithStreetName(StandardMessages.GetInputForParam("streetname"))
-//        .WithStreetnumber(StandardMessages.GetInputForParam("house number"))
-//        .WithStreetnumberAdd(StandardMessages.GetInputForParam("house number addition (optional)"))
-//        .WithZipCode(StandardMessages.GetInputForParam("zipcode"))
-//        .WithPassword(StandardMessages.GetInputForParam("password"));
-
-//    Person newPerson;
-//    if ((newPerson = pb.Create()) != null)
-//    {
-//        CatalogPerson.Instance.AddNewPerson(newPerson);
-//        newPerson.ShowPersonProps();
-//    }
-//    else
-//    {
-//        StandardMessages.TryAgain();
-//    }
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-
-//})
-//.Add("Delete a person", () =>
-//{
-//    string personId = StandardMessages.GetInputForParam("person ID");
-//    StandardMessages.AreYouSure();
-//    CatalogPerson.Instance.DeletePerson(personId);
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Delete a book", () =>
-//{
-//    string bookId = StandardMessages.GetInputForParam("book ID");
-//    StandardMessages.AreYouSure();
-//    Catalog.Instance.DeleteBook(bookId);
-//    StandardMessages.PressAnyKey();
-//    StandardMessages.PressKeyToContinue();
-//})
-//.Add("Search Person by name", () =>
-//{
-//    Environment.Exit(0);
-//})
-//.Add("Search person by streetname", () =>
-//{
-//    Environment.Exit(0);
-//})
-//.Add("Search person by ID", () =>
-//{
-//    Environment.Exit(0);
-//})
-//.Add("Exit", () =>
-//{
-//    Environment.Exit(0);
-//});
-
-
-//        #endregion
-
-
-//        while (true)
-//        {
-//            menu.Display();
-//        }
-
-
-
-
-
-
-
-// StandardMessages.WelcomeImage();
-// StandardMessages.PressAnyKey();
-
 
 
 

@@ -11,7 +11,7 @@
     {
         //menu 1Aa
         public SearchBookByTitle(Program program)
-            : base("Search a book by the Author", program)
+            : base("Search a book by the title", program)
         {
         }
 
@@ -22,9 +22,10 @@
             var searchRes = LibraryStandard.Catalog.Instance.SearchBookByTitle(Console.ReadLine());
             StandardMessages.ResultsCount(searchRes.Count());
             searchRes.ForEach(book => book.ShowBookProp());
+            StandardMessages.ResultsCount(searchRes.Count());
             StandardMessages.PressAnyKey();
             StandardMessages.PressKeyToContinue();
-            Program.NavigateHome();
+            Program.NavigateBack();
         }
     }
 }

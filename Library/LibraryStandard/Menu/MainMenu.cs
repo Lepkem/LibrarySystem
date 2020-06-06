@@ -6,8 +6,12 @@
     {
         public MainMenu(Program program)
             : base("Main Menu", program
-                , new Option("Search", () => program.NavigateTo<Search>()) 
-        //,new Option("Input", () => program.NavigateTo<InputPage>()))
+                , new Option("Catalog", () => program.NavigateTo<CatalogMenu>()) 
+                , new Option("Log in", () => program.NavigateTo<LoginMenu>())
+                , new Option("Help", () => program.NavigateTo<Help>())
+                , new Option("Library information", () => program.NavigateTo<LibraryInfo>())
+
+
         )
         {}
         

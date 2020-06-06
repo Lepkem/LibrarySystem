@@ -19,6 +19,7 @@
             Console.WriteLine($"This is the very elaborate information page of the library system.");
             StandardMessages.PressAnyKey();
             StandardMessages.PressKeyToContinue();
+            Program.NavigateHome();
         }
     }
 }

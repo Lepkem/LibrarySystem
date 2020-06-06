@@ -8,7 +8,6 @@
         string GetEmail(Person person);
         string GetAddress(Person person);
         string GetTelNumber(Person person);
-
         string GetFullName();
     }
 }

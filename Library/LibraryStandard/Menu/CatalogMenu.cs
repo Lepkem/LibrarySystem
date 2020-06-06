@@ -12,9 +12,10 @@
                 "Catalog menu",
                 program,
                 new Option("Search a book", () => program.NavigateTo<SearchBook>())
-                ,new Option("Search a person", () => program.NavigateTo<SearchPerson>())
-                ,new Option("Search a Loan", () => program.NavigateTo<SearchLoan>())
-                ,new Option("Show all books", () => program.NavigateTo<ShowAllBooks>()))
+                ,new Option("Show all books", () => program.NavigateTo<ShowAllBooks>())
+               
+
+                )
         {
         }
 

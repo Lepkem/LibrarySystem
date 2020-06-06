@@ -19,7 +19,7 @@
         {
             base.Display();
             StandardMessages.WriteInputBelow();
-            List<Person> searchRes = CatalogPerson.Instance.SearchPersonByStreetname(Console.ReadLine());
+            List<Person> searchRes = CatalogPerson.Instance.SearchPersonByStreetname(StandardMessages.GetInputForParam("street name"));
             StandardMessages.ResultsCount(searchRes.Count);
             searchRes.ForEach(person => person.ShowPersonProps());
             StandardMessages.PressAnyKey();

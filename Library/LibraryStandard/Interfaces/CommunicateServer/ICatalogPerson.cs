@@ -1,4 +1,4 @@
-﻿namespace LibraryStandard.Interfaces
+﻿namespace LibraryStandard
 {
     using System.Collections.Generic;
 
@@ -6,8 +6,6 @@
 
     public interface ICatalogPerson
     {
-        Person GetPersonByID(string id);
-        List<Person> SearchPersonByName(string name);
         
     }
 }
