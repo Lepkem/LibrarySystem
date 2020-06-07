@@ -55,9 +55,17 @@
         /// <returns></returns>
         public List<Person> SearchPersonByName(string name)
         {
-            List<Person> foundPersonList = new List<Person>();
-            foundPersonList = persons.Where(person => person.Firstname.Contains(name) | person.Surname.Contains(name)).ToList();
-            return foundPersonList;
+            try
+            {
+                List<Person> foundPersonList = new List<Person>();
+                foundPersonList = persons.Where(person => person.Firstname.ToLower().Contains(name) | person.Surname.ToLower().Contains(name)).ToList();
+                return foundPersonList;
+            }
+            catch (Exception)
+            {
+                StandardMessages.NoSearchResults();
+                return new List<Person>();
+            }
         }
 
         /// <summary>

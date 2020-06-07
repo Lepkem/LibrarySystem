@@ -19,6 +19,7 @@
             pb.WithFirstName(StandardMessages.GetInputForParam("first name"))
                 .WithLastName(StandardMessages.GetInputForParam("last name"))
                 .WithEmailAddress(StandardMessages.GetInputForParam("email address"))
+                .WithNationality(StandardMessages.GetInputForParam("nationality"))
                 .WithCity(StandardMessages.GetInputForParam("city of residence"))
                 .WithStreetName(StandardMessages.GetInputForParam("streetname"))
                 .WithStreetnumber(StandardMessages.GetInputForParam("house number"))
