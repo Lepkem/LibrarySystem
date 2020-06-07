@@ -3,14 +3,19 @@
     using EasyConsole;
 
     public class MainMenu : MenuPage
-    { 
+    {
         public MainMenu(Program program)
-            : base("Main Menu", program,
-                new Option("Page 1", () => program.NavigateTo<Page1/*SearchABook*/>()), 
-                new Option("Page 2", () => program.NavigateTo<Page2>()),
-                new Option("Input", () => program.NavigateTo<InputPage>()))
+            : base("Main Menu", program
+                , new Option("Catalog", () => program.NavigateTo<CatalogMenu>()) 
+                , new Option("Log in", () => program.NavigateTo<LoginMenu>())
+                , new Option("Help", () => program.NavigateTo<Help>())
+                , new Option("Library information", () => program.NavigateTo<LibraryInfo>())
+
+
+        )
+        {}
         
-        {
-        }
     }
+
+
 }

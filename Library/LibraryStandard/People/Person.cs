@@ -4,23 +4,36 @@
     
     using LibraryStandard.Interfaces;
 
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     public class Person 
     {
         public Person()
         {
             ID = "PID" + Guid.NewGuid();
         }
+        //todo implement csv file
+        //Number,Gender, nationality ,GivenName,Surname,StreetAddress,ZipCode,City,EmailAddress,Username,TelephoneNumber
+        [JsonProperty("Number")]
         public string ID { get; }
         //public Address Address { get; set; }
+        [JsonProperty("GivenName")]
         public string Firstname { get; set; }
         public string Surname { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
         public Gend Gender { get; set; }
+        
+        //public string Gender { get; set; }
+        public string Nationality { get; set; }
         public string EmailAddress { get; set; }
         public string TelephoneNumber { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string StreetnumberAdd { get; set; }
         public string Streetnumber { get; set; }
+        [JsonProperty("StreetAddress")]
         public string StreetName { get; set; }
         public string ZipCode { get; set; }
         public string City { get; set; }
@@ -54,6 +67,7 @@
             Console.WriteLine($"Last name:              {Surname}");
             Console.WriteLine($"Person ID:              {ID}");
             Console.WriteLine($"Username:               {Username}");
+            Console.WriteLine($"Nationality:            {Nationality}");
             Console.WriteLine($"Password:               {PasswordCensor()}");
             Console.WriteLine($"\nGender:               {Gender}");
             Console.WriteLine($"Email Address           {EmailAddress}");
@@ -67,13 +81,19 @@
 
         private string PasswordCensor()
         {
-            string sensoredPassword = "";
-            foreach (char letter in Password)
+            if (!string.IsNullOrEmpty(Password))
             {
-                sensoredPassword += "*";
+                string sensoredPassword = "";
+                foreach (char letter in Password)
+                {
+                    sensoredPassword += "*";
+                }
+
+                return sensoredPassword;
             }
 
-            return sensoredPassword;
+            return "***";
+
         }
 
     }

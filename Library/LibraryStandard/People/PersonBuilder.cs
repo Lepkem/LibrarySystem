@@ -90,6 +90,12 @@
             return this;
         }
 
+        public PersonBuilder WithNationality(string nationality)
+        {
+            _person.Nationality = nationality;
+            return this;
+        }
+
         /// <summary>
         /// Create returns a person if validation was succesful, else null
         /// </summary>
