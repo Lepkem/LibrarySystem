@@ -6,17 +6,16 @@
     public static class StandardInput
     {
 
-        public static int Integer(object input)
-        {
-            if (input.GetType().ToString() == "System.Int32")
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
-        }
-
+        //public static int Integer(object input)
+        //{
+        //    if (input.GetType().ToString() == "System.Int32")
+        //    {
+        //        return new NotImplementedException();
+        //    }
+        //    else
+        //    {
+        //        return new NotImplementedException();
+        //    }
+        //}
     }
 }

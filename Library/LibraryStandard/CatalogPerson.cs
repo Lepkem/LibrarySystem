@@ -58,7 +58,7 @@
             try
             {
                 List<Person> foundPersonList = new List<Person>();
-                foundPersonList = persons.Where(person => person.Firstname.ToLower().Contains(name) | person.Surname.ToLower().Contains(name)).ToList();
+                foundPersonList = persons.Where(person => person.Firstname.ToLower().Contains(name.ToLower()) || person.Surname.ToLower().Contains(name)).ToList();
                 return foundPersonList;
             }
             catch (Exception)

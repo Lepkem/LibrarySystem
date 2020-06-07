@@ -5,6 +5,7 @@
     using LibraryStandard.Interfaces;
 
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     public class Person 
     {
@@ -20,8 +21,11 @@
         [JsonProperty("GivenName")]
         public string Firstname { get; set; }
         public string Surname { get; set; }
-        //public Gend Gender { get; set; }
-        public string Gender { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Gend Gender { get; set; }
+        
+        //public string Gender { get; set; }
         public string Nationality { get; set; }
         public string EmailAddress { get; set; }
         public string TelephoneNumber { get; set; }
@@ -65,7 +69,7 @@
             Console.WriteLine($"Username:               {Username}");
             Console.WriteLine($"Nationality:            {Nationality}");
             Console.WriteLine($"Password:               {PasswordCensor()}");
-            //Console.WriteLine($"\nGender:               {Gender}");
+            Console.WriteLine($"\nGender:               {Gender}");
             Console.WriteLine($"Email Address           {EmailAddress}");
             Console.WriteLine($"Telephone number:       {TelephoneNumber}");
             Console.WriteLine($"House number:          {Streetnumber}");
@@ -77,13 +81,19 @@
 
         private string PasswordCensor()
         {
-            string sensoredPassword = "";
-            foreach (char letter in Password)
+            if (!string.IsNullOrEmpty(Password))
             {
-                sensoredPassword += "*";
+                string sensoredPassword = "";
+                foreach (char letter in Password)
+                {
+                    sensoredPassword += "*";
+                }
+
+                return sensoredPassword;
             }
 
-            return sensoredPassword;
+            return "***";
+
         }
 
     }

@@ -132,7 +132,9 @@
     <None Include="Data\Books.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Data\Persons.json" />
+    <None Include="Data\Persons.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="UML.cd" />
   </ItemGroup>
