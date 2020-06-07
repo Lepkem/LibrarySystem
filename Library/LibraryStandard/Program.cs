@@ -15,6 +15,7 @@ namespace LibraryStandard
     using LibraryStandard.Helpers;
     using LibraryStandard.Menu;
     using LibraryStandard.Menu.Login;
+    using LibraryStandard.Menu.Login.Backup;
     using LibraryStandard.People;
 
 
@@ -38,6 +39,8 @@ namespace LibraryStandard
                     AddPage(new SearchBookByID(this));
                     AddPage(new SearchBookByTitle(this));
             AddPage(new LoginMenu(this));
+                AddPage(new CreateBackup(this));
+                AddPage(new LoadBackup(this));
                 AddPage(new CatalogMenu(this));
                 AddPage(new LendOutBook(this));
                 AddPage(new LendOutManyBooks(this));

@@ -15,8 +15,10 @@
         public override void Display()
         {
             base.Display();
-            string bookid = StandardMessages.GetInputForParam(" book ID.");
+            string bookid = StandardMessages.GetInputForParam("book ID");
             LoanAdministration.Instance.ReturnOne(bookid);
+            StandardMessages.PressAnyKey();
+            StandardMessages.PressKeyToContinue();
             Program.NavigateBack();
         }
     }

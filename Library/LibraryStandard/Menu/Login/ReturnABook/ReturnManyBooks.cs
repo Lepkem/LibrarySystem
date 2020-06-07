@@ -17,6 +17,8 @@
             base.Display();
             var bookIdList = LoanAdministration.MakeBookIDList();
             LoanAdministration.Instance.ReturnMany(bookIdList);
+            StandardMessages.PressAnyKey();
+            StandardMessages.PressKeyToContinue();
             Program.NavigateBack();
         }
     }

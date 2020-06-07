@@ -95,7 +95,6 @@
             {
                 StandardMessages.TryAgain();
                 Console.WriteLine(e);
-                throw;
             }
         }
 
@@ -176,7 +175,7 @@
         {
             List<string> BookIDList = new List<string>();
             int borrowBooksAmount;
-            Console.WriteLine($"How many books do you want to borrow?");
+            Console.WriteLine($"How many books do you want to borrow/return?");
             bool works = Int32.TryParse(Console.ReadLine(), out borrowBooksAmount);
             if (works)
             {
