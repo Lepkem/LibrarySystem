@@ -1,6 +1,6 @@
 ---
-name: Submenus implemented
-about: By using the EasyConsole library, the submenus should be implemented
+name: MVP
+about: Required by Minimal Viable Product
 title: ''
 labels: ''
 assignees: RafPe, Lepkem
