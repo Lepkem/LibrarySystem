@@ -20,7 +20,8 @@
         [JsonProperty("GivenName")]
         public string Firstname { get; set; }
         public string Surname { get; set; }
-        public Gend Gender { get; set; }
+        //public Gend Gender { get; set; }
+        public string Gender { get; set; }
         public string Nationality { get; set; }
         public string EmailAddress { get; set; }
         public string TelephoneNumber { get; set; }
@@ -64,7 +65,7 @@
             Console.WriteLine($"Username:               {Username}");
             Console.WriteLine($"Nationality:            {Nationality}");
             Console.WriteLine($"Password:               {PasswordCensor()}");
-            Console.WriteLine($"\nGender:               {Gender}");
+            //Console.WriteLine($"\nGender:               {Gender}");
             Console.WriteLine($"Email Address           {EmailAddress}");
             Console.WriteLine($"Telephone number:       {TelephoneNumber}");
             Console.WriteLine($"House number:          {Streetnumber}");

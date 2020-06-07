@@ -65,6 +65,7 @@
     <Compile Include="CatalogPerson.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\DataOperator.cs" />
+    <Compile Include="Helpers\StandardInput.cs" />
     <Compile Include="Interfaces\CommunicateServer\ICatalogPerson.cs" />
     <Compile Include="Interfaces\CommunicateServer\ILoanAdministration.cs" />
     <Compile Include="Interfaces\IStandardMessages.cs" />

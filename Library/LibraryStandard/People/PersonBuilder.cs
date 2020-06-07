@@ -42,11 +42,11 @@
             return this;
         }
 
-        public PersonBuilder WithGender(Person.Gend gender)
-        {
-            _person.Gender = gender;
-            return this;
-        }
+        //public PersonBuilder WithGender(Person.Gend gender)
+        //{
+        //    _person.Gender = gender;
+        //    return this;
+        //}
 
         public PersonBuilder WithEmailAddress(string emailAddress)
         {
