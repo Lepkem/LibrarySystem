@@ -39,7 +39,7 @@
             }
             StandardMessages.PressAnyKey();
             StandardMessages.PressKeyToContinue();
-            Program.NavigateHome();
+            Program.NavigateBack();
         }
     }
 }

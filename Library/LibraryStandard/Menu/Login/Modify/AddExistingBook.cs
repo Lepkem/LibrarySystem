@@ -19,7 +19,7 @@
             Catalog.Instance.AddExistingBook(Console.ReadLine());
             StandardMessages.PressAnyKey();
             StandardMessages.PressKeyToContinue();
-            Program.NavigateHome();
+            Program.NavigateBack();
         }
     }
 }

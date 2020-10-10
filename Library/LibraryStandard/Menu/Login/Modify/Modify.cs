@@ -6,7 +6,7 @@
     {
         //Menu 1A todo nothing
         public Modify(Program program)
-            : base("Modify a single or multiple:", program,
+            : base("Modify single or multiple:", program,
                 new Option("Books", () => program.NavigateTo<ModifyBook>())
                 , new Option("People", () => program.NavigateTo<ModifyPerson>())
                 ,new Option("Loans", () => program.NavigateTo<ModifyLoan>())

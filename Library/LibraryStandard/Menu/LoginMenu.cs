@@ -9,14 +9,14 @@
     {
         public LoginMenu(Program program)
             : base("Login menu.", program
+                , new Option("Modify menu", () => program.NavigateTo<Modify>())
+                , new Option("Loan administration menu", () => program.NavigateTo<LoanAdministrationMenu>())
                 , new Option("Search a person", () => program.NavigateTo<SearchPerson>())
                 , new Option("Search a loan", () => program.NavigateTo<SearchLoan>())
-                , new Option("Lend out a book", () => program.NavigateTo<LendOutBook>())
-                , new Option("Lend out multiple books", () => program.NavigateTo<LendOutManyBooks>())
-                , new Option("Return a book", () => program.NavigateTo<ReturnBook>())
-                , new Option("Return multiple books", () => program.NavigateTo<ReturnManyBooks>())
+                , new Option("Search a book", () => program.NavigateTo<SearchBook>())
                 , new Option("Create a backup", () => program.NavigateTo<CreateBackup>())
                 , new Option("Load a backup", () => program.NavigateTo<LoadBackup>())
+               
                 )
         { }
     }

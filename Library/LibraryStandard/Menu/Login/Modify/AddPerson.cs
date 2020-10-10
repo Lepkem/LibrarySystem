@@ -25,7 +25,10 @@
                 .WithStreetnumber(StandardMessages.GetInputForParam("house number"))
                 .WithStreetnumberAdd(StandardMessages.GetInputForParam("house number addition (optional)"))
                 .WithZipCode(StandardMessages.GetInputForParam("zipcode"))
-                .WithPassword(StandardMessages.GetInputForParam("password"));
+                .WithPassword(StandardMessages.GetInputForParam("password"))
+                .WithTelePhoneNumber(StandardMessages.GetInputForParam("telephone number"))
+                ;
+                
 
             Person newPerson;
             if ((newPerson = pb.Create()) != null)
@@ -34,12 +37,12 @@
                 newPerson.ShowPersonProps();
             }
             else
-            {
+                        {
                 StandardMessages.TryAgain();
             }
             StandardMessages.PressAnyKey();
             StandardMessages.PressKeyToContinue();
-            Program.NavigateHome();
+            Program.NavigateBack();
         }
     }
 }

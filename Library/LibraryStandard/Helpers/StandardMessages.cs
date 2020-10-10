@@ -72,9 +72,13 @@ namespace LibraryStandard.Helpers
             {
                 Console.WriteLine($"There were {input} results.");
             }
-            else
+            else if (input == 1)
             {
                 Console.WriteLine($"There was {input} result.");
+            }
+            else
+            {
+                Console.WriteLine($"There were no results.");
             }
         }
 

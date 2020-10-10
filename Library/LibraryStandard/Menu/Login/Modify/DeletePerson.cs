@@ -19,7 +19,7 @@
             CatalogPerson.Instance.DeletePerson(personId);
             StandardMessages.PressAnyKey();
             StandardMessages.PressKeyToContinue();
-            Program.NavigateHome();
+            Program.NavigateBack();
         }
     }
 }

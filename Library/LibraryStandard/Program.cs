@@ -42,12 +42,13 @@ namespace LibraryStandard
                 AddPage(new CreateBackup(this));
                 AddPage(new LoadBackup(this));
                 AddPage(new CatalogMenu(this));
-                AddPage(new LendOutBook(this));
-                AddPage(new LendOutManyBooks(this));
-                AddPage(new ReturnBook(this));
-                AddPage(new ReturnManyBooks(this));
-                AddPage(new SearchBook(this));
-                    AddPage(new SearchBookByAuthor(this));
+                AddPage(new LoanAdministrationMenu(this));
+                    AddPage(new LendOutBook(this));
+                    AddPage(new LendOutManyBooks(this));
+                    AddPage(new ReturnBook(this));
+                    AddPage(new ReturnManyBooks(this));
+            AddPage(new SearchBook(this));
+                AddPage(new SearchBookByAuthor(this));
                     AddPage(new SearchBookByISBN(this));
                     AddPage(new SearchBookByID(this));
                     AddPage(new SearchBookByTitle(this));
@@ -58,6 +59,18 @@ namespace LibraryStandard
                     AddPage(new SearchPersonByID(this));
                     AddPage(new SearchPersonByName(this));
                     AddPage(new SearchPersonByStreetname(this));
+                AddPage(new Modify(this));
+                    AddPage(new AddExistingBook(this));
+                    AddPage(new AddNewBook(this));
+                    AddPage(new AddPerson(this));
+                    AddPage(new DeleteAllBooks(this));
+                    AddPage(new DeleteAllLones(this));
+                    AddPage(new DeleteAllPersons(this));
+                    AddPage(new DeleteBook(this));
+                    AddPage(new DeletePerson(this));
+                    AddPage(new ModifyBook(this));
+                    AddPage(new ModifyLoan(this));
+                    AddPage(new ModifyPerson(this));
 
 
             //AddPage(new MenuSearchPerson(this));

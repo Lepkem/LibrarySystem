@@ -1,7 +1,8 @@
 ﻿namespace LibraryStandard.People
 {
     using System;
-    
+    using System.Linq;
+
     using LibraryStandard.Interfaces;
 
     using Newtonsoft.Json;
@@ -13,7 +14,8 @@
         {
             ID = "PID" + Guid.NewGuid();
         }
-        //todo implement csv file
+        
+        
         //Number,Gender, nationality ,GivenName,Surname,StreetAddress,ZipCode,City,EmailAddress,Username,TelephoneNumber
         [JsonProperty("Number")]
         public string ID { get; }
@@ -96,6 +98,8 @@
 
         }
 
+
+        
     }
 
     /*

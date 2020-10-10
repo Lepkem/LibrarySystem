@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -81,7 +96,8 @@
     <Compile Include="Menu\LoginMenu.cs" />
     <Compile Include="Menu\Login\Backup\CreateBackup.cs" />
     <Compile Include="Menu\Login\Backup\LoadBackup.cs" />
-    <Compile Include="Menu\Login\LendOutABook\LendOutManyBooks.cs" />
+    <Compile Include="Menu\Login\LoansAdministration\LendOutManyBooks.cs" />
+    <Compile Include="Menu\Login\LoansAdministration\LoanAdministrationMenu.cs" />
     <Compile Include="Menu\Login\Modify\AddExistingBook.cs" />
     <Compile Include="Menu\Login\Modify\AddNewBook.cs" />
     <Compile Include="Menu\Login\Modify\AddPerson.cs" />
@@ -90,13 +106,13 @@
     <Compile Include="Menu\Login\Modify\DeleteAllPersons.cs" />
     <Compile Include="Menu\Login\Modify\DeleteBook.cs" />
     <Compile Include="Menu\Login\Modify\DeletePerson.cs" />
-    <Compile Include="Menu\Login\LendOutABook\LendOutBook.cs" />
+    <Compile Include="Menu\Login\LoansAdministration\LendOutBook.cs" />
     <Compile Include="Menu\Login\Modify\Modify.cs" />
     <Compile Include="Menu\Login\Modify\ModifyBook.cs" />
     <Compile Include="Menu\Login\Modify\ModifyLoan.cs" />
     <Compile Include="Menu\Login\Modify\ModifyPerson.cs" />
-    <Compile Include="Menu\Login\ReturnABook\ReturnBook.cs" />
-    <Compile Include="Menu\Login\ReturnABook\ReturnManyBooks.cs" />
+    <Compile Include="Menu\Login\LoansAdministration\ReturnBook.cs" />
+    <Compile Include="Menu\Login\LoansAdministration\ReturnManyBooks.cs" />
     <Compile Include="Menu\MainMenu.cs" />
     <Compile Include="Menu\CatalogMenu.cs" />
     <Compile Include="Menu\Catalog\SearchABook\SearchBookByAuthor.cs" />
@@ -141,6 +157,17 @@
   <ItemGroup>
     <None Include="ReadyToGo.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

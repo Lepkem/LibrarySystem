@@ -19,7 +19,7 @@
         /// <returns></returns>
         private bool ValidatePerson()
         {
-            if (String.IsNullOrWhiteSpace(_person.Username) | String.IsNullOrWhiteSpace(_person.Password) | String.IsNullOrWhiteSpace(_person.ID) | String.IsNullOrWhiteSpace(_person.Firstname)
+            if (String.IsNullOrWhiteSpace(_person.Password) || String.IsNullOrWhiteSpace(_person.ID) || String.IsNullOrWhiteSpace(_person.Firstname)
                 | String.IsNullOrWhiteSpace(_person.Surname))
             {
                 return false;
@@ -96,14 +96,31 @@
             return this;
         }
 
+        public PersonBuilder WithTelePhoneNumber(string telephoneNumber)
+        {
+            _person.TelephoneNumber = telephoneNumber;
+            return this;
+        }
+
         /// <summary>
-        /// Create returns a person if validation was succesful, else null
+        /// generates a username
+        /// </summary>
+        private void UserNameGenerator()
+        {
+            _person.Username = $"{_person.Firstname[1]}{_person.Surname}{_person.ID[0]}{_person.ID[1]}{_person.ID[2]}{_person.ID[3]}";
+        }
+
+        /// <summary>
+        /// Create returns a person with username if validation was succesful, else null
         /// </summary>
         /// <returns></returns>
         public Person Create()
         {
+            
+
             if (ValidatePerson())
             {
+                UserNameGenerator();
                 return _person;
             }
             else

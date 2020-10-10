@@ -33,7 +33,7 @@
         public T DeserializeJson<T>(string strValue)
         {
             return JsonConvert.DeserializeObject<T>(strValue);
-         }
+        }
 
         public string SerializeJson(object objToSave)
         {
